@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        
+        {/* 살자의 반댓말은 ? */}
       </header>
     </div>
   );
