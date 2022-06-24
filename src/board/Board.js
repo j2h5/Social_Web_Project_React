@@ -6,7 +6,7 @@ import DirectionsBike from '@mui/icons-material/DirectionsBike';
 import DirectionsBus from '@mui/icons-material/DirectionsBus';
 import BoardList1 from "./BoardList1";
 import BoardList2 from "./BoardList2";
-import BoardList3 from "./BoardList3";
+import BoardList3 from "./BoardList3";      
 
 const Board=()=>{
     const [show,setShow]=useState();
