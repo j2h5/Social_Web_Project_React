@@ -30,7 +30,7 @@ const LoginForm=()=>{
         <div>
             <form onSubmit={onSubmit}>
             <table style={{width:'300px',marginLeft:'120px'}}>
-                <caption><h3>회원 로그인</h3></caption>
+                <caption><h3>회원 로그인~~</h3></caption>
                 <tbody>
                     <tr>
                         <td width={200}>
