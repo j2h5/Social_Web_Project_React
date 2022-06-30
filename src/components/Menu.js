@@ -14,6 +14,7 @@ const Menu=()=>{
                 <li><NavLink to="/shop/list">Shop</NavLink></li>
                 <li><NavLink to="/Board/list/1">Board</NavLink></li>
                 <li><NavLink to="/about">About</NavLink></li>
+                <li><NavLink to="/challenge/form">Challenge</NavLink></li>
             </ul>
         </div>
     )
