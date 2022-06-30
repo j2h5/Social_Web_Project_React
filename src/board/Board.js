@@ -11,7 +11,7 @@ import BoardList3 from "./BoardList3";
 const Board=()=>{
     const [show,setShow]=useState();
     const navi=useNavigate();
-    return (
+    return (    
         <div>
             <h1>Board</h1>
             <button className="btn btn-success"
