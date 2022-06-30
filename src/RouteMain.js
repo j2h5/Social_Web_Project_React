@@ -11,6 +11,8 @@ import Member from "./member/Member";
 import errimg from "./image/er.png"
 import Memo from "./memo/Memo";
 import MemberList from "./member/Member";
+import ChallengeForm from "./challenge/ChallengeForm";
+import ChallengeList from "./challenge/ChallengeList";
 
 const RouteMain=()=>{
 
@@ -41,6 +43,12 @@ const RouteMain=()=>{
                 <Route path="/member/list" element={<MemberList/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/about" element={<About/>}/>
+
+                {/* challenge */}
+                <Route path="/challenge/form" element={<ChallengeForm/>}/>
+                <Route path="/challenge/list" element={<ChallengeList/>}/>
+
+
 
                 <Route path="*" element={
                     <div>
