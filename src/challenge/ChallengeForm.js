@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import '../App.css';
+import '../cssFolder/Challenge.css';
 import axios from 'axios';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import {useNavigate} from 'react-router-dom'
@@ -7,6 +7,8 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { ko } from 'date-fns/esm/locale';
 import styled from "styled-components";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 
 const ChallengeForm = () => {
@@ -23,7 +25,7 @@ const ChallengeForm = () => {
     return (
         <div>
             <h1>챌린지 등록</h1>
-            <form>
+            <form className=''>
                     {/* 챌린지 등록폼 */}
                 <table className="table table-borderless" style={{width:'600px'}}>
                     <tbody>
@@ -97,16 +99,15 @@ const ChallengeForm = () => {
                             {/* 에디터 사용 */}
                             <td colSpan={2}> 
                             <b>챌린지를 소개해주세요</b>
-                                <textarea className="form-control" required
-                                style={{width:'400px', height:'120px'}}
-                                ></textarea>
+                                <ReactQuill></ReactQuill>
                             </td>
                         </tr>
                         <tr>
                             <th style={{backgroundColor:'#d5bbdd'}} width='100'>인증샷 예시</th>
-                            <td><input type="text" className="form-control"
-                            style={{width:'300px'}} required
-                            />
+                            <td>
+                                <div className='certifi_pic'></div>
+                                <br/>
+                                <div className='certifi_pic'></div>
                             </td>
                         </tr>
                         <tr>
