@@ -1,19 +1,24 @@
 import React, {useState, useEffect} from 'react';
 import '../App.css';
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom'
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 import DateRangeIcon from '@mui/icons-material/DateRange';
-import Box from '@mui/material/Box';
-import Popper from '@mui/material/Popper';
-
+import {useNavigate} from 'react-router-dom'
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+import { ko } from 'date-fns/esm/locale';
+import styled from "styled-components";
 
 
 const ChallengeForm = () => {
 
-    const [value, onChange] = useState(new Date());
+    //챌린지 기간 선택 (date picker)
+    const [dateRange, setDateRange] = useState([null, null]);
+    const [startDate, endDate] = dateRange;
 
+    const ChalDatePicker = styled(DatePicker)`
+        width: 300px;
+        height: 33.99px;
+    `;
 
     return (
         <div>
@@ -57,18 +62,37 @@ const ChallengeForm = () => {
                         </tr>
                         <tr>
                             <th style={{backgroundColor:'#d5bbdd'}} width='100'>챌린지 기간</th>
-                            <td><input type="text" className="form-control"
-                            style={{width:'300px'}} required
-                            /><DateRangeIcon/>
+
+                            {/* 달력에서 기간 선택 가능 */}
+                            <td><ChalDatePicker
+                            selectsRange={true}
+                            startDate={startDate}
+                            endDate={endDate}
+                            locale = { ko }
+                            placeholderText="챌린지 시작일과 종료일을 선택해주세요"
+                            dateFormat="yyyy년 MM월 dd일"
+                            onChange={(update) => {
+                            setDateRange(update);
+                            }}
+                            withPortal/>
                             </td>
                         </tr>
                         <tr>
-                            <th style={{backgroundColor:'#d5bbdd'}} width='100'>예치금</th>
-                            <td><input type="text" className="form-control"
-                            style={{width:'300px'}} required
-                            />
+                            <th style={{backgroundColor:'#d5bbdd'}} width='100'>최소 예치금</th>
+                            <td>
+                                <div className='chalDeposit'>
+                                <input type="text" className="form-control"
+                                style={{width:'50px', display:'inline-block'}} required
+                                />&nbsp;만원
+                                &nbsp;
+
+                                {/* 예치금 고정 체크하면 전체 disabled */}
+                                <label><input type="checkbox"
+                                />예치금 고정</label>
+                                </div>
                             </td>
                         </tr>
+
                         <tr>
                             {/* 에디터 사용 */}
                             <td colSpan={2}> 
@@ -90,9 +114,7 @@ const ChallengeForm = () => {
                                 <button type="submit" className="btn btn-info">다음</button>
                             </td>
                         </tr>
-
                         {/* 다음 버튼 누르면 미리보기 */}
-
                     </tbody>
                 </table>
             </form>
