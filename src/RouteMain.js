@@ -14,12 +14,10 @@ import MemberList from "./member/Member";
 import ChallengeForm from "./challenge/ChallengeForm";
 import ChallengeList from "./challenge/ChallengeList";
 import MainChallenge from "./main/Mainchallenge";
-
 const RouteMain=()=>{
-
     return (
         <div>
-{/*         
+{/*
             <div className="Navbar"><Navbar/></div>
             <div className="Hero"><Hero/></div>
             <div className="Demo"><Demo/></div>
@@ -27,7 +25,6 @@ const RouteMain=()=>{
             <div className="Mainmoim"><Mainmoim/></div>
             <div className="Mainclass"><Mainclass/></div>
             <div className="Footer"><Footer/></div> */}
-            
             <div className="main">
                 <Routes>
                 <Route path="/" element={<Main/>}/>
@@ -36,27 +33,18 @@ const RouteMain=()=>{
                 <Route path="/shop/form" element={<ShopForm/>}/>
                 <Route path="/shop/detail/:num" element={<ShopDetail/>}/>
                 <Route path="/shop/updateform/:num" element={<ShopUpdate/>}/>
-                
                 {/* Meomo */}
                 <Route path="/memo" element={<Memo/>}/>
-
                 {/* Board */}
                 <Route path="/board/list/:currentPage" element={<Board/>}/>
                 <Route path="/board/form" element={<BoardForm/>}/>
                 <Route path="/board/detail/:num/:currentPage" element={<BoardDetail/>}/>
-
-
                 <Route path="/member/form" element={<Member/>}/>
                 <Route path="/member/list" element={<MemberList/>}/>
                 <Route path="/login" element={<Login/>}/>
-              
-
                 {/* challenge */}
                 <Route path="/challenge/form" element={<ChallengeForm/>}/>
                 <Route path="/challenge/list" element={<ChallengeList/>}/>
-
-
-
                 <Route path="*" element={
                     <div>
                         <img src={errimg} alt=""/>
@@ -68,5 +56,4 @@ const RouteMain=()=>{
         </div>
     )
 }
-
 export default RouteMain;
