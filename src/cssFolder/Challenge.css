@@ -1,5 +1,14 @@
-div.certifi_pic{
-    width:'200px';
-    height:'200px';
+form.challenge_form{
+    position: absolute;
+    top: 80px;
+    left: 50px;
+}
+
+div.challenge_example{
+    position: absolute;
+    top: 80px;
+    left: 800px;
+    width: 800px;
+    height: 400px;
     border: 1px solid gray;
 }
