@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import '../cssFolder/Challenge.css';
 import axios from 'axios';
 import DateRangeIcon from '@mui/icons-material/DateRange';
@@ -9,9 +9,19 @@ import { ko } from 'date-fns/esm/locale';
 import styled from "styled-components";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import ChallengeExample from './ChallengeExample';
+
+
 
 
 const ChallengeForm = () => {
+    
+    //사진 누르면 인증샷 업로드 file
+    const photoInput = useRef();
+    const handleClick = () =>{
+        photoInput.current.click();
+    };
 
     //챌린지 기간 선택 (date picker)
     const [dateRange, setDateRange] = useState([null, null]);
@@ -25,7 +35,7 @@ const ChallengeForm = () => {
     return (
         <div>
             <h1>챌린지 등록</h1>
-            <form className=''>
+            <form className='challenge_form'>
                     {/* 챌린지 등록폼 */}
                 <table className="table table-borderless" style={{width:'600px'}}>
                     <tbody>
@@ -104,10 +114,32 @@ const ChallengeForm = () => {
                         </tr>
                         <tr>
                             <th style={{backgroundColor:'#d5bbdd'}} width='100'>인증샷 예시</th>
-                            <td>
-                                <div className='certifi_pic'></div>
-                                <br/>
-                                <div className='certifi_pic'></div>
+                            <td style={{height:'300px'}}>
+                                <div style={{width:'150px', height:'150px',
+                                border: '1px solid gray', display:'inline-block'}}>
+
+                                <AddPhotoAlternateIcon sx={{fontSize: '60px'}} onClick={handleClick} />
+
+                                <input 
+                                    type="file"
+                                    accept="image/jpg, image/jpeg, image/png"
+                                    multiple
+                                    ref={photoInput}
+                                    style={{display:'none'}}
+                                />
+                                </div>
+
+
+                                <div style={{width:'200px', height:'200px',
+                            border:'1px solid gray', display:'inline-block', marginLeft:'30px'}}>안녕</div>
+                            
+                            <br/><br/><br/>
+                                <div style={{width:'150px', height:'150px',
+                            border: '1px solid gray', display:'inline-block'}}
+                                ><AddPhotoAlternateIcon sx={{fontSize: '60px'}} onClick={handleClick}/></div>
+
+                                <div style={{width:'200px', height:'200px',
+                            border:'1px solid gray', display:'inline-block', marginLeft:'30px'}}></div>
                             </td>
                         </tr>
                         <tr>
@@ -116,9 +148,13 @@ const ChallengeForm = () => {
                             </td>
                         </tr>
                         {/* 다음 버튼 누르면 미리보기 */}
+
                     </tbody>
                 </table>
             </form>
+
+            {/* 미리보기 페이지 */}
+            <ChallengeExample/>
         </div>
     );
 };    
