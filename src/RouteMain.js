@@ -16,10 +16,11 @@ import ChallengeList from "./challenge/ChallengeList";
 import MainChallenge from "./main/Mainchallenge";
 
 const RouteMain=()=>{
-
+    
     return (
         <div>
         
+            <div className="main">
             <div className="Navbar"><Navbar/></div>
             <div className="Hero"><Hero/></div>
             <div className="Demo"><Demo/></div>
@@ -27,8 +28,9 @@ const RouteMain=()=>{
             <div className="Mainmoim"><Mainmoim/></div>
             <div className="Mainclass"><Mainclass/></div>
             <div className="Footer"><Footer/></div>
-            
-            <div className="main">
+        </div>
+            <div>
+                
                 <Routes>
                 <Route path="/" element={<Main/>}/>
                 {/* Shop */}
