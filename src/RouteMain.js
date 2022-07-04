@@ -1,7 +1,7 @@
 import React from "react";
 import './App.css';
 import { Route, Routes } from "react-router-dom";
-import {About, Main, Menu, Title, Info} from './components';
+import {Navbar,Main,Demo,Hero,Mainchallenge,Footer, Mainmoim, Mainclass} from './main';
 import {Shop, ShopForm, ShopDetail, ShopUpdate } from './shop';
 import Board from "./board/Board";
 import BoardForm from "./board/BoardForm";
@@ -13,14 +13,21 @@ import Memo from "./memo/Memo";
 import MemberList from "./member/Member";
 import ChallengeForm from "./challenge/ChallengeForm";
 import ChallengeList from "./challenge/ChallengeList";
+import MainChallenge from "./main/Mainchallenge";
 
 const RouteMain=()=>{
 
     return (
         <div>
-            <div className="Title"><Title/></div>
-            <div className="Info"><Info/></div>
-            <div className="Menu"><Menu/></div>
+        
+            <div className="Navbar"><Navbar/></div>
+            <div className="Hero"><Hero/></div>
+            <div className="Demo"><Demo/></div>
+            <div className="MainChallenge"><MainChallenge/></div>
+            <div className="Mainmoim"><Mainmoim/></div>
+            <div className="Mainclass"><Mainclass/></div>
+            <div className="Footer"><Footer/></div>
+            
             <div className="main">
                 <Routes>
                 <Route path="/" element={<Main/>}/>
@@ -42,7 +49,7 @@ const RouteMain=()=>{
                 <Route path="/member/form" element={<Member/>}/>
                 <Route path="/member/list" element={<MemberList/>}/>
                 <Route path="/login" element={<Login/>}/>
-                <Route path="/about" element={<About/>}/>
+              
 
                 {/* challenge */}
                 <Route path="/challenge/form" element={<ChallengeForm/>}/>

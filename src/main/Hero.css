@@ -1,0 +1,118 @@
+.hero {
+    background-color: var(--overlay);
+    color: #fff;
+    height: 1080px;
+    width: 100%;
+    position: relative;
+}
+
+.hero:before {
+    content: '';
+    /* background: url('./images/han ya2.jpg') no-repeat center center/cover;   */
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+.main_subtitle {
+    position: absolute;
+    left: 300px;
+}
+.hero .content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1100px;
+    margin: auto;
+    padding: 1rem;
+}
+
+.hero .content p:first-child {
+    font-style: italic;
+    font-size: .9rem;
+}
+
+.hero .content p:nth-child(2) {
+    font-size: 1.9rem;
+}
+
+.hero .content p:nth-child(3) {
+    font-size: 5rem;
+    font-weight: 700;
+}
+
+
+.hero .content p:nth-child(4) {
+    font-size: 2.2rem;
+    font-style: italic;
+}
+
+.hero .button {
+    margin: 1rem 0;
+    width: 300px;
+    background-color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    color: #333;
+}
+
+.hero .button:hover {
+    background-color: var(--secondary-dark);
+    border: 1px solid var(--secondary-dark);
+}
+
+
+/*video*/
+ video#bgvid{
+    position:absolute;
+    right:0;
+    bottom:0;
+    min-width:100%;
+    min-height:100%;
+    width:auto;
+    height:auto;
+    z-index:-100;
+    background:url('./images/han ya2.jpg')no-repeat;
+    background-size:cover;
+}
+video{
+    position:fixed;
+    top:0;left:0;min-width:100%;min-height:100%;
+    width:auto;height:auto;z-index:-100;
+    -webkit-transform:translateX(-50%)translateY(-50%);
+    transform:translateX(-50%) translateY(-50%);
+    background-size:cover;-webkit-transition:1s opacity;
+    transition:1s opacity;
+    object-fit: cover;
+} 
+
+
+@media screen and (max-width:940px) {
+    .hero .content p:nth-child(3) {
+        font-size: 2.6rem;
+    }
+
+    .hero .content p:nth-child(4) {
+        font-size: 1.6rem;
+    }
+    .hero .content {
+        max-width: 100%;
+        grid-template-columns: 1fr;
+        grid-gap: 30px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
