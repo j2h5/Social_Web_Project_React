@@ -19,14 +19,14 @@ const RouteMain=()=>{
 
     return (
         <div>
-        
+{/*         
             <div className="Navbar"><Navbar/></div>
             <div className="Hero"><Hero/></div>
             <div className="Demo"><Demo/></div>
             <div className="MainChallenge"><MainChallenge/></div>
             <div className="Mainmoim"><Mainmoim/></div>
             <div className="Mainclass"><Mainclass/></div>
-            <div className="Footer"><Footer/></div>
+            <div className="Footer"><Footer/></div> */}
             
             <div className="main">
                 <Routes>
