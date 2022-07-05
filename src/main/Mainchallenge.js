@@ -6,13 +6,13 @@ const MainChallenge = () => {
         
              <div className='challenge'>
             <div className='mainchallenge_container'>
-            <div className='most_challenge'>
+            <div className='most_mainchallenge'>
             <h1>가장 인기있는 챌린지</h1>
             </div>
         <ul class="imglist_ul">
 		<li>
 			<a href="/">
-				<div class="screen">
+				<div class="screen1">
 					<span></span><span></span><span></span><span></span>
 					<img src={challenge} alt=''/>
 				</div>
@@ -22,7 +22,7 @@ const MainChallenge = () => {
 		</li>
 		<li>
 			<a href="/">
-				<div class="screen">
+				<div class="screen1">
 					<span></span><span></span><span></span><span></span>
 					<img src={challenge} alt=''/>
 				</div>
@@ -32,7 +32,7 @@ const MainChallenge = () => {
 		</li>
 		<li>
 			<a href="/">
-				<div class="screen">
+				<div class="screen1">
 					<span></span><span></span><span></span><span></span>
                     <img src={challenge} alt=''/>
 				</div>
@@ -42,7 +42,7 @@ const MainChallenge = () => {
 		</li>
         <li>
 			<a href="/">
-				<div class="screen">
+				<div class="screen1">
 					<span></span><span></span><span></span><span></span>
                     <img src={challenge} alt=''/>
 				</div>

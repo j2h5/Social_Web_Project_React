@@ -17,7 +17,7 @@ const Demo = () => {
 					<img src={challengeImg}/>
 				</div>
 				<div>
-					<h3>Challenge with your mate</h3>
+					<h3>Challenge with other people</h3>
 				</div>
 			</a>
 		</li>
@@ -41,7 +41,7 @@ const Demo = () => {
 					<img src={classImg}/>
 				</div>
 				<div>
-					<h3>Study with other people</h3>
+					<h3>Study with your mate</h3>
 				</div>
 			</a>
 		</li>

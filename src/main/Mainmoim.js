@@ -13,7 +13,7 @@ const MainMoim = () => {
         <ul class="imglist_ul">
 		<li>
 			<a href="/">
-				<div class="screen">
+				<div class="screen2">
 					<span></span><span></span><span></span><span></span>
 					<img src={challenge} alt=''/>
 				</div>
@@ -23,7 +23,7 @@ const MainMoim = () => {
 		</li>
 		<li>
 			<a href="/">
-				<div class="screen">
+				<div class="screen2">
 					<span></span><span></span><span></span><span></span>
 					<img src={challenge} alt=''/>
 				</div>
@@ -33,7 +33,7 @@ const MainMoim = () => {
 		</li>
 		<li>
 			<a href="/">
-				<div class="screen">
+				<div class="screen2">
 					<span></span><span></span><span></span><span></span>
                     <img src={challenge} alt=''/>
 				</div>
@@ -43,7 +43,7 @@ const MainMoim = () => {
 		</li>
         <li>
 			<a href="/">
-				<div class="screen">
+				<div class="screen2">
 					<span></span><span></span><span></span><span></span>
                     <img src={challenge} alt=''/>
 				</div>
