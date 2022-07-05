@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
-import logo from './images/logo.png'
+
 
 
 import './Navbar.css'
@@ -51,6 +51,9 @@ const Navbar = () => {
                     <li>Class</li>
                     <li>Metting</li>
                     <li>Challenge</li>
+                </ul>
+
+                <ul>
                 </ul>
              </div>
             </div>
