@@ -1,8 +1,9 @@
 .footer {
     width: 100%;
-    background-color: #000;
+    background-color: white;
     color: #eee;
     padding: 3rem 1rem;
+    border: 1px solid black;
 }
 
 .footer .container {
@@ -24,7 +25,7 @@
 }
 
 .footer li a {
-    color: #fff;
+    color: black;
 }
 
 .footer li a:hover {

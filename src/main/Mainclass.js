@@ -12,7 +12,7 @@ const Mainclass = () => {
         <ul class="imglist_ul">
 		<li>
 			<a href="/">
-				<div class="screen">
+				<div class="screen3">
 					<span></span><span></span><span></span><span></span>
 					<img src={challenge} alt=''/>
 				</div>
@@ -22,7 +22,7 @@ const Mainclass = () => {
 		</li>
 		<li>
 			<a href="/">
-				<div class="screen">
+				<div class="screen3">
 					<span></span><span></span><span></span><span></span>
 					<img src={challenge} alt=''/>
 				</div>
@@ -32,7 +32,7 @@ const Mainclass = () => {
 		</li>
 		<li>
 			<a href="/">
-				<div class="screen">
+				<div class="screen3">
 					<span></span><span></span><span></span><span></span>
                     <img src={challenge} alt=''/>
 				</div>
@@ -42,7 +42,7 @@ const Mainclass = () => {
 		</li>
         <li>
 			<a href="/">
-				<div class="screen">
+				<div class="screen3">
 					<span></span><span></span><span></span><span></span>
                     <img src={challenge} alt=''/>
 				</div>
