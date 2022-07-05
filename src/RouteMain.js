@@ -1,7 +1,7 @@
 import React from "react";
 import './App.css';
 import { Route, Routes } from "react-router-dom";
-import {Navbar,Main,Demo,Hero,Mainchallenge,Footer, Mainmoim, Mainclass} from './main';
+import {Main} from './main';
 import {Shop, ShopForm, ShopDetail, ShopUpdate } from './shop';
 import Board from "./board/Board";
 import BoardForm from "./board/BoardForm";
@@ -13,20 +13,13 @@ import Memo from "./memo/Memo";
 import MemberList from "./member/Member";
 import ChallengeForm from "./challenge/ChallengeForm";
 import ChallengeList from "./challenge/ChallengeList";
-import MainChallenge from "./main/Mainchallenge";
 import {ClassList, ClassForm, ClassDetail,ClassUpdateForm } from './class';
-
+import MoimForm from "./moim/MoimForm";
+import MoimDetailForm from "./moim/MoimDetailForm";
 const RouteMain=()=>{
     return (
         <div>
-{/*
-            <div className="Navbar"><Navbar/></div>
-            <div className="Hero"><Hero/></div>
-            <div className="Demo"><Demo/></div>
-            <div className="MainChallenge"><MainChallenge/></div>
-            <div className="Mainmoim"><Mainmoim/></div>
-            <div className="Mainclass"><Mainclass/></div>
-            <div className="Footer"><Footer/></div> */}
+
             <div className="main">
                 <Routes>
                 <Route path="/" element={<Main/>}/>
@@ -53,7 +46,9 @@ const RouteMain=()=>{
                 <Route path="/class/form" element={<ClassForm/>}/>
                 <Route path="/class/detail/:num" element={<ClassDetail/>}/>
                 <Route path="/class/updateform/:num" element={<ClassUpdateForm/>}/> 
-
+                {/* MOIM */}
+                <Route path="/moim/form" element={<MoimForm/>}/>
+                <Route path="/moim/detailform/:num" element={<MoimDetailForm/>}/>
                 <Route path="*" element={
                     <div>
                         <img src={errimg} alt=""/>

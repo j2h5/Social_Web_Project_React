@@ -1,0 +1,41 @@
+.moimdetail_content{
+    position: absolute;
+    top:70px;
+    left:315px;
+    width: 1290px;
+    height: 1500px; 
+    border: 1px solid black;
+}
+.moimdetail_photo{
+    position: absolute;
+    width: 420px;
+    height: 250px;
+    border: 1px solid black;
+    left:80px;
+    top:20px;
+}
+.moimdetail_title{
+    position: absolute;
+    top:20px;
+    right:260px;
+    width: 380px;
+    height: 40px;
+    border: 1px solid black;
+    left: 700px;
+}
+.moimdetail_place{
+    position:absolute;
+    top: 100px;
+    right: 440px;
+    width: 150px;
+    height: 40px;
+    border: 1px solid black;
+}
+.moimdetail_date{
+    position: absolute;
+    top: 100px;
+    right: 200px;
+    width: 150px;
+    border: 1px solid black;
+    height: 40px;
+}
