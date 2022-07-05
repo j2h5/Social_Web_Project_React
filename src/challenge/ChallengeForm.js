@@ -25,6 +25,8 @@ const ChallengeForm = () => {
     const[certifiGood, setCertifiGood] = useState();
     const[certifiBad, setCertifiBad] = useState();
 
+    const [show, setShow] = useState(false);
+
     //챌린지 기간 선택 (date picker)
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
@@ -62,20 +64,20 @@ const ChallengeForm = () => {
                         
                         
                     <div className='row'>챌린지명
-                            <input type="text" className="form-control" value={title}
+                            <input type="text" className="form-control" 
                             style={{width:'300px'}} required placeholder='ex) 매일 7:00am 기상하기'/>
                     </div>    
                         
                         
                     <div className='row'>대표사진
-                            <input type="file" className="form-control" value={photo}
+                            <input type="file" className="form-control" 
                             style={{width:'250px'}}/>
                     </div>
 
                         
                     <div className='row'>인증빈도
                             <input type="text" className="form-control" placeholder='매일 하루 한 번' disabled
-                            style={{width:'300px'}} required value={freq}/>
+                            style={{width:'300px'}} required />
                     </div>
                             
                         
@@ -99,7 +101,7 @@ const ChallengeForm = () => {
                             
                                 <div className='chalDeposit'>
                                 <input type="text" className="form-control"
-                                style={{width:'50px', display:'inline-block'}} required value={deposit}
+                                style={{width:'50px', display:'inline-block'}} required
                                 />&nbsp;만원
                                 &nbsp;
 
@@ -112,7 +114,7 @@ const ChallengeForm = () => {
                             {/* 에디터 사용 */}
                             <b>챌린지를 소개해주세요</b>
                                 <ReactQuill style={{width:'400px'}}
-                                value={content}></ReactQuill>
+                                ></ReactQuill>
                     </div>
 
                     {/* 인증샷예시 */}
@@ -159,12 +161,17 @@ const ChallengeForm = () => {
                     </div>
 
                                 <div className='row'>
-                                <button type="submit" className="btn btn-info">다음</button>
+                                <button type="submit" className="btn btn-info"
+                                onClick={()=>{setShow(!show);
+                                }}>
+                                    {show ? "수정하기" : "다음"}
+                                </button>
+
+                                {show && <ChallengeExample/>}
                                 </div>
                                 {/* 다음 버튼 누르면 미리보기 */}
                 </div>
-                
-                <ChallengeExample/>
+
         </div>
     );
 };    
