@@ -89,13 +89,18 @@ video{
 } 
 .intro{
     position: absolute;
-    top:350px;
+    top:380px;
     left:200px;
 }
 .maintitle h1{
     font-size:48px;
     color:white;   
-    font-weight: bold;
+    font-weight: 400;
+}
+.subtitle h1{
+    font-size: 22px;
+    color:white;
+    font-weight: 200;
 }
 
 

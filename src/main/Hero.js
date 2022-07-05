@@ -11,9 +11,9 @@ const Hero = () => {
                 <div className='maintitle'>
                     <h1>Today, Hangang</h1>
                 </div>
-                {/* <div className='subtitle'>
-                    <h1>I am so tired</h1>
-                    </div> */}
+                <div className='subtitle'>
+                    <h1>Challenge, study, meet with any people at the hangang</h1>
+                    </div>
                 </div>
             <video loop autoPlay muted id="bgvid"><source src={hanch} type="video/mp4"/></video>
             </div> 
