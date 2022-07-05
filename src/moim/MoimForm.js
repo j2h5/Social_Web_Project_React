@@ -72,7 +72,7 @@ const MoimForm = () => {
                         />
                     </div>
                 </div>
-                <button type="button">등록</button>
+                <button type="submit">등록</button>
             </div>
     </div>
 )
