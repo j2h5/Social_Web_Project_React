@@ -14,6 +14,8 @@ import MemberList from "./member/Member";
 import ChallengeForm from "./challenge/ChallengeForm";
 import ChallengeList from "./challenge/ChallengeList";
 import MainChallenge from "./main/Mainchallenge";
+import {ClassList, ClassForm, ClassDetail,ClassUpdateForm } from './class';
+
 const RouteMain=()=>{
     return (
         <div>
@@ -45,6 +47,13 @@ const RouteMain=()=>{
                 {/* challenge */}
                 <Route path="/challenge/form" element={<ChallengeForm/>}/>
                 <Route path="/challenge/list" element={<ChallengeList/>}/>
+
+                {/* Class */}
+                <Route path="/class/list" element={<ClassList/>}/>
+                <Route path="/class/form" element={<ClassForm/>}/>
+                <Route path="/class/detail/:num" element={<ClassDetail/>}/>
+                <Route path="/class/updateform/:num" element={<ClassUpdateForm/>}/> 
+
                 <Route path="*" element={
                     <div>
                         <img src={errimg} alt=""/>
