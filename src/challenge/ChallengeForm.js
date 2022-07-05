@@ -33,15 +33,15 @@ const ChallengeForm = () => {
     `;
 
     return (
-        <div>
+        <div> 
+        {/* 전체div */}
             <h1>챌린지 등록</h1>
-            <form className='challenge_form'>
-                    {/* 챌린지 등록폼 */}
-                <table className="table table-borderless" style={{width:'600px'}}>
-                    <tbody>
-                        <tr>
-                            <th style={{backgroundColor:'#d5bbdd'}} width='100'>카테고리</th>
-                            <td><select>
+                {/* 챌린지 등록폼 */}
+                <div className="challenge_form" style={{width:'600px'}}>
+                        
+                    <div style={{backgroundColor:'#d5bbdd'}} width='100'>
+                            카테고리
+                            <select>
                                     <option disabled selected>카테고리 선택</option>
                                     <option>규칙적인 생활</option>
                                     <option>운동</option>
@@ -49,34 +49,32 @@ const ChallengeForm = () => {
                                     <option>마음챙김</option>
                                     <option>취미</option>
                                     <option>셀프케어</option>
-                                    </select></td>
-                        </tr>
-                        <tr>
-                            <th style={{backgroundColor:'#d5bbdd'}} width='100'>챌린지명</th>
-                            <td><input type="text" className="form-control"
-                            style={{width:'300px'}} required placeholder='ex) 매일 7:00am 기상하기'
-                            />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th style={{backgroundColor:'#d5bbdd'}} width='100'>대표사진</th>
-                            <td><input type="file" className="form-control"
-                            style={{width:'250px'}}
-                            />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th style={{backgroundColor:'#d5bbdd'}} width='100'>인증빈도</th>
-                            <td><input type="text" className="form-control" placeholder='매일 하루 한 번' disabled
-                            style={{width:'300px'}} required
-                            />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th style={{backgroundColor:'#d5bbdd'}} width='100'>챌린지 기간</th>
+                                    </select>
+                    </div>
+                        
+                        
+                    <div style={{backgroundColor:'#d5bbdd'}} width='100'>챌린지명
+                            <input type="text" className="form-control"
+                            style={{width:'300px'}} required placeholder='ex) 매일 7:00am 기상하기'/>
+                    </div>    
+                        
+                        
+                    <div style={{backgroundColor:'#d5bbdd'}} width='100'>대표사진
+                            <input type="file" className="form-control"
+                            style={{width:'250px'}}/>
+                    </div>
+
+                        
+                    <div style={{backgroundColor:'#d5bbdd'}} width='100'>인증빈도
+                            <input type="text" className="form-control" placeholder='매일 하루 한 번' disabled
+                            style={{width:'300px'}} required/>
+                    </div>
+                            
+                        
+                    <div style={{backgroundColor:'#d5bbdd'}} width='100'>챌린지 기간
 
                             {/* 달력에서 기간 선택 가능 */}
-                            <td><ChalDatePicker
+                            <ChalDatePicker
                             selectsRange={true}
                             startDate={startDate}
                             endDate={endDate}
@@ -87,11 +85,10 @@ const ChallengeForm = () => {
                             setDateRange(update);
                             }}
                             withPortal/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th style={{backgroundColor:'#d5bbdd'}} width='100'>최소 예치금</th>
-                            <td>
+                    </div>
+                        
+                    <div style={{backgroundColor:'#d5bbdd'}} width='100'>최소 예치금
+                            
                                 <div className='chalDeposit'>
                                 <input type="text" className="form-control"
                                 style={{width:'50px', display:'inline-block'}} required
@@ -102,23 +99,18 @@ const ChallengeForm = () => {
                                 <label><input type="checkbox"
                                 />예치금 고정</label>
                                 </div>
-                            </td>
-                        </tr>
-
-                        <tr>
+                    </div>
+                    <div>
                             {/* 에디터 사용 */}
-                            <td colSpan={2}> 
                             <b>챌린지를 소개해주세요</b>
                                 <ReactQuill></ReactQuill>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th style={{backgroundColor:'#d5bbdd'}} width='100'>인증샷 예시</th>
-                            <td style={{height:'300px'}}>
+                    </div>
+
+                    <div style={{backgroundColor:'#d5bbdd'}} width='100'>인증샷 예시
                                 <div style={{width:'150px', height:'150px',
                                 border: '1px solid gray', display:'inline-block'}}>
 
-                                <AddPhotoAlternateIcon sx={{fontSize: '60px'}} onClick={handleClick} />
+                                <AddPhotoAlternateIcon sx={{fontSize: '60px'}} onClick={handleClick}/>
 
                                 <input 
                                     type="file"
@@ -127,35 +119,23 @@ const ChallengeForm = () => {
                                     ref={photoInput}
                                     style={{display:'none'}}
                                 />
-                                </div>
-
-
-                                <div style={{width:'200px', height:'200px',
-                            border:'1px solid gray', display:'inline-block', marginLeft:'30px'}}>안녕</div>
-                            
-                            <br/><br/><br/>
-                                <div style={{width:'150px', height:'150px',
-                            border: '1px solid gray', display:'inline-block'}}
-                                ><AddPhotoAlternateIcon sx={{fontSize: '60px'}} onClick={handleClick}/></div>
+                            </div>
+                    </div>
 
                                 <div style={{width:'200px', height:'200px',
                             border:'1px solid gray', display:'inline-block', marginLeft:'30px'}}></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colSpan={2} align="center">
+                                <div style={{width:'150px', height:'150px',
+                            border: '1px solid gray', display:'inline-block'}}
+                                ><AddPhotoAlternateIcon sx={{fontSize: '60px'}} onClick={handleClick}/></div>
+                                <br/><br/>
+                                <div style={{width:'200px', height:'200px',
+                            border:'1px solid gray', display:'inline-block', marginLeft:'30px'}}></div>
+                            
                                 <button type="submit" className="btn btn-info">다음</button>
-                            </td>
-                        </tr>
-                        {/* 다음 버튼 누르면 미리보기 */}
-
-                    </tbody>
-                </table>
-            </form>
-
-            {/* 미리보기 페이지 */}
-            <ChallengeExample/>
-        </div>
+                                {/* 다음 버튼 누르면 미리보기 */}
+                    
+                </div>
+            </div>
     );
 };    
 
