@@ -18,7 +18,10 @@ const ChallengeExample = () => {
                     <div className='example_detail' style={{display:'inline-block'}}>
                     {/* 상세 정보 div */}
 
-                        <input type="text" className='example_title' required value={title}/>
+                        <input type="text" className='example_title' required/>
+
+
+
 
                         <input type="text" className='example_cate' required value='카테고리1'/>
                         <input type="text" className='example_cate' required value='카테고리2'/>
