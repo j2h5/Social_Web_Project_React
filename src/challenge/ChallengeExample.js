@@ -23,17 +23,18 @@ const ChallengeExample = () => {
 
 
 
-                        <input type="text" className='example_cate' required value='카테고리1'/>
-                        <input type="text" className='example_cate' required value='카테고리2'/>
+                        <input type="text" className='example_cate' required />
+                        <input type="text" className='example_cate' required />
 
-                        <input type="text" className='example_freq' required value='평일 매일, 하루 한번'/>
+                        <input type="text" className='example_freq' required/>
 
-                        <input type="text" className='example_period' required value='기간'/>
+                        <input type="text" className='example_period' required/>
                     </div>
                 </div>
             </div>
             {/* row 닫힘 */}
             <br/><br/>
+            <h3>챌린지 소개</h3>
             <div className='row'>
                 <div className='example_content' style={{display:'inline-block'}}>
                 
