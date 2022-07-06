@@ -114,7 +114,8 @@ div.menuBar{
   .logo{
     position: fixed;
     left:900px;
-    top:22px;
+    top:24px;
+    font-size: 36px;
     z-index: 999;
   }
   .logo :hover{
@@ -125,7 +126,7 @@ div.menuBar{
   }
   .logo p{
     color:white;
-    font-size: 20px;
+    font-size: 24px;
   }
   /*사이드메뉴*/
   div[class="sidebar"] {width: 280px;  height:100%; opacity: 0.8; background:#222; position:fixed; top:0; left:-300px; z-index:1; transition: all .35s;}
