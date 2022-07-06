@@ -54,72 +54,21 @@ const ClassForm = () =>{
             alert(err);
         });
     }
-    //가격제한
-    const moneymin = 0;
-    const moneymax = 10000000;
-    const [classmoney, setClassmoney] = useState(0);
+    //
+    const min = 1;
+    const max = 100;
 
-    const moneyChange = event => {
-        const value = Math.max(moneymin, Math.min(moneymax, Number(event.target.value)));
-        setClassmoney(value);
-    };
+    const [value, setValue] = useState(1);
 
-    //클래스시간제한
-    const classtimemin = 0;
-    const classtimemax = 24;
-    const [classtime, setclasstime] = useState(0);
-
-    const classtimeChange = event => {
-        const value = Math.max(classtimemin, Math.min(classtimemax, Number(event.target.value)));
-        setclasstime(value);
-        if(24==value){
-            alert("클래스 수강시간을 정확히 입력해주세요")
-            return;
-        }
-    };
-
-    
-    //시작시간제한1
-    const time1min = 0;
-    const time1max = 24;
-    const [time1, setTime1] = useState(0);
-
-    const time1Change = event => {
-        const value = Math.max(time1min, Math.min(time1max, Number(event.target.value)));
-        setTime1(value);
-    };
-
-    //끝시간제한
-    const time2min = 0;
-    const time2max = 24;
-    const [time2, setTime2] = useState(24);
-
-    const time2Change = event => {
-        if(time1>time2){
-            alert("시작시간이 끝시간보다 작을 수없습니다")
-            setTime2(time1);
-        }
-        const value = Math.max(time2min, Math.min(time2max, Number(event.target.value)));
-        setTime2(value);
-        
-    };
-
-    //정원제한
-    const permin = 1;
-    const permax = 30;
-    const [per, setPer] = useState(1);
-
-    const perChange = event => {
-        const value = Math.max(permin, Math.min(permax, Number(event.target.value)));
-        setPer(value);
-        if(value>29){
-            alert("최대인원은 30명입니다!")
-        }
+    const handleChange = event => {
+        const value = Math.max(min, Math.min(max, Number(event.target.value)));
+        setValue(value);
     };
 
     return(
         <div>
             <div className="content_container" style={{marginLeft:'310px'}} >
+                
                 <div className="class_subtitle">홍대한님의 클래스에 대한 기본정보를 입력해주세요!</div>
                 <div className="class_subtitle2">
                     <div style={{width:'455px', float:'left', marginTop:'15px'}}>
@@ -206,41 +155,33 @@ const ClassForm = () =>{
                 <div className="row">
                     <div className="label1" >총 가격</div>
                     <input type='number'className="label2" defaultValue='0'
-                    style={{width:'490px'}} step='10'
-                    onChange={moneyChange}
-                    value={classmoney}/>
+                    style={{width:'490px'}}></input>
                     <span style={{fontSize:'20px', marginLeft:'20px'}}>원</span>
                 </div>
 
                 <div className="row">
                     <div className="label1" >수강시간</div>
-                    <input type='number'className="label2"
-                    style={{width:'330px'}} 
-                    onChange={classtimeChange}
-                    value={classtime}/>
+                    <input type='number'className="label2" defaultValue='1'
+                    style={{width:'330px'}}></input>
                     <span style={{fontSize:'20px', marginLeft:'20px'}}>시간 (시간당 1000원)</span>
                 </div>
 
                 <div className="row">
                     <div className="label1" >일정 및 정원</div>
-                    <input type='date'className="label2" 
-                    style={{width:'200px'}}/>
-                    <input type='number'className="label2"
-                    style={{width:'60px'}}
-                    onChange={time1Change}
-                    value={time1}/>
+                    <input type='date'className="label2" defaultValue='1'
+                    style={{width:'200px'}}></input>
+                    <input type='number'className="label2" defaultValue='1'
+                    style={{width:'60px'}}></input>
                     <span style={{fontSize:'20px', marginLeft:'2px'}}>시</span>
                     <span style={{fontSize:'20px', marginLeft:'20px'}}>~</span>
-                    <input type='number'className="label2"
-                    style={{width:'60px'}}
-                    onChange={time2Change}
-                    value={time2}/>
+                    <input type='number'className="label2" defaultValue='1'
+                    style={{width:'60px'}}></input>
                     <span style={{fontSize:'20px', marginLeft:'2px'}}>시</span>
                     <input type='number'className="label2" defaultValue='1'
                     style={{width:'60px'}}
-                    onChange={perChange}
-                    value={per}
-                    />
+                    onChange={handleChange}
+                    value={value}
+                    ></input>
                     <span style={{fontSize:'20px', marginLeft:'2px'}}
                     >명</span>
                     <br/>
@@ -264,41 +205,27 @@ const ClassForm = () =>{
 
                 <div className="row">
                     <div className="editor" style={{marginLeft:'50px'}}>
-                        <span className="class_minititle">클래스 소개</span>
-                        <span  className="tulp">
-                            <HelpOutlineIcon style={{fontSize:'20px', marginLeft:'10px'}}/>
-                            <span className="tulc">
-                                튜티들이 가장 먼저 확인하는 부분입니다! 클래스를 선택해야 하는 이유, 차별점을 중심으로 소개해주세요~
-                            </span>
-                        </span>
-                        
-                        
+                        <span className="class_minititle">클래스 소개
+                            
+                        </span><span><HelpOutlineIcon style={{fontSize:'20px', marginLeft:'10px'}}/></span>
                         <Editor placeholder={'Write something...'} />
                     </div>
                 </div>
 
                 <div className="row">
                     <div className="editor" style={{marginLeft:'50px'}}>
-                        <span className="class_minititle">클래스 요약</span>
-                        <span  className="tulp">
-                            <HelpOutlineIcon style={{fontSize:'20px', marginLeft:'10px'}}/>
-                            <span className="tulc">
-                                클래스의 내용을 간단하게 요약해주세요~
-                            </span>
-                        </span>
+                        <span className="class_minititle">클래스 요약
+                            
+                        </span><span><HelpOutlineIcon style={{fontSize:'20px', marginLeft:'10px'}}/></span>
                         <Editor placeholder={'Write something...'} />
                     </div>
                 </div>
 
                 <div className="row">
                     <div className="editor" style={{marginLeft:'50px'}}>
-                        <span className="class_minititle">클래스 커리큘럼</span>
-                        <span  className="tulp">
-                            <HelpOutlineIcon style={{fontSize:'20px', marginLeft:'10px'}}/>
-                            <span className="tulc">
-                            커리큘럼 내용이 구체적일수록 클래스 선택에 도움이 됩니다~!
-                            </span>
-                        </span>                        
+                        <span className="class_minititle">클래스 커리큘럼
+                            
+                        </span><span><HelpOutlineIcon style={{fontSize:'20px', marginLeft:'10px'}}/></span>
                         <Editor placeholder={'Write something...'} />
                     </div>
                 </div>

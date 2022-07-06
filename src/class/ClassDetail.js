@@ -61,7 +61,7 @@ const ClassDetail=()=>{
 
     return (
     <div >
-        <div className="content_container">
+        <div className="content_container" style={{marginLeft:'310px'}}>
             <div className="class_top">
                 <div className="class_title_div">
                     <span className="class_title">
@@ -162,11 +162,11 @@ const ClassDetail=()=>{
                 <div className="class_tab">
                     클래스 리뷰
                 </div>
-            </div><br/><br/><br/>
+            </div>
 
             {/* class detail info */}
             <div className="class_notice1">
-                <div className="class_subtitle">
+                <div className="class_subtitle" style={{width:'600px'}}>
                     클래스 전 숙지해주세요!
                 </div>
                 <div className="class_noticecircle">
@@ -213,7 +213,7 @@ const ClassDetail=()=>{
                         </span>
                         <div className="class_review_star">★★★★★</div>
                         <div className="class_reviewcontent">
-                            <span>
+                            <span style={{fontSize:'15px'}}>
                                 수영을 배워본 적이 없어서 물에 뜨는법도 모르지만 세림쌤과 함께한 
                                 원데이클래스 경험이 너무 신비하고 재미있었어서 4월부터 오픈워터 자격증 코스도 따려고
                                 계획중입니다! 외모도 완벽하시지만 2시간 30분 동안 친절하고 컴팩트하게 수업을 
@@ -235,11 +235,11 @@ const ClassDetail=()=>{
                                     2022-07-04 03:58
                                 </span>
                             </div>
-                            <div className="class_commentbody">
+                            <div className="class_commentbody" style={{fontSize:'15px'}}>
                                 하하하 저도 배우고싶네용
                             </div>
                             <div className="class_commentdell">
-                                <button style={{float:'right', marginTop:'5px'}}>삭제</button>
+                                <button style={{float:'right', marginTop:'5px'}} className="btn4">삭제</button>
                             </div>
                         </div>
                     </div>{/* class_reviewrow */}
@@ -248,37 +248,38 @@ const ClassDetail=()=>{
                     
                 </div>
             </div>
+            <br/><br/><br/><br/><br/>
+            <div className="tyu">
+                <button type="button" 
+                onClick={()=>{
+                    navi("/class/list")
+                }}>목록</button>
+                <button type="button"
+                onClick={()=>{
+                    navi("/class/form")
+                }}>상품추가</button>
+                <button type="button"
+                onClick={()=>{
+                    navi(`/class/updateform/${num}`)
+                }}>수정</button>
+                <button type="button" onClick={handleClickOpen}>삭제</button>
+                <Dialog open={open} onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description" >
+                    <DialogTitle id="alert-dialog-title">상품 삭제</DialogTitle>
+                    <DialogContent>
+                    <DialogContentText id="alert-dialog-description">{data.sangpum}을 삭제하시겠습니까?</DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                    <Button onClick={handleClose}>취소</Button>
+                    <Button onClick={onDelete} autoFocus>확인</Button>
+                    </DialogActions>
+                </Dialog>
+            </div>
+            <br/><br/><br/><br/><br/>
         </div>
-        <hr/>
             
-
-        <button type="button" 
-        onClick={()=>{
-            navi("/class/list")
-        }}>목록</button>
-        <button type="button"
-        onClick={()=>{
-            navi("/class/form")
-        }}>상품추가</button>
-        <button type="button"
-        onClick={()=>{
-            navi(`/class/updateform/${num}`)
-        }}>수정</button>
-        <button type="button" onClick={handleClickOpen}>삭제</button>
-    <Dialog open={open} onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description" >
-        <DialogTitle id="alert-dialog-title">상품 삭제</DialogTitle>
-        <DialogContent>
-        <DialogContentText id="alert-dialog-description">{data.sangpum}을 삭제하시겠습니까?</DialogContentText>
-        </DialogContent>
-        <DialogActions>
-        <Button onClick={handleClose}>취소</Button>
-        <Button onClick={onDelete} autoFocus>확인</Button>
-        </DialogActions>
-    </Dialog>
-
-    <br/><br/><br/><br/><br/>
+        
     </div>
     )
 }
