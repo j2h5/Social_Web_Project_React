@@ -1,0 +1,66 @@
+*{
+    font-family: 'Noto Sans KR';
+}
+
+.detail_container{
+    width: 1290px;
+    position: absolute;
+    left: 630px;
+    
+}
+
+.detail_info{
+    margin-left: 300px;
+    border: 1px solid gray;
+
+}
+
+.goTo_Moim{
+    width: 300px;
+    height: 100px;
+    margin: 0 40px 0 0;
+    padding: 37px 46px 22px;
+    border-radius: 20px;
+    background-color: #d0d0d0;
+    justify-content: center;
+}
+
+.goTo_Class{
+    width: 300px;
+    height: 100px;
+    margin: 0 0 0;
+    padding: 41px 30px 25px;
+    border-radius: 20px;
+    background-color: #d0d0d0;
+    justify-content: center;
+}
+
+.certifi_photo{
+    width: 130px;
+    height: 130px;
+    border: 1px solid gray;
+}
+
+.challenge_join{
+    font-size: 20px;
+    width: 250px;
+    height: 100px;
+    margin-left: 350px;
+    padding: 37px 46px 22px;
+    border-radius: 20px;
+    background-color: #abfdb8;
+    display: flex;
+    justify-content: center;
+}
+
+.challenge_certifi{
+    font-size: 20px;
+    width: 250px;
+    height: 100px;
+    margin-left: 350px;
+    padding: 37px 46px 22px;
+    border-radius: 20px;
+    background-color: #abfdb8;
+    display: flex;
+    justify-content: center;
+}
