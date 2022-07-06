@@ -11,12 +11,12 @@ const Demo = () => {
             <div class="gallerylist">
 	<ul>
 		<li>
-        <NavLink to="/challenge/list">
+        <NavLink  to="/challenge/list">
 			<a>
             
 				<div class="screen">
-					<div class="top">Challenge</div>
-					<div class="bottom">챌린지</div>
+					<div class="top1">CHALLENGE</div>
+					<div class="bottom1">챌린지</div>
 					<img src={challengeImg}/>
 				</div>
 				<div>
@@ -29,9 +29,8 @@ const Demo = () => {
             <NavLink to="/moim/list">
 			<a>
 				<div class="screen">
-					<div class="top">METTING</div>
-                
-					<div class="bottom">모임</div>
+					<div class="top2">METTING</div>
+					<div class="bottom2">모임</div>
 					<img src={moimImg}/>
 				</div>
 				<div>
@@ -44,8 +43,8 @@ const Demo = () => {
             <NavLink to="/class/list">
 			<a>
 				<div class="screen">
-					<div class="top">CLASS</div>
-					<div class="bottom">클래스</div>
+					<div class="top3">CLASS</div>
+					<div class="bottom3">클래스</div>
                 
 					<img src={classImg}/>
 				</div>
