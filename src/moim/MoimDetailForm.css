@@ -1,15 +1,20 @@
+
 .moimdetail_content{
     position: absolute;
     top:70px;
-    left:315px;
+    right: 315px;
     width: 1290px;
     height: 1500px; 
-    border: 1px solid black;
+    
 }
-.moimdetail_photo{
+.moimdetail_top{
+
+   height: 400px;
+}
+.moimdetail_thumbnail{
     position: absolute;
-    width: 420px;
-    height: 250px;
+    width: 370px;
+    height:250px;
     border: 1px solid black;
     left:80px;
     top:20px;
@@ -17,25 +22,141 @@
 .moimdetail_title{
     position: absolute;
     top:20px;
-    right:260px;
+    right:20px;
     width: 380px;
-    height: 40px;
+    height: 50px;
     border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: #666;
     left: 700px;
 }
-.moimdetail_place{
+.moimdetail_people{
     position:absolute;
-    top: 100px;
+    top: 130px;
     right: 440px;
     width: 150px;
     height: 40px;
     border: 1px solid black;
+    border-radius: 10px;
 }
 .moimdetail_date{
     position: absolute;
-    top: 100px;
-    right: 200px;
+    top: 130px;
+    right: 210px;
     width: 150px;
     border: 1px solid black;
+    border-radius: 10px;
     height: 40px;
+}
+.moimdetail_place{
+    border: 1px solid black;
+    border-radius: 10px;
+    position: absolute;
+    top: 220px;
+    right: 210px; 
+    width: 380px;
+    height: 40px;
+}
+.buttons {
+    position: absolute;
+    top: 300px;
+    right: 350px;
+}
+.join{
+    margin-right: 50px;
+    width:100px;
+    height: 40px;
+}
+.list{
+    width:100px;
+    height: 40px;
+}
+/* 리셋 CSS */
+* {margin:0;padding:0;box-sizing:border-box;}
+ul, li {list-style:none;}
+
+/* 슬라이드 Style */
+.moimdetail_thumbnail{max-width:1000px;margin:0 auto;}
+.moimdetail_thumbnail .slidelist {white-space:nowrap;font-size:0;overflow:hidden;}
+.moimdetail_thumbnail .slidelist .slideitem {position:relative;display:inline-block;vertical-align:middle;width:100%;transition:all 1s;}
+.moimdetail_thumbnail .slidelist .slideitem > a {display:block;width:auto;position:relative;}
+.moimdetail_thumbnail .slidelist .slideitem > a img {max-width:100%;}
+.moimdetail_thumbnail .slidelist .slideitem > a label {position:absolute;top:50%;transform:translateY(-50%);padding:20px;border-radius:50%;cursor:pointer;}
+.moimdetail_thumbnail .slidelist .slideitem > a label.prev {left:20px;background:#333 url(./images/left-arrow.png) center center / 50% no-repeat;}
+.moimdetail_thumbnail .slidelist .slideitem > a label.next {right:20px;background:#333 url(./images/right-arrow.png) center center / 50% no-repeat;}
+
+
+[name="slide"] {display:none;}
+#slide01:checked ~ .slidelist .slideitem {transform:translateX(0);animation:slide01 15s infinite;}
+#slide02:checked ~ .slidelist .slideitem {transform:translateX(-100%);animation:slide02 15s infinite;}
+#slide03:checked ~ .slidelist .slideitem {transform:translateX(-200%);animation:slide03 15s infinite;}
+
+
+@keyframes slide01 {
+	0% {left:0%;}
+	33% {left:0%;}
+	34% {left:-100%}
+	66% {left:-100%;}
+	67% {left:-200%;}
+	99% {left:-200%;}
+	100% {left:0%;}
+}
+
+@keyframes slide02 {
+	0% {left:0%;}
+	33% {left:0%;}
+	34% {left:-100%;}
+	66% {left:-100%;}
+	67% {left:100%;}
+	99% {left:100%;}
+	100% {left:0%;}
+}
+
+@keyframes slide03 {
+	0% {left:0%;}
+	33% {left:0%;}
+	34% {left:200%;}
+	66% {left:200%;}
+	67% {left:100%;}
+	99% {left:100%;}
+	100% {left:0%;}
+}
+.image_table {width:1200px;margin:0 auto;}
+.image_table ul {font-size:0;text-align:center;}
+.image_table ul li {font-size:12px;display:inline-block;vertical-align:top;width:25%;}
+.image_table ul li a {text-decoration:none;}
+.image_table ul li a {display:block;width:auto;background:#f5f5f5;margin:5px;}
+.image_table ul li a .screen {overflow:hidden;font-size:0;height:160px;} /* 이미지를 담은 박스 스타일 : 이 영역보다 크면 가리워지는 코드 overflow:hidden; absolute의 기준을 잡기 위해 position:relative를 적용*/
+.image_table ul li a img {width:100%;transition:transform 1s;}
+.image_table ul li a h3 {font-size:16px;color:#000;} /* 제목 스타일 */
+.image_table ul li a p {padding:12px;color:#666;} /* 내용 스타일 */
+.image_table ul li a:hover img {transform:scale(1.2);}
+
+.moim_explain_content{
+    border: 1px solid black;
+    width: 1000px;
+    height: 80px;
+    margin: auto;
+}
+.member_member{
+    margin-left: 80px;
+    width: 300px;
+    height: 70px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.member_image{
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+.member_name{
+   position: relative;
+   left: 100px;
+   bottom: 55px;
+}
+.ul{
+    border: 1px solid black;
 }
