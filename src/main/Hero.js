@@ -12,7 +12,7 @@ const Hero = () => {
                     <h1>Today, Hangang</h1>
                 </div>
                 <div className='subtitle'>
-                    <h1>Challenge, study, meet with any people at the hangang</h1>
+                    <h1>Challenge, study, meet with people at the hangang</h1>
                     </div>
                 </div>
             <video loop autoPlay muted id="bgvid"><source src={hanch} type="video/mp4"/></video>

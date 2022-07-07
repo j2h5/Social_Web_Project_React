@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 .header-bg {
- background-color: rgba(4, 0, 38, 0.9); 
+ background-color: rgba(63, 99, 112, 0.9); 
 
 }
 
@@ -109,12 +109,12 @@ div.menuBar{
  ul.nav-menu {
     position: fixed;
     right:200px;
-    top:14px;
+    top:18px;
   }
   .logo{
     position: fixed;
     left:900px;
-    top:24px;
+    top:22px;
     font-size: 36px;
     z-index: 999;
   }

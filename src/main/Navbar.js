@@ -15,7 +15,7 @@ const Navbar = () => {
     const changeColor = () => { 
         if (window.scrollY >= 150) {
             setColor(true)
-        } /*90=header 크기*/
+        } 
         else {
             setColor(false)
          }    

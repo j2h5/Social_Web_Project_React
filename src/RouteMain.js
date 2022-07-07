@@ -9,7 +9,7 @@ import BoardDetail from "./board/BoardDetail";
 import Login from "./login/Login";
 import Member from "./member/Member";
 import errimg from "./image/er.png"
-import Memo from "./memo/Memo";
+
 import MemberList from "./member/Member";
 import ChallengeForm from "./challenge/ChallengeForm";
 import ChallengeList from "./challenge/ChallengeList";
@@ -30,8 +30,7 @@ const RouteMain=()=>{
                 <Route path="/shop/form" element={<ShopForm/>}/>
                 <Route path="/shop/detail/:num" element={<ShopDetail/>}/>
                 <Route path="/shop/updateform/:num" element={<ShopUpdate/>}/>
-                {/* Meomo */}
-                <Route path="/memo" element={<Memo/>}/>
+          
                 {/* Board */}
                 <Route path="/board/list/:currentPage" element={<Board/>}/>
                 <Route path="/board/form" element={<BoardForm/>}/>
