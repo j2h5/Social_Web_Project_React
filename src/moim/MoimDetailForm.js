@@ -16,7 +16,7 @@ const MoimDetailForm = () => {
             <div className='moimdetail_content'>
                 <div className='moimdetail_top'> 
                <div className='moimdetail_thumbnail'>
-                <img className='image-thumbnail' alt ='' src={img3} style={{width:'100%',height:'100%',objectFit:'cover'}}/>
+                <img className='image-thumbnail' alt ='' src={img3} style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'15px'}}/>
             
                  </div>
                
@@ -29,33 +29,33 @@ const MoimDetailForm = () => {
                 <button className='join'>참여하기</button>
                 <button className='list'>목록</button>
                 </div> */}
-                <div className='conn_box'>
+                <div className='con_box'>
                     <ul className='con_box_list'>
                         <li>
                             <b class='con_box_list_compo'>
-                            제목
+                                제목:   
                             </b>
                         </li>
                         <li>
                             <b class='con_box_list_compo'>
-                                인원/정원
+                                인원/정원:
                             </b>
                         </li>
                         <li>
                             <b class='con_box_list_compo'>
-                                장소
+                                장소:
                             </b>
                         </li>
                         <li>
                             <b class='con_box_list_compo'>
-                                몰라
+                                날짜:
                             </b>
                         </li>
                     </ul>
                 </div>
                 </div>  {/* top */}
             
-            <div className='moimdetail_mid' style={{marginTop:'50px'}}>
+            <div className='moimdetail_mid' style={{marginTop:'100px'}}>
                 <h2 style={{marginLeft:'40px'}}>모임 사진</h2>
             <div class="image_table">
             <ul>
@@ -80,13 +80,14 @@ const MoimDetailForm = () => {
 		
 	</ul>
             </div> {/* imgtable */}
+           
+            <div className='moim_explain' style={{marginTop:'150px'}}>
             <h2 style={{marginLeft:'40px'}}>모임 소개</h2>
-            <div className='moim_explain'>
                 <div className='moim_explain_content'>
                     샬라샬라
                 </div>
+                <div className='member_list' style={{marginTop:'150px'}}>
               <h2 style={{marginLeft:'40px'}}>참여중인 멤버</h2>
-                <div className='member_list'>
                 <div className='member_member'>
                 <img  className='member_image' src={bori} alt=''/>
                 <div className='member_name'>
