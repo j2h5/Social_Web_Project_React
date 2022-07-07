@@ -42,15 +42,15 @@ const RouteMain=()=>{
 
                 {/* challenge */}
                 <Route path="/challenge/form" element={<ChallengeForm/>}/>
-                <Route path="/challenge/list" element={<ChallengeList/>}/>
                 <Route path="/challenge/detail/:num" element={<ChallengeDetail/>}/>
-
+                <Route path="/challenge/list" element={<ChallengeList/>}/>
 
                 {/* Class */}
                 <Route path="/class/list" element={<ClassList/>}/>
                 <Route path="/class/form" element={<ClassForm/>}/>
                 <Route path="/class/detail/:num" element={<ClassDetail/>}/>
                 <Route path="/class/updateform/:num" element={<ClassUpdateForm/>}/> 
+                
                 {/* MOIM */}
                 <Route path="/moim/form" element={<MoimForm/>}/>
                 <Route path="/moim/detailform/:num" element={<MoimDetailForm/>}/>

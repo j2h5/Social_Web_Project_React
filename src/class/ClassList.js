@@ -130,10 +130,7 @@ const ClassList=()=>{
                     <div className="classlist">
                     
                         <img alt="" src={img1} className="listimg"/>
-                        <div className="listrow1">
-                            <span><LocationOnIcon style={{fontSize:'20px', height:'20px'}}/></span>
-                            <span className="qweqwe">반포공원</span>
-                        </div>
+                        
                         <div className="listrow2">
                             <span className="qweqwe">[원데이] 한강에서 제트스키 체험하기 (feat. 사진촬영)</span>
                         </div>
@@ -151,10 +148,7 @@ const ClassList=()=>{
                     </div><div className="classlist">
                     
                     <img alt="" src={img1} className="listimg"/>
-                    <div className="listrow1">
-                        <span><LocationOnIcon style={{fontSize:'20px', height:'20px'}}/></span>
-                        <span className="qweqwe">반포공원</span>
-                    </div>
+                    
                     <div className="listrow2">
                         <span className="qweqwe">[원데이] 한강에서 제트스키 체험하기 (feat. 사진촬영)</span>
                     </div>
@@ -172,10 +166,7 @@ const ClassList=()=>{
                 </div><div className="classlist">
                     
                     <img alt="" src={img1} className="listimg"/>
-                    <div className="listrow1">
-                        <span><LocationOnIcon style={{fontSize:'20px', height:'20px'}}/></span>
-                        <span className="qweqwe">반포공원</span>
-                    </div>
+                    
                     <div className="listrow2">
                         <span className="qweqwe">[원데이] 한강에서 제트스키 체험하기 (feat. 사진촬영)</span>
                     </div>
@@ -193,10 +184,7 @@ const ClassList=()=>{
                 </div><div className="classlist">
                     
                     <img alt="" src={img1} className="listimg"/>
-                    <div className="listrow1">
-                        <span><LocationOnIcon style={{fontSize:'20px', height:'20px'}}/></span>
-                        <span className="qweqwe">반포공원</span>
-                    </div>
+                    
                     <div className="listrow2">
                         <span className="qweqwe">[원데이] 한강에서 제트스키 체험하기 (feat. 사진촬영)</span>
                     </div>
@@ -214,10 +202,7 @@ const ClassList=()=>{
                 </div><div className="classlist">
                     
                     <img alt="" src={img1} className="listimg"/>
-                    <div className="listrow1">
-                        <span><LocationOnIcon style={{fontSize:'20px', height:'20px'}}/></span>
-                        <span className="qweqwe">반포공원</span>
-                    </div>
+                    
                     <div className="listrow2">
                         <span className="qweqwe">[원데이] 한강에서 제트스키 체험하기 (feat. 사진촬영)</span>
                     </div>
@@ -235,10 +220,7 @@ const ClassList=()=>{
                 </div><div className="classlist">
                     
                     <img alt="" src={img1} className="listimg"/>
-                    <div className="listrow1">
-                        <span><LocationOnIcon style={{fontSize:'20px', height:'20px'}}/></span>
-                        <span className="qweqwe">반포공원</span>
-                    </div>
+                    
                     <div className="listrow2">
                         <span className="qweqwe">[원데이] 한강에서 제트스키 체험하기 (feat. 사진촬영)</span>
                     </div>
@@ -256,10 +238,7 @@ const ClassList=()=>{
                 </div><div className="classlist">
                     
                     <img alt="" src={img1} className="listimg"/>
-                    <div className="listrow1">
-                        <span><LocationOnIcon style={{fontSize:'20px', height:'20px'}}/></span>
-                        <span className="qweqwe">반포공원</span>
-                    </div>
+                    
                     <div className="listrow2">
                         <span className="qweqwe" style={{width:'270px'}}>[원데이] 한강에서 제트스키 체험하기 (feat. 사진촬영)</span>
                     </div>
