@@ -1,5 +1,7 @@
 
 .moimdetail_content{
+     font-family: 'Noto Sans KR'; 
+ 
     position: absolute;
     top:70px;
     right: 315px;
@@ -64,15 +66,16 @@
 }
 .buttons {
     position: absolute;
-    top: 300px;
-    right: 350px;
+    top: 260px;
+    right: 230px;
+    z-index: 999;
 }
-.join{
+#join{
     margin-right: 50px;
     width:100px;
     height: 40px;
 }
-.list{
+#list{
     width:100px;
     height: 40px;
 }
@@ -179,7 +182,7 @@ ul, li {list-style:none;}
     
 }
 .con_box_list > li{
-    padding: 25px;  
+    padding: 15px;  
 }
 .con_box_list{
     width: 300px

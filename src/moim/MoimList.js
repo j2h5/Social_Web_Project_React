@@ -76,41 +76,41 @@ const MoimList = () => {
                     <div className='each_moim'>
                         <img alt="" src={img1} className="listimg"/>
                         
-                        <div className='chal_title'>
+                        <div className='moim_title'>
                             <span className="qweqwe">매주 0.5kg 감량하기</span>
                         </div>
 
-                        <div className="chal_period" style={{marginTop:'0px'}}>
+                        <div className="moim_period" style={{marginTop:'0px'}}>
                             <span className="qweqwe">n일동안 하루 한번</span>
                         </div>
 
-                        <div className="chal_like">
+                        <div className="moim_like">
                             <span><FavoriteBorderIcon style={{fontSize:'20px', color:'red',height:'20px'}}/></span>
                             <span className="qweqwe">162</span>
                         </div>
-                        <div className='chal_cates'>
-                            <span className='chal_cate_1'>#건강</span>
-                            <span className='chal_cate_1'>#바른습관</span>
+                        <div className='moim_cates'>
+                            <span className='moim_cate_1'>#건강</span>
+                            <span className='moim_cate_1'>#바른습관</span>
                         </div>
                     </div>
                     <div className='each_moim'>
                         <img alt="" src={img1} className="listimg"/>
                         
-                        <div className='chal_title'>
+                        <div className='moim_title'>
                             <span className="qweqwe">매주 0.5kg 감량하기</span>
                         </div>
 
-                        <div className="chal_period" style={{marginTop:'0px'}}>
+                        <div className="moim_period" style={{marginTop:'0px'}}>
                             <span className="qweqwe">n일동안 하루 한번</span>
                         </div>
 
-                        <div className="chal_like">
+                        <div className="moim_like">
                             <span><FavoriteBorderIcon style={{fontSize:'20px', color:'red',height:'20px'}}/></span>
                             <span className="qweqwe">162</span>
                         </div>
-                        <div className='chal_cates'>
-                            <span className='chal_cate_1'>#건강</span>
-                            <span className='chal_cate_1'>#바른습관</span>
+                        <div className='moim_cates'>
+                            <span className='moim_cate_1'>#건강</span>
+                            <span className='moim_cate_1'>#바른습관</span>
                         </div>
                     </div>
                 </div>
