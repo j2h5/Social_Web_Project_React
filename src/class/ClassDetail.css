@@ -29,7 +29,6 @@ min-height: 18em;
 .content_container {
     width: 1290px;
     padding: 41px 0 0;
-    border: 1px solid gray;
     /* flex: 1;
     display: flex;
     align-items: center;
