@@ -20,9 +20,6 @@ const ChallengeExample = () => {
 
                         <input type="text" className='example_title' required/>
 
-
-
-
                         <input type="text" className='example_cate' required value='카테고리1'/>
                         <input type="text" className='example_cate' required value='카테고리2'/>
 
