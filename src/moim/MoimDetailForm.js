@@ -1,22 +1,23 @@
 import React from 'react';
 import './MoimDetailForm.css'
 import { NavLink } from 'react-router-dom';
-import slide01 from './images/slide01.jpg';
-import slide02 from './images/slide02.jpg';
-import slide03 from './images/slide03.jpg';
 import img1 from './images/img1.jpg';
 import img2 from './images/img2.jpg';
 import img3 from './images/img3.jpg';
+import kyungdae from './images/kyungdae.png';
 import bori from './images/bori.png';
-import { Navbar } from '../main';
+import { Footer, Navbar2 } from '../main';
+
 const MoimDetailForm = () => {
     return (
+
         <div>
-           <div><Navbar/></div> 
+           <div><Navbar2/></div> 
+          
             <div className='moimdetail_content'>
                 <div className='moimdetail_top'> 
                <div className='moimdetail_thumbnail'>
-                <img className='image-thumbnail' alt ='' src={img3} style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'15px'}}/>
+                <img className='image-thumbnail' alt ='' src={kyungdae} style={{width:'100%',height:'100%',objectFit:'fill',borderRadius:'15px'}}/>
             
                  </div>
                
@@ -99,6 +100,7 @@ const MoimDetailForm = () => {
             </div>
             </div>{/* mid */}
      
+<div><Footer/></div> 
         </div> {/* content */}
         </div> 
 

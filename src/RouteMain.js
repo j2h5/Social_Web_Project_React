@@ -15,9 +15,10 @@ import ChallengeForm from "./challenge/ChallengeForm";
 import ChallengeList from "./challenge/ChallengeList";
 import MainChallenge from "./main/Mainchallenge";
 import ChallengeDetail from "./challenge/ChallengeDetail";
-import {ClassList, ClassForm, ClassDetail,ClassUpdateForm } from './class';
+import {ClassList, ClassForm, ClassDetail,ClassUpdateForm,ClassGuide,ClassIntroGuide } from './class';
 import MoimForm from "./moim/MoimForm";
 import MoimDetailForm from "./moim/MoimDetailForm";
+import MoimList from "./moim/MoimList";
 const RouteMain=()=>{
     return (
         <div>
@@ -49,10 +50,12 @@ const RouteMain=()=>{
                 <Route path="/class/form" element={<ClassForm/>}/>
                 <Route path="/class/detail/:num" element={<ClassDetail/>}/>
                 <Route path="/class/updateform/:num" element={<ClassUpdateForm/>}/> 
-                
+                <Route path="/class/guide" element={<ClassGuide/>}/>
+                <Route path="/class/introguide" element={<ClassIntroGuide/>}/>
                 {/* MOIM */}
                 <Route path="/moim/form" element={<MoimForm/>}/>
                 <Route path="/moim/detailform/:num" element={<MoimDetailForm/>}/>
+                <Route path="/moim/list" element={<MoimList/>}/>
                 <Route path="*" element={
                     <div>
                         <img src={errimg} alt=""/>
