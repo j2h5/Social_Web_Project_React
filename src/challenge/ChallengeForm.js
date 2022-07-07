@@ -3,7 +3,7 @@ import '../cssFolder/Challenge.css';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom'
 import ReactQuill from 'react-quill';
-import Editor from './EditorWithUseQuill';
+import Editor from '../class/EditorWithUseQuill';
 
 import 'react-quill/dist/quill.snow.css';
 import "react-datepicker/dist/react-datepicker.css";
