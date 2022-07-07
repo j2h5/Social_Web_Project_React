@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 .header-bg {
- background-color: rgba(63, 99, 112, 0.9); 
+ background-color: rgba(75, 106, 153, 0.9); 
 
 }
 
@@ -17,9 +17,7 @@ ul {
   list-style-type: none;
 }
 
-a {
-  text-decoration: none;
-}
+
 .header .navbar {
     display: flex;
     justify-content: space-between;
@@ -111,20 +109,19 @@ div.menuBar{
     right:200px;
     top:18px;
   }
-  .logo{
+  .logo {
     position: fixed;
     left:900px;
-    top:22px;
-    font-size: 36px;
+    top:2px;
+    
     z-index: 999;
-  }
-  .logo :hover{
-
     text-decoration: none;
-    
-    
   }
-  .logo p{
+  .logo h1:hover{
+    text-decoration: none;
+
+  }
+  .logo h1{
     color:white;
     font-size: 24px;
   }

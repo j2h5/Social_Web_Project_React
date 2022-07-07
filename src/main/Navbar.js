@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
-
+import { NavLink } from 'react-router-dom'
 
 
 import './Navbar.css'
@@ -26,11 +26,14 @@ const Navbar = () => {
     const closeMenu = () => setClick(false)
 
     return (
+        
         <div className={color ? 'header header-bg' : 'header'}>
             <nav className='navbar'>
-                <a href='/' className='logo'>
-                    {/* <img src={logo} alt='logo' /> */}<p>오늘, 한강</p>
-                </a>
+                    <NavLink className='logo' to="/">
+                {/* <a href='/' className='logo'> */}
+                    {/* <img src={logo} alt='logo' /> */}<h1>오늘, 한강</h1>
+                {/* </a> */}
+                </NavLink>
                 <div className='hamburger' onClick={handleClick}>
                     {click ? (<FaTimes size={30} style={{ color: '#ffffff' }} />)
                         : (<FaBars size={30} style={{ color: '#ffffff' }} />)}
