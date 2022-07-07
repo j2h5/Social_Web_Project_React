@@ -22,7 +22,7 @@
     text-align: center;
 }
 
-.challenge_name{
+.moim_name{
     width: 1294px;
     height: 150px;
     border: solid 1px #000;
@@ -85,7 +85,7 @@
 }
 
 
-.each_challenge{
+.each_moim{
     line-height: 100px;
     width: 300px;
     float: left;
@@ -101,7 +101,7 @@
     
 }
 
-.chal_title{
+.moim_title{
     line-height: 30px;
     font-size: 18px;
     font-weight: bold;
@@ -109,7 +109,7 @@
     margin-top: 5px;
 }
 
-.chal_period{
+.moim_period{
     line-height: 25px;
     height: 25px;
     font-size: 15px;
@@ -117,7 +117,7 @@
     margin-left: 5px;
 }
 
-.chal_like{
+.moim_like{
     line-height: 25px;
     height: 25px;
     font-size: 17px;
@@ -133,7 +133,7 @@
 }
 
 /* class_summ */
-.challenge_cate{
+.moim_cate{
     width: 1290px;
     height: 155px;
     margin: 20px 0 40px;
@@ -163,13 +163,13 @@
     margin-top: 5px;
 }
 
-.chal_cates{
+.moim_cates{
     width: 200px;
     height: 100px;
     
 }
 
-.chal_cate_1{
+.moim_cate_1{
     position: relative;
     top: -20px;
     font-size: 18px;

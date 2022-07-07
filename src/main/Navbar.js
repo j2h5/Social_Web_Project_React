@@ -8,7 +8,7 @@ import './Navbar.css'
 const Navbar = () => {
         //setting mobile nav
     const [click, setClick] = useState(false)
-    const handleClick = () => setClick(!click)
+    // const handleClick = () => setClick(!click)
 
     //change nav color when scrolling
     const [color, setColor] = useState(false)
@@ -34,11 +34,11 @@ const Navbar = () => {
                     {/* <img src={logo} alt='logo' /> */}<h1>오늘, 한강</h1>
                 {/* </a> */}
                 </NavLink>
-                <div className='hamburger' onClick={handleClick}>
+                {/* <div className='hamburger' onClick={handleClick}>
                     {click ? (<FaTimes size={30} style={{ color: '#ffffff' }} />)
                         : (<FaBars size={30} style={{ color: '#ffffff' }} />)}
 
-                </div>
+                </div> */}
                 <div className='menuBar'>
                 <input type="checkbox" id="menuicon"/>
 
@@ -51,9 +51,9 @@ const Navbar = () => {
              <button type="button" id='side_btn'class="btn btn-outline-secondary">로그인</button>
                 <button type="button" id='side_btn' class="btn btn-outline-secondary">마이페이지</button>
                 <ul>
-                    <li>Class</li>
-                    <li>Metting</li>
-                    <li>Challenge</li>
+                    <li><NavLink className='side_nav' style={{textDecoration:'none',color:'white'}} to="/class/list">Class</NavLink></li>
+                    <li><NavLink className='side_nav' style={{textDecoration:'none',color:'white'}} to="/moim/list">Metting</NavLink></li>
+                    <li><NavLink className='side_nav' style={{textDecoration:'none',color:'white'}} to="/challenge/list">Challenge</NavLink></li>
                 </ul>
 
                 <ul>
