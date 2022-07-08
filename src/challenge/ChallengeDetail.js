@@ -1,10 +1,48 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
+import axios from "axios";
 import '../cssFolder/ChallengeDetail.css';
 import ProgressBar from "@ramonak/react-progress-bar";
+import {useNavigate,useParams} from "react-router-dom";
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 
 
 const ChallengeDetail = () => {
+    const {chal_id} = useParams();
+    const [chal_data, setChal_data] = useState('');
+    const navi = useNavigate();
+
+    //전역변수등록
+    const SPRING_URL = process.env.REACT_APP_SPRING_URL;
+
+    //url등록
+    let chal_detailUrl = SPRING_URL+"challenge/detail?num="+chal_id;
+    let chal_photoUrl= SPRING_URL+"save/";
+    let chal_deletelUrl =  SPRING_URL+"challenge/delete?num="+chal_id;
+
+    //스프링으로부터 num에 해당하는 data받기
+        const onDataReceive = () =>{
+            axios.get(chal_detailUrl)
+            .then(res=>{  //res에 dto가 들어있음
+                //console.log(res.data.sangpum); 상품명 출력 확인
+                setChal_data(res.chal_data);
+            })
+        }
+
+        //삭제시 호출 할 함수
+    const onDelete=()=>{
+        axios.delete(chal_deletelUrl)
+        .then(res=>{
+            //삭제 후 목록으로 이동
+            navi("/shop/list")
+        })
+    }
+
+    //처음 랜더링시 위의 함수 호출
+    useEffect( () => {
+        onDataReceive();
+    },[]);
+
+
     return (
         <div className='challenge_detail'>
             <div className='detail_container'><h1>챌린지 상세페이지</h1>
@@ -17,7 +55,7 @@ const ChallengeDetail = () => {
                     <div className='detail_info' style={{display:'inline-block'}}>
                     {/* 상세 정보 div */}
 
-                        <input type="text" className='example_title' required value='하루 한번 달리기 30분하기'/>
+                        <input type="text" className='example_title' required value={chal_data.chal_title}/>
 
                         <input type="text" className='example_cate' required value='#건강'/>
                         <input type="text" className='example_cate' required value='#좋은습관'/>

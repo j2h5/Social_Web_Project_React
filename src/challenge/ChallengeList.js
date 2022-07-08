@@ -1,4 +1,7 @@
-import React from 'react';
+import React, {useState, useParams, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 import '../cssFolder/ChallengeList.css';
 import { GiFruitBowl, GiNotebook, GiRunningShoe } from "react-icons/gi";
 
@@ -12,6 +15,29 @@ import img1 from '../image/2.PNG';
 
 
 const ChallengeList = () => {
+
+    const navi = useNavigate();
+    const [chal_data, setChal_data]=useState('');
+
+        // 현재 페이지번호 읽어오기
+        const {currentPage}=useParams();
+
+        // url 선언
+        let chal_pagelistUrl=process.env.REACT_APP_SPRING_URL+"challenge/pagelist?currentPage="+currentPage;
+        let chal_photoUrl=process.env.REACT_APP_SPRING_URL+"save/";
+
+        // 시작시 호출되는 함수
+    const pageList=()=>{
+        axios.get(chal_pagelistUrl)
+        .then(res=>{                // res == response
+            setChal_data(res.data)
+        })
+    }
+
+    useEffect(()=>{
+        pageList();
+    },[currentPage])
+
     return (
         <div className='challenge_list'>
             <div className="content_container" style={{marginLeft:'315px'}} >
