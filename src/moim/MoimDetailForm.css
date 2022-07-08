@@ -10,11 +10,18 @@
     
 }
 .moimdetail_top{
-    width: 1290px;
-   height: 400px;
-   border: 1px solid black;
-   border-radius: 50px;
-   
+    width: 1000px;
+    top: 115px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 400px;
+    border: 1px solid black;
+    border-radius: 50px;
+}
+.moimdetail_mid{
+    position: absolute;
+    top: 500px;
 }
 .moimdetail_thumbnail{
     position: absolute;
@@ -22,8 +29,6 @@
     height:250px;
     border: 0px solid black;
     border-radius: 15px;
-    left:200px;
-    top: 65px;
 }
 
 .moimdetail_title{

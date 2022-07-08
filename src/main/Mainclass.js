@@ -1,6 +1,8 @@
 import React from 'react';
 import './Mainclass.css'
-import challenge from './images/challenge.png'
+import boardclass from './images/boardclass.jpg'
+import classimg from './images/classImg.png'
+import dancecalss from './images/danceclass.jpg'
 import { NavLink } from 'react-router-dom'
 const Mainclass = () => {
     return (
@@ -14,40 +16,40 @@ const Mainclass = () => {
 			<div className='a'>
 				<div class="screen3">
 					<span></span><span></span><span></span><span></span>
-					<img src={challenge} alt=''/>
+					<img src={boardclass} alt=''/>
 				</div>
-				<h3>아침 7시 기상</h3>
-				<p>아침7시에 기상하기</p>
+				<h3>이경주의 보드교실</h3>
+				<p>초보자 환영</p>
 			</div>
 		</li>
 		<li>
 			<div className='a'>
 				<div class="screen3">
 					<span></span><span></span><span></span><span></span>
-					<img src={challenge} alt=''/>
+					<img src={classimg} alt=''/>
 				</div>
-				<h3>하루 운동30분</h3>
-				<p>하루 운동30분하기</p>
+				<h3>수학교실</h3>
+				<p>010010001001010001</p>
 			</div>
 		</li>
 		<li>
 			<div className='a'>
 				<div class="screen3">
 					<span></span><span></span><span></span><span></span>
-                    <img src={challenge} alt=''/>
+                    <img src={dancecalss} alt=''/>
 				</div>
-				<h3>영단어 100개 암기</h3>
-				<p>단어 외우는 챌린지</p>
+				<h3>김정하의 댄스교실</h3>
+				<p>정하와 함께 춤을</p>
 			</div>
 		</li>
         <li>
 			<div className='a'>
 				<div class="screen3">
 					<span></span><span></span><span></span><span></span>
-                    <img src={challenge} alt=''/>
+                    <img src={classimg} alt=''/>
 				</div>
-				<h3>밥 잘먹기</h3>
-				<p>꼭꼭 씹어먹기</p>
+				<h3>김준영의 운동교실</h3>
+				<p>원펀치쓰리강냉이</p>
 			</div>
 		</li>
 		
