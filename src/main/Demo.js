@@ -4,6 +4,7 @@ import challengeImg from './images/challengeImg.png'
 import moimImg from './images/moimImg.png'
 import classImg from './images/classImg.png'
 import { NavLink } from 'react-router-dom'
+import { NoEncryption } from '@material-ui/icons'
 const Demo = () => {
     return (
         <div className='demo' id='demo'>
@@ -34,7 +35,7 @@ const Demo = () => {
 					<img src={moimImg}/>
 				</div>
 				<div>
-					<h3>Group with your buddy</h3>
+					<h3 style={{textDecoration:'none'}}>Group with your buddy</h3>
 				</div>
 			</a>
             </NavLink>
