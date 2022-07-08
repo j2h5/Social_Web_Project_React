@@ -1,5 +1,7 @@
 import React from 'react'
 import './Footer.css'
+import {AiFillYoutube,AiFillFacebook,AiFillInstagram} from "react-icons/ai"
+import { NavLink } from 'react-router-dom'
 
 const Footer = () => {
     return (
@@ -21,7 +23,10 @@ const Footer = () => {
                 </ul>
                 <div className='bottom'>
                     <span className='line'></span>
-                    <p>임시로 만들어논 푸터</p>
+                    <NavLink to="http://www.facebook.com">< AiFillFacebook style={{ fontSize:'20px',color: 'black',marginLeft:'30px'}}/></NavLink>
+                    <NavLink to="http://www.youtube.com">< AiFillYoutube style={{ fontSize:'20px',color: 'black',marginLeft:'30px'}}/></NavLink>
+                    <NavLink to="http://www.instagram.com">< AiFillInstagram style={{ fontSize:'20px',color: 'black',marginLeft:'30px'}}/></NavLink>
+
                 </div>
             </div>
         </div>

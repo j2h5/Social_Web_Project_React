@@ -46,6 +46,11 @@
 .line {
     margin-bottom: 1rem;
 }
+.bottom{
+    position: absolute;
+    margin-top: 30px;
+    left: 45%;
+}
 
 
 

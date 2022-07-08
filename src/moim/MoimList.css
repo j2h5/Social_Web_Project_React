@@ -3,6 +3,7 @@
     position: absolute;
     top:70px;
     width: 1290px;
+    height: 100%;
     right:315px;
     margin-left: 315px;
     border: solid 1px #000;
@@ -165,7 +166,7 @@
 
 .moim_cates{
     width: 200px;
-    height: 100px;
+    height: 50px;
     
 }
 
