@@ -28,9 +28,7 @@ min-height: 18em;
 /* ====================== Class detail ======================*/
 .content_container {
     width: 1290px;
-    height: 4940px;
     padding: 41px 0 0;
-    border: 1px solid gray;
     /* flex: 1;
     display: flex;
     align-items: center;
@@ -524,4 +522,21 @@ div .class_plann{
     height: 40px;
     float: right;
     border: solid 1px #000;
+}
+
+.tyu{
+    /* div겹침 */
+    clear:both
+}
+
+.btn4{
+    width: 80px;
+    height: 28px;
+    font-size: 18px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal; 
+    background-color: #fff;
 }

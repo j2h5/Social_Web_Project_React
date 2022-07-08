@@ -7,3 +7,4 @@ export {default as Demo} from './Demo';
 export {default as Mainchallenge} from './Mainchallenge';
 export {default as Mainmoim} from './Mainmoim';
 export {default as Mainclass} from './Mainclass';
+export {default as Navbar2} from './Navbar2';

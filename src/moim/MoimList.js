@@ -1,31 +1,31 @@
 import React from 'react';
-import '../cssFolder/ChallengeList.css';
-import { GiFruitBowl, GiNotebook, GiRunningShoe } from "react-icons/gi";
-
+import './MoimList.css';
+import { GiFruitBowl, GiNotebook,GiRunningShoe } from "react-icons/gi";
 import {FaHandHoldingHeart, FaPalette} from 'react-icons/fa';
 import { IoCalendarNumberOutline } from "react-icons/io5";
-
+import { Navbar, Navbar2 } from '../main';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import TextsmsIcon from '@mui/icons-material/Textsms';//댓
 
 import img1 from '../image/2.PNG';
 
 
-const ChallengeList = () => {
+const MoimList = () => {
     return (
-        <div className='challenge_list'>
-            <div className="content_container" style={{marginLeft:'315px'}} >
+        <div className='moim_list'>
+            <div><Navbar2/></div>
+            <div className="moim_list_content" style={{marginLeft:'315px'}} >
                 <div className="row">
                     <select className="select_cate" >
                         <option value="class">클래스</option>
-                        <option value="challenge">챌린지</option>
+                        <option value="moim">챌린지</option>
                         <option value="meeting">모임</option>
                     </select>
                 </div>
-                <div className="challenge_name">
-                    챌린지
+                <div className="moim_name">
+                   모임
                 </div>
-                <div className="challenge_cate">
+                <div className="moim_cate">
                     <div className="cate">
                         <IoCalendarNumberOutline style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
                         <div className="catetext">규칙적인 생활</div>
@@ -51,7 +51,7 @@ const ChallengeList = () => {
                         <div className="catetext">셀프케어</div>
                     </div>
                 </div>
-                {/* challenge_cate 닫힘*/}
+                {/* moim_cate 닫힘*/}
                 <div className="search_div">
                     <input type='text' className="search"/>
                     <button className="searchbtn">검색</button>
@@ -73,52 +73,55 @@ const ChallengeList = () => {
                 </div>
                 <br/><br/>
                 <div className="list_row">
-                    <div className='each_challenge'>
+                    <div className='each_moim'>
                         <img alt="" src={img1} className="listimg"/>
                         
-                        <div className='chal_title'>
+                        <div className='moim_title'>
                             <span className="qweqwe">매주 0.5kg 감량하기</span>
                         </div>
 
-                        <div className="chal_period" style={{marginTop:'0px'}}>
+                        <div className="moim_period" style={{marginTop:'0px'}}>
                             <span className="qweqwe">n일동안 하루 한번</span>
                         </div>
 
-                        <div className="chal_like">
+                        <div className="moim_like">
                             <span><FavoriteBorderIcon style={{fontSize:'20px', color:'red',height:'20px'}}/></span>
                             <span className="qweqwe">162</span>
                         </div>
-                        <div className='chal_cates'>
-                            <span className='chal_cate_1'>#건강</span>
-                            <span className='chal_cate_1'>#바른습관</span>
+                        <div className='moim_cates'>
+                            <span className='moim_cate_1'>#건강</span>
+                            <span className='moim_cate_1'>#바른습관</span>
                         </div>
                     </div>
-                    <div className='each_challenge'>
+                    <div className='each_moim'>
                         <img alt="" src={img1} className="listimg"/>
                         
-                        <div className='chal_title'>
+                        <div className='moim_title'>
                             <span className="qweqwe">매주 0.5kg 감량하기</span>
                         </div>
 
-                        <div className="chal_period" style={{marginTop:'0px'}}>
+                        <div className="moim_period" style={{marginTop:'0px'}}>
                             <span className="qweqwe">n일동안 하루 한번</span>
                         </div>
 
-                        <div className="chal_like">
+                        <div className="moim_like">
                             <span><FavoriteBorderIcon style={{fontSize:'20px', color:'red',height:'20px'}}/></span>
                             <span className="qweqwe">162</span>
                         </div>
-                        <div className='chal_cates'>
-                            <span className='chal_cate_1'>#건강</span>
-                            <span className='chal_cate_1'>#바른습관</span>
+                        <div className='moim_cates'>
+                            <span className='moim_cate_1'>#건강</span>
+                            <span className='moim_cate_1'>#바른습관</span>
                         </div>
                     </div>
                 </div>
+
+
+
+
+
             </div>
-            {/* content_container 닫힘 */}
         </div>
-        // 전체 div 닫힘
     );
 };
 
-export default ChallengeList;
+export default MoimList;

@@ -140,14 +140,10 @@ div.menuBar{
   .sidebar li{
     position: relative;
     top:120px;
-    margin: 60px;
+    margin: 30px;
     color:white;
     font-size: 20px;
   }
-  .side_nav :hover{
-      font-size: 22px;
-  }
-  
 @media screen and (max-width:940px) {
     .header {
         max-width: 100%;

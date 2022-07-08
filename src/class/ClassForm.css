@@ -1,9 +1,7 @@
 .content_container{
     width: 1290px;
-    height: 3740px;
     margin: 30px 0 0;
     padding: 32px 0 0;
-    border: solid 1px #000;
 }
 
 .class_subtitle{
@@ -265,8 +263,10 @@ hr {
 .textarea1{
     width: 800px;
     height: 260px;
+    padding: 10px 10px 10px 10px;
 }
 
+/* 위에 tultip */
 .asd{
     position: absolute;  /*어떤 요소에 absolute를 주면 블럭요소는 inline으로 변경됨.*/
     background-color: rgb(5, 4, 57);
@@ -276,7 +276,7 @@ hr {
     text-align: center;
     padding: 10px;
     border-radius: 5px;
-    left: 980px;                    /*중앙배치 : 왼쪽에서 50%위치*/
+    left: 1280px;                    /*중앙배치 : 왼쪽에서 50%위치*/
     transform: translateX(-50%);  /*중앙배치 : X크기값을 50%만큼 이동*/
     opacity: 0;                   /*이벤트설정 : 서서히 변하게 함*/
     transition: 0.5s;             /*어떤 변화가 요청되면 0.5초뒤에 일어나자.*/
@@ -300,6 +300,44 @@ hr {
 }
 
 .sdf:hover span{
+    opacity: 1;
+    visibility: visible;     /*hover시 발생하는 이벤트*/
+}
+
+
+
+/* 아래 tultip */
+.tulc{
+    background-color: rgb(5, 4, 57);
+    width: 330px;
+    color : #fff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    left: 1300px;                    /*중앙배치 : 왼쪽에서 50%위치*/
+    transform: translateX(-50%);  /*중앙배치 : X크기값을 50%만큼 이동*/
+    opacity: 0;                   /*이벤트설정 : 서서히 변하게 함*/
+    transition: 0.5s;             /*어떤 변화가 요청되면 0.5초뒤에 일어나자.*/
+    font-size: 13px;
+    
+    visibility: hidden;          /*특정 요소 접촉시 이벤트 발생*/
+
+}
+
+.tulc:after {
+    content : '';             /*가상클래스 before, after는 무조건 content가 있어야 작동*/
+    position: absolute;       /*상위클래스icon이 relative이므로, absolute로 설정하여 동적페이지에도 같은 위치로 유지*/
+    background-color:rgb(5, 4, 47);
+    width : 10px;
+    height: 10px;
+    transform: rotate(45deg) translateX(-50%);  /*transform은 한 요소에 1번밖에 못쓰므로 합쳐줘야함*/
+    bottom: 30px;
+    left: -1px;
+                                        /*2. 크기값을 50%만큼 이동시켜준다.->항상 중앙에 위치하게됨*/
+
+}
+
+.tulp:hover span{
     opacity: 1;
     visibility: visible;     /*hover시 발생하는 이벤트*/
 }
