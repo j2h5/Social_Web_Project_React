@@ -57,7 +57,7 @@ const MoimDetailForm = () => {
                 </div>
                 </div>  {/* top */}
             
-            <div className='moimdetail_mid' style={{marginTop:'100px'}}>
+            <div className='moimdetail_mid'>
                 <h2 style={{marginLeft:'40px',marginBottom:'50px'}}>모임 활동 사진</h2>
             <div class="image_table">
             <ul>
