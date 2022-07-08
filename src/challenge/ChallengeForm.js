@@ -160,10 +160,12 @@ const ChallengeForm = () => {
                                 />예치금 고정</label>
                                 </div>
                     </div>
-                    <div className='row'>
+                    <div className='row' style={{width:'400px'}}>
                             {/* 에디터 사용 */}
                             <b>챌린지를 소개해주세요</b>
-                                <Editor style={{width:'400px'}}/>
+                                <Editor 
+                                    
+                                />
                     </div>
 
                     {/* 인증샷예시 */}

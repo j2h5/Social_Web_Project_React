@@ -1,6 +1,7 @@
 import React from 'react';
 import '../cssFolder/ChallengeList.css';
-import { GiFruitBowl, GiNotebook,GiRunningShoe } from "react-icons/gi";
+import { GiFruitBowl, GiNotebook, GiRunningShoe } from "react-icons/gi";
+
 import {FaHandHoldingHeart, FaPalette} from 'react-icons/fa';
 import { IoCalendarNumberOutline } from "react-icons/io5";
 
@@ -21,7 +22,6 @@ const ChallengeList = () => {
                         <option value="meeting">모임</option>
                     </select>
                 </div>
-            </div>
                 <div className="challenge_name">
                     챌린지
                 </div>
@@ -114,12 +114,10 @@ const ChallengeList = () => {
                         </div>
                     </div>
                 </div>
-
-
-
-
-
+            </div>
+            {/* content_container 닫힘 */}
         </div>
+        // 전체 div 닫힘
     );
 };
 

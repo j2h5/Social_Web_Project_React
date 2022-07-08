@@ -40,6 +40,7 @@
     /* div겹침 */
     clear:both;
 }
+
 .array_search{
     text-align: right;
     line-height: 100px;
@@ -183,3 +184,4 @@
     text-align: left;
     color: #000;
 }
+
