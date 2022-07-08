@@ -7,38 +7,39 @@ const Member=()=>{
 
     const navi = useNavigate();
     const [data,setData] = useState({
-        id:'', name:'', pass:'', email:'', hp:'', addr:'', emailok:false
+        nickname:'', password:'', username:''
     });
     const [passOk,setPassOk] = useState(false);
-    const [email1,setEmail1] = useState('');
-    const [email2,setEmail2] = useState('');
-    const [btnOk,setBtnOk] = useState(false);
-    const [emailok,setEmailOk] = useState(false);
+    //const [email1,setEmail1] = useState('');
+    //const [email2,setEmail2] = useState('');
+    //const [btnOk,setBtnOk] = useState(false);
+    //const [emailok,setEmailOk] = useState(false);
 
     //submit 시 호출 될 함수
     const onSave = (e) => {
         e.preventDefault();//기본이벤트무효화
-        //console.dir(data);
+        console.dir(data);
 
-        if(!btnOk){
-            alert("아이디 중복체크를 해주세요");
-            return;
-        }
+        // if(!btnOk){
+        //     alert("아이디 중복체크를 해주세요");
+        //     return;
+        // }
 
-        if(!passOk){
-            alert("비밀번호 확인을 해주세요");
-            return;
-        }
+        // if(!passOk){
+        //     alert("비밀번호 확인을 해주세요");
+        //     return;
+        // }
 
-        if(!data.emailok){
-            alert("이메일 중복 버튼을 눌러주세요")
-            return;
-        }
+        // if(!data.emailok){
+        //     alert("이메일 중복 버튼을 눌러주세요")
+        //     return;
+        // }
 
-        const url=process.env.REACT_APP_SPRING_URL+"member/insert";
+        const url=process.env.REACT_APP_SPRING_URL+"api/signup";
             axios.post(url,data)
             .then(res=>{
-                navi("/login")
+                alert("성공 집에가")
+                //navi("/login")
         })
     }
 
@@ -48,6 +49,7 @@ const Member=()=>{
         //이벤트 발생 name이 pass일 경우 무조건 passOk는 false
         if(name==='pass')
             setPassOk(false);
+            
         setData({
             ...data,
             [name]:value
@@ -55,13 +57,13 @@ const Member=()=>{
     }
 
     //이메일 select 변경 시 호출
-    const onEmailChange = (e) => {
-        const {value} = e.target;
-        if(value==='-')
-            setEmail2('');
-        else
-            setEmail2(value);
-    }
+    // const onEmailChange = (e) => {
+    //     const {value} = e.target;
+    //     if(value==='-')
+    //         setEmail2('');
+    //     else
+    //         setEmail2(value);
+    // }
 
     //2번째 pass 입력 시 호출
     const onPassChange = (e) => {
@@ -73,19 +75,19 @@ const Member=()=>{
     }
 
     //아이디 중복체크
-    const onIdJungbok = () => {
-        const url = process.env.REACT_APP_SPRING_URL+"member/idcheck?id="+data.id;
-        axios.get(url)
-        .then(res=>{
-            if(res.data===0){
-                setBtnOk(true);
-                alert("가입 가능한 아이디입니다.");
-            }else{
-                setBtnOk(false);
-                alert("이미 가입되어있는아이디 입니다.");
-            }
-        })
-    }
+    // const onIdJungbok = () => {
+    //     const url = process.env.REACT_APP_SPRING_URL+"member/idcheck?id="+data.id;
+    //     axios.get(url)
+    //     .then(res=>{
+    //         if(res.data===0){
+    //             setBtnOk(true);
+    //             alert("가입 가능한 아이디입니다.");
+    //         }else{
+    //             setBtnOk(false);
+    //             alert("이미 가입되어있는아이디 입니다.");
+    //         }
+    //     })
+    // }
     return (
         <div className="member_form">
             <form onSubmit={onSave}>
@@ -95,28 +97,28 @@ const Member=()=>{
                     <tr>
                         <th>아이디</th>
                         <td>
-                            <input type="text" style={{width:'100px'}} name="id" required onChange={onDataChange} defaultValue={data.id}/>
-                            <button type="button" style={{marginLeft:'5px'}} onClick={onIdJungbok}>중복체크</button>
+                            <input type="text" style={{width:'100px'}} name="nickname" required onChange={onDataChange} defaultValue={data.id}/>
+                            {/* <button type="button" style={{marginLeft:'5px'}} onClick={onIdJungbok}>중복체크</button> */}
                         </td>
                     </tr>
 
-                    <tr>
+                    {/* <tr>
                         <th>이름</th>
                         <td>
                             <input type="text" style={{width:'170px'}} name="name" required onChange={onDataChange}/>
                         </td>
-                    </tr>
+                    </tr> */}
 
                     <tr>
                         <th>비밀번호</th>
                         <td>
-                            <input type="password" style={{width:'170px'}} name="pass" required onChange={onDataChange}/>
+                            <input type="password" style={{width:'170px'}} name="password" required onChange={onDataChange}/>
                             <input type="password" style={{width:'170px', marginLeft:'5px'}} required onChange={onPassChange}/>
                             <span style={{marginLeft:'5px', color:'red'}}>{passOk?'ok':''}</span>
                         </td>
                     </tr>
 
-                    <tr>
+                    {/* <tr>
                         <th>이메일</th>
                         <td>
                             <input type="text" style={{width:'100px'}} required
@@ -132,21 +134,21 @@ const Member=()=>{
                             <button type="button" onClick={()=>{ setData({ ...data, email:`${email1}@${email2}`,emailok:true  });  
                         alert("이메일 중복 확인"); }}>확인</button>
                         </td>
-                    </tr>
+                    </tr> */}
 
                     <tr>
-                        <th>핸드폰</th>
+                        <th>username</th>
                         <td>
-                            <input type="text" style={{width:'180px'}} name="hp" required onChange={onDataChange}/>
+                            <input type="text" style={{width:'180px'}} name="username" required onChange={onDataChange}/>
                         </td>
                     </tr>
 
-                    <tr>
+                    {/* <tr>
                         <th>주소</th>
                         <td>
                             <input type="text" style={{width:'180px'}} name="addr" required onChange={onDataChange}/>
                         </td>
-                    </tr>
+                    </tr>  */}
 
                     <tr>
                         <td colSpan={2} style={{textAlign:'center'}}>
