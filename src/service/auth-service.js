@@ -10,12 +10,12 @@ const register = (username, password) => {
 };
 const login = (username, password) => {
   return axios
-    .post(SPRING_URL + "authenticate", {
+    .post(SPRING_URL + "api/authenticate", {
       username,
       password
     })
     .then((response) => {
-      if (response.data.accessToken) {
+      if (response.data) {
         localStorage.setItem("user", JSON.stringify(response.data));
       }
       return response.data;

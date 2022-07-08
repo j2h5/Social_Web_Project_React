@@ -1,11 +1,11 @@
 import axios from "axios";
 import authHeader from "./auth-header";
-const API_URL = "http://localhost:9001/api/user/";
+const API_URL = "http://localhost:9001/api/user";
 const getPublicContent = () => {
   return axios.get(API_URL + "all");
 };
 const getUserBoard = () => {
-  return axios.get(API_URL + "user", { headers: authHeader() });
+  return axios.get(API_URL , { headers: authHeader() });
 };
 const getAdminBoard = () => {
   return axios.get(API_URL + "admin", { headers: authHeader() });
