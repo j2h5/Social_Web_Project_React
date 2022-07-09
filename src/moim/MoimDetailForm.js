@@ -101,8 +101,8 @@ const MoimDetailForm = () => {
             </div>
             </div>{/* mid */}
      
-<div><Footer/></div> 
         </div> {/* content */}
+<Footer/>
         </div> 
 
     );

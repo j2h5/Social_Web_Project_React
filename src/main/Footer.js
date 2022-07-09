@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 const Footer = () => {
     return (
         <div className='footer'>
-            <div className='container'>
+            <div className='footer_container'>
                 <ul>
                     <li className='nav-item'>
                         <a href='/'>Home</a>
