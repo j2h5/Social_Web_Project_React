@@ -6,6 +6,13 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import img1 from './profile.jpg';
 import { useRef } from 'react';
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import SportsHandballIcon from '@mui/icons-material/SportsHandball';
+import KitesurfingIcon from '@mui/icons-material/Kitesurfing';
+import BrushIcon from '@mui/icons-material/Brush';
+import PetsIcon from '@mui/icons-material/Pets';
+import './Register2.css';
+
 
 
 export default function PaymentForm() {
@@ -61,12 +68,39 @@ export default function PaymentForm() {
           />
         </Grid>
       </Grid>
-      
       <br/>
+
       <Typography variant="h6" gutterBottom>
         카테고리
       </Typography>
+      <br/>
 
+      <Grid container spacing={3}>
+      <div className="box1">
+        <CameraAltIcon style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
+        <div className="boxtext1">스냅사진</div>
+      </div>
+      <div className="box1">
+        <CameraAltIcon style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
+        <div className="boxtext1">스냅사진</div>
+      </div>
+      <div className="box1">
+        <CameraAltIcon style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
+        <div className="boxtext1">스냅사진</div>
+      </div>
+      <div className="box1">
+        <CameraAltIcon style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
+        <div className="boxtext1">스냅사진</div>
+      </div>
+      <div className="box1">
+        <CameraAltIcon style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
+        <div className="boxtext1">스냅사진</div>
+      </div>
+      <div className="box1">
+        <CameraAltIcon style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
+        <div className="boxtext1">스냅사진</div>
+      </div>
+      </Grid>
     </React.Fragment>
   );
 }
