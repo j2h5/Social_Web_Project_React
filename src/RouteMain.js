@@ -3,14 +3,15 @@ import './App.css';
 import { Route, Routes } from "react-router-dom";
 import {Main} from './main';
 import {Shop, ShopForm, ShopDetail, ShopUpdate } from './shop';
+
+// 회원
+import UserRegister from "./User/UserRegister";
+
 import Board from "./board/Board";
 import BoardForm from "./board/BoardForm";
 import BoardDetail from "./board/BoardDetail";
 import Login from "./login/Login";
-import Member from "./member/Member";
 import errimg from "./image/er.png"
-
-import MemberList from "./member/Member";
 import ChallengeForm from "./challenge/ChallengeForm";
 import ChallengeList from "./challenge/ChallengeList";
 import MainChallenge from "./main/Mainchallenge";
@@ -26,18 +27,20 @@ const RouteMain=()=>{
             <div className="main">
                 <Routes>
                 <Route path="/" element={<Main/>}/>
+
+                {/* 회원 */}
+                <Route path="/user/register" element={<UserRegister/>}/>
+
                 {/* Shop */}
                 <Route path="/shop/list" element={<Shop/>}/>
                 <Route path="/shop/form" element={<ShopForm/>}/>
                 <Route path="/shop/detail/:num" element={<ShopDetail/>}/>
                 <Route path="/shop/updateform/:num" element={<ShopUpdate/>}/>
-          
+
                 {/* Board */}
                 <Route path="/board/list/:currentPage" element={<Board/>}/>
                 <Route path="/board/form" element={<BoardForm/>}/>
                 <Route path="/board/detail/:num/:currentPage" element={<BoardDetail/>}/>
-                <Route path="/member/form" element={<Member/>}/>
-                <Route path="/member/list" element={<MemberList/>}/>
                 <Route path="/login" element={<Login/>}/>
 
                 {/* challenge */}
