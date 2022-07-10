@@ -1,0 +1,12 @@
+div.box1{
+    float: left;
+    width: 160px;
+    height: 172px;
+    margin: 1px 15px 0px 0;
+    cursor: pointer;
+    /* padding: 14px 34px 24px 36px; */
+}
+
+div.box1:hover{
+    border: 1px black solid;
+}
