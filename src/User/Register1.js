@@ -11,11 +11,11 @@ export default function Register1() {
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         <div className='title2'>
-        회원정보입력
+        회원 정보 입력
         </div>
       </Typography>
-      <Grid container spacing={3}>
-        <Grid item xs={12} className="content">
+      <Grid container spacing={3} >
+        <Grid item xs={12}>
           <TextField
             required
             id="eMail"
