@@ -20,6 +20,7 @@ import {ClassList, ClassForm, ClassDetail,ClassUpdateForm,ClassGuide,ClassIntroG
 import MoimForm from "./moim/MoimForm";
 import MoimDetailForm from "./moim/MoimDetailForm";
 import MoimList from "./moim/MoimList";
+import LoginFormTest from "./login/LoginFormTest";
 const RouteMain=()=>{
     return (
         <div>
@@ -32,6 +33,7 @@ const RouteMain=()=>{
                 <Route path="/user/register" element={<Register/>}/>
 
                 <Route path="/login" element={<Login/>}/>
+                <Route path="/login/a" element={<LoginFormTest/>}/>
 
                 {/* Shop */}
                 <Route path="/shop/list" element={<Shop/>}/>
