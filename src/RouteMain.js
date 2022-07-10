@@ -6,6 +6,8 @@ import {Shop, ShopForm, ShopDetail, ShopUpdate } from './shop';
 
 // 회원
 import UserRegister from "./User/UserRegister";
+import UserRegist from "./User/UserRegist";
+import Checkout from "./User/Register";
 
 import Board from "./board/Board";
 import BoardForm from "./board/BoardForm";
@@ -30,6 +32,8 @@ const RouteMain=()=>{
 
                 {/* 회원 */}
                 <Route path="/user/register" element={<UserRegister/>}/>
+                <Route path="/user/aaa" element={<UserRegist/>}/>
+                <Route path="/user/abc" element={<Checkout/>}/>
 
                 {/* Shop */}
                 <Route path="/shop/list" element={<Shop/>}/>
