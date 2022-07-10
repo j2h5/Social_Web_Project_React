@@ -35,6 +35,8 @@ const RouteMain=()=>{
                 <Route path="/user/aaa" element={<UserRegist/>}/>
                 <Route path="/user/abc" element={<Checkout/>}/>
 
+                <Route path="/login" element={<Login/>}/>
+
                 {/* Shop */}
                 <Route path="/shop/list" element={<Shop/>}/>
                 <Route path="/shop/form" element={<ShopForm/>}/>
@@ -45,7 +47,7 @@ const RouteMain=()=>{
                 <Route path="/board/list/:currentPage" element={<Board/>}/>
                 <Route path="/board/form" element={<BoardForm/>}/>
                 <Route path="/board/detail/:num/:currentPage" element={<BoardDetail/>}/>
-                <Route path="/login" element={<Login/>}/>
+                
 
                 {/* challenge */}
                 <Route path="/challenge/form" element={<ChallengeForm/>}/>

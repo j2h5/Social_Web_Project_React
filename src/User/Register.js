@@ -12,16 +12,16 @@ import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import AddressForm from './Register1';
-import PaymentForm from './Register2';
-import Review from './Regsiter3';
+import Register1 from './Register1';
+import Register2 from './Register2';
+import Regsiter3 from './Regsiter3';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="/">
+        오늘, 한강
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -29,16 +29,16 @@ function Copyright() {
   );
 }
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
+const steps = ['회원 가입', '프로필 등록', '정보 확인'];
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <Register1 />;
     case 1:
-      return <PaymentForm />;
+      return <Register2 />;
     case 2:
-      return <Review />;
+      return <Regsiter3 />;
     default:
       throw new Error('Unknown step');
   }
@@ -70,15 +70,15 @@ export default function Checkout() {
         }}
       >
         <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Company name
+          <Typography variant="h6" color="inherit" noWrap sx={{fontSize:'20px', fontWeight:'bold'}}>
+            오늘, 한강
           </Typography>
         </Toolbar>
       </AppBar>
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
           <Typography component="h1" variant="h4" align="center">
-            Checkout
+            회원가입
           </Typography>
           <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
             {steps.map((label) => (
