@@ -4,15 +4,18 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import '../User/Register.css';
 
 export default function Register1() {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        회원 가입
+        <div className='title2'>
+        회원정보입력
+        </div>
       </Typography>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid item xs={12} className="content">
           <TextField
             required
             id="eMail"
@@ -99,7 +102,6 @@ export default function Register1() {
             variant="standard"
           />
         </Grid>
-        
         <Grid item xs={12}>
           <FormControlLabel
             control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
