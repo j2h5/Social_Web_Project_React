@@ -4,62 +4,69 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import img1 from './profile.jpg';
+import { useRef } from 'react';
+
 
 export default function PaymentForm() {
+
+  const [img,setImg]=React.useState(img1);
+
+
+
+      //사진 누르면 인증샷 업로드 file
+      const photoInput = useRef();
+      const imgChange = () =>{
+          photoInput.current.click();
+      };
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Payment method
+        프로필 등록
       </Typography>
+      <div style={{border:'0px solid black',width:'310px',height:'310px',borderRadius:'160px',overflow:'hidden',marginLeft:'20%',cursor:'pointer'}}
+      onClick={imgChange}>
+      <img src={img} alt='' style={{display:'block',margin:'0px auto',width:'310px'}}/>
+      </div>
+
+      <input 
+        type="file"
+        multiple
+        ref={photoInput}
+        style={{display:'none'}}
+      />
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12}>
           <TextField
             required
             id="cardName"
-            label="Name on card"
+            label="닉네임"
             fullWidth
             autoComplete="cc-name"
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="cardNumber"
-            label="Card number"
-            fullWidth
-            autoComplete="cc-number"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="expDate"
-            label="Expiry date"
-            fullWidth
-            autoComplete="cc-exp"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="cvv"
-            label="CVV"
-            helperText="Last three digits on signature strip"
-            fullWidth
-            autoComplete="cc-csc"
-            variant="standard"
-          />
-        </Grid>
+      </Grid>
+
+      <Grid container spacing={3}>
         <Grid item xs={12}>
-          <FormControlLabel
-            control={<Checkbox color="secondary" name="saveCard" value="yes" />}
-            label="Remember credit card details for next time"
+          <TextField
+            required
+            id="cardName"
+            label="생년월일"
+            fullWidth
+            autoComplete="cc-name"
+            variant="standard"
           />
         </Grid>
       </Grid>
+      
+      <br/>
+      <Typography variant="h6" gutterBottom>
+        카테고리
+      </Typography>
+
     </React.Fragment>
   );
 }
