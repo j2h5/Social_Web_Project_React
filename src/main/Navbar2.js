@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 import './Navbar2.css'
@@ -9,6 +10,7 @@ const Navbar = () => {
         //setting mobile nav
     const [click, setClick] = useState(false)
     const handleClick = () => setClick(!click)
+    const navi=useNavigate();
 
     //change nav color when scrolling
   
@@ -37,7 +39,7 @@ const Navbar = () => {
                         <span>   </span>
                     </label>
              <div className='sidebar'>
-             <button type="button" id='side_btn'class="btn btn-outline-secondary">로그인</button>
+                <button type="button" id='side_btn'class="btn btn-outline-secondary">로그인</button>
                 <button type="button" id='side_btn' class="btn btn-outline-secondary">마이페이지</button>
                 <ul>
                     <li>Class</li>
