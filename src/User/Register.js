@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Register1 from './Register1';
 import Register2 from './Register2';
 import Regsiter3 from './Regsiter3';
+import '../User/Register.css';
 
 function Copyright() {
   return (
@@ -77,7 +78,7 @@ export default function Checkout() {
       </AppBar>
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-          <Typography component="h1" variant="h4" align="center">
+          <Typography component="h1" variant="h4" align="center" className='Title1'>
             회원가입
           </Typography>
           <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
@@ -91,12 +92,10 @@ export default function Checkout() {
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h5" gutterBottom>
-                  Thank you for your order.
+                  회원가입을 축하드립니다.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order
-                  confirmation, and will send you an update when your order has
-                  shipped.
+                  왜 가입하셨쬬? 이 프로젝트는 망해가고 있습니다.
                 </Typography>
               </React.Fragment>
             ) : (

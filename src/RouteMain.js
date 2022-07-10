@@ -4,10 +4,8 @@ import { Route, Routes } from "react-router-dom";
 import {Main} from './main';
 import {Shop, ShopForm, ShopDetail, ShopUpdate } from './shop';
 
-// 회원
-import UserRegister from "./User/UserRegister";
-import UserRegist from "./User/UserRegist";
-import Checkout from "./User/Register";
+// 회원가입
+import Register from "./User/Register";
 
 import Board from "./board/Board";
 import BoardForm from "./board/BoardForm";
@@ -30,10 +28,8 @@ const RouteMain=()=>{
                 <Routes>
                 <Route path="/" element={<Main/>}/>
 
-                {/* 회원 */}
-                <Route path="/user/register" element={<UserRegister/>}/>
-                <Route path="/user/aaa" element={<UserRegist/>}/>
-                <Route path="/user/abc" element={<Checkout/>}/>
+                {/* 회원가입 */}
+                <Route path="/user/register" element={<Register/>}/>
 
                 <Route path="/login" element={<Login/>}/>
 
