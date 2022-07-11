@@ -12,6 +12,7 @@ import DatePicker from 'react-datepicker';
 import ChallengeExample from './ChallengeExample';
 import styled from "styled-components";
 import { ko } from 'date-fns/esm/locale';
+import Navbar2 from '../main/Navbar2';
 
 //url 등록
     let insertUrl = "http://localhost:9001/challenge/insert";
@@ -90,12 +91,13 @@ const ChallengeForm = () => {
 
     return (
         <div> 
+            <Navbar2/>
         {/* 전체div */}
-            <h1>챌린지 등록</h1>
                 {/* 챌린지 등록폼 */}
                 <div className="challenge_form" style={{width:'600px'}}>
+                <h1>챌린지 등록</h1>
                     <div className='row'>
-                        카테고리
+                        카테고리 &nbsp;
                             <select value={ch_category} 
                             onChange={(e)=>{
                                 setCh_category(e.target.value)
@@ -175,9 +177,9 @@ const ChallengeForm = () => {
                     </div>
 
                     {/* 인증샷예시 */}
-                    <div className='row'>올바른 인증샷 예시
+                    <div className='row'>올바른 인증샷 예시<br/>
                                 <div style={{width:'150px', height:'150px',
-                                border: '1px solid gray', display:'inline-block'}}>
+                                border: '1px solid gray', display:'inline-block', float:'left'}}>
 
                                 <AddPhotoAlternateIcon sx={{fontSize: '60px'}} onClick={handleClick}/>
 
@@ -192,15 +194,15 @@ const ChallengeForm = () => {
                                 </div>
 
                                 <div style={{width:'200px', height:'200px',
-                            border:'1px solid gray', marginLeft:'30px',display:'inline-block'}}
-                            >여기사진</div>
+                                border:'1px solid gray', marginLeft:'30px',display:'inline-block'}}
+                                ></div>
                     </div>
 
-                    <br/><br/>
+                    <br/>
 
-                    <div className='row'>나쁜 인증샷 예시
+                    <div className='row'>나쁜 인증샷 예시<br/>
                                 <div style={{width:'150px', height:'150px',
-                                border: '1px solid gray', display:'inline-block'}}>
+                                border: '1px solid gray', display:'inline-block', float:'left'}}>
                                 
                                 <AddPhotoAlternateIcon sx={{fontSize: '60px'}} onClick={handleClick}/>
 
@@ -216,7 +218,7 @@ const ChallengeForm = () => {
                                 <div style={{width:'200px', height:'200px',
                                 border:'1px solid gray', marginLeft:'30px', display:'inline-block'}}
                                 // value={certifiBad}
-                                >여기사진2</div>
+                                ></div>
                     </div>
 
                             <div className='row'>
