@@ -4,7 +4,7 @@ import '../cssFolder/ChallengeExample.css';
 import DatePicker from 'react-datepicker';
 
 
-const ChallengeExample = () => {
+const ChallengeExample = (props) => {
     return (
         <div className='challenge_example'>
             <div className='example_container'><h1>미리보기</h1>
@@ -18,10 +18,9 @@ const ChallengeExample = () => {
                     <div className='example_detail' style={{display:'inline-block'}}>
                     {/* 상세 정보 div */}
 
-                        <input type="text" className='example_title' required/>
+                        <input type="text" className='example_title' required value={props.ch_title}/>
 
-                        <input type="text" className='example_cate' required value='카테고리1'/>
-                        <input type="text" className='example_cate' required value='카테고리2'/>
+                        <input type="text" className='example_cate' required value={props.ch_category}/>
 
                         <input type="text" className='example_freq' required value='평일 매일, 하루 한번'/>
 
