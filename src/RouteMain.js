@@ -50,7 +50,7 @@ const RouteMain=()=>{
                 {/* challenge */}
                 <Route path="/challenge/form" element={<ChallengeForm/>}/>
                 <Route path="/challenge/detail/:num" element={<ChallengeDetail/>}/>
-                <Route path="/challenge/list" element={<ChallengeList/>}/>
+                <Route path="/challenge/list/:currentPage" element={<ChallengeList/>}/>
 
                 {/* Class */}
                 <Route path="/class/list" element={<ClassList/>}/>
