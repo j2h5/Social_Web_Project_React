@@ -21,6 +21,8 @@ import MoimForm from "./moim/MoimForm";
 import MoimDetailForm from "./moim/MoimDetailForm";
 import MoimList from "./moim/MoimList";
 import LoginFormTest from "./login/LoginFormTest";
+
+import CreateList from "./class/CreateList";
 const RouteMain=()=>{
     return (
         <div>
@@ -63,6 +65,11 @@ const RouteMain=()=>{
                 <Route path="/moim/form" element={<MoimForm/>}/>
                 <Route path="/moim/detailform/:num" element={<MoimDetailForm/>}/>
                 <Route path="/moim/list" element={<MoimList/>}/>
+
+                 {/* Test */}
+                <Route path="/test" element={<CreateList/>}/>
+
+
                 <Route path="*" element={
                     <div>
                         <img src={errimg} alt=""/>
