@@ -11,7 +11,7 @@
 }
 .moimdetail_top{
     width: 1000px;
-    top: 115px;
+    top: 125px;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -21,7 +21,7 @@
 }
 .moimdetail_mid{
     position: absolute;
-    top: 500px;
+    top: 600px;
 }
 .moimdetail_thumbnail{
     position: absolute;
@@ -29,6 +29,8 @@
     height:250px;
     border: 0px solid black;
     border-radius: 15px;
+    left: 50px;
+    top: 60px;
 }
 
 .moimdetail_title{
