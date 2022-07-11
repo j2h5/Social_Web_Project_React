@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate, useParams, Link} from 'react-router-dom';
 import axios from 'axios';
-
+import Navbar2 from '../main/Navbar2';
 import '../cssFolder/ChallengeList.css';
 import { GiFruitBowl, GiNotebook, GiRunningShoe } from "react-icons/gi";
 
@@ -40,12 +40,13 @@ const ChallengeList = () => {
 
     return (
         <div className='challenge_list'>
+            <Navbar2/>
             <div className="content_container" style={{marginLeft:'315px'}} >
                 <div className="row">
-                    <select className="select_cate" >
-                        <option value="class">클래스</option>
-                        <option value="challenge">챌린지</option>
-                        <option value="meeting">모임</option>
+                    <select className="select_cate">
+                        <option value="class" defaultValue="1">클래스</option>
+                        <option value="challenge" defaultValue="2">챌린지</option>
+                        <option value="meeting" defaultValue="3">모임</option>
                     </select>
                 </div>
                 <div className="challenge_name">
@@ -140,8 +141,9 @@ const ChallengeList = () => {
                         </div>
                     </div>
                 </div>
-                {/* 페이징 */}
-            <div style={{width:'700px',textAlign:'center'}}>
+
+                {/* 페이징 처리 */}
+            <div className='ch_list_pagination' style={{width:'700px',textAlign:'center'}}>
                 <ul className='pagination'>
                     {
                         (chal_data.startPage>1?
