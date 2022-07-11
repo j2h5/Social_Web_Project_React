@@ -10,11 +10,18 @@
     
 }
 .moimdetail_top{
-    width: 1290px;
-   height: 400px;
-   border: 1px solid black;
-   border-radius: 50px;
-   
+    width: 1000px;
+    top: 115px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 400px;
+    border: 1px solid black;
+    border-radius: 50px;
+}
+.moimdetail_mid{
+    position: absolute;
+    top: 500px;
 }
 .moimdetail_thumbnail{
     position: absolute;
@@ -22,8 +29,6 @@
     height:250px;
     border: 0px solid black;
     border-radius: 15px;
-    left:200px;
-    top: 65px;
 }
 
 .moimdetail_title{
@@ -131,7 +136,7 @@ ul, li {list-style:none;}
 }
 .image_table {width:1200px;margin:0 auto;}
 .image_table ul {font-size:0;text-align:center;}
-.image_table ul li {font-size:12px;display:inline-block;vertical-align:top;width:25%;}
+.image_table ul li {font-size:12px;display:inline-block;vertical-align:top;width:25%; margin-left: 50px;}
 .image_table ul li a {text-decoration:none;}
 .image_table ul li a {display:block;width:auto;background:#f5f5f5;margin:5px;}
 .image_table ul li a .screen {overflow:hidden;font-size:0;height:160px;} /* 이미지를 담은 박스 스타일 : 이 영역보다 크면 가리워지는 코드 overflow:hidden; absolute의 기준을 잡기 위해 position:relative를 적용*/

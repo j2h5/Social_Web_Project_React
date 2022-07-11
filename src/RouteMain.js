@@ -3,14 +3,15 @@ import './App.css';
 import { Route, Routes } from "react-router-dom";
 import {Main} from './main';
 import {Shop, ShopForm, ShopDetail, ShopUpdate } from './shop';
+
+// 회원가입
+import Register from "./User/Register";
+
 import Board from "./board/Board";
 import BoardForm from "./board/BoardForm";
 import BoardDetail from "./board/BoardDetail";
 import Login from "./login/Login";
-import Member from "./member/Member";
 import errimg from "./image/er.png"
-
-import MemberList from "./member/Member";
 import ChallengeForm from "./challenge/ChallengeForm";
 import ChallengeList from "./challenge/ChallengeList";
 import MainChallenge from "./main/Mainchallenge";
@@ -19,6 +20,7 @@ import {ClassList, ClassForm, ClassDetail,ClassUpdateForm,ClassGuide,ClassIntroG
 import MoimForm from "./moim/MoimForm";
 import MoimDetailForm from "./moim/MoimDetailForm";
 import MoimList from "./moim/MoimList";
+import LoginFormTest from "./login/LoginFormTest";
 const RouteMain=()=>{
     return (
         <div>
@@ -26,19 +28,24 @@ const RouteMain=()=>{
             <div className="main">
                 <Routes>
                 <Route path="/" element={<Main/>}/>
+
+                {/* 회원가입 */}
+                <Route path="/user/register" element={<Register/>}/>
+
+                <Route path="/login" element={<Login/>}/>
+                <Route path="/login/a" element={<LoginFormTest/>}/>
+
                 {/* Shop */}
                 <Route path="/shop/list" element={<Shop/>}/>
                 <Route path="/shop/form" element={<ShopForm/>}/>
                 <Route path="/shop/detail/:num" element={<ShopDetail/>}/>
                 <Route path="/shop/updateform/:num" element={<ShopUpdate/>}/>
-          
+
                 {/* Board */}
                 <Route path="/board/list/:currentPage" element={<Board/>}/>
                 <Route path="/board/form" element={<BoardForm/>}/>
                 <Route path="/board/detail/:num/:currentPage" element={<BoardDetail/>}/>
-                <Route path="/member/form" element={<Member/>}/>
-                <Route path="/member/list" element={<MemberList/>}/>
-                <Route path="/login" element={<Login/>}/>
+                
 
                 {/* challenge */}
                 <Route path="/challenge/form" element={<ChallengeForm/>}/>

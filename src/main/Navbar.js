@@ -51,9 +51,9 @@ const Navbar = () => {
              <button type="button" id='side_btn'class="btn btn-outline-secondary">로그인</button>
                 <button type="button" id='side_btn' class="btn btn-outline-secondary">마이페이지</button>
                 <ul>
-                    <li><NavLink className='side_nav' style={{textDecoration:'none',color:'white'}} to="/class/list">Class</NavLink></li>
-                    <li><NavLink className='side_nav' style={{textDecoration:'none',color:'white'}} to="/moim/list">Metting</NavLink></li>
-                    <li><NavLink className='side_nav' style={{textDecoration:'none',color:'white'}} to="/challenge/list">Challenge</NavLink></li>
+                    <li><NavLink className='side_nav' style={{color:'white'}} to="/class/list">Class</NavLink></li>
+                    <li><NavLink className='side_nav' style={{color:'white'}} to="/moim/list">Meeting</NavLink></li>
+                    <li><NavLink className='side_nav' style={{color:'white'}} to="/challenge/list">Challenge</NavLink></li>
                 </ul>
 
                 <ul>

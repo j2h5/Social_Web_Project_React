@@ -4,6 +4,7 @@ import challengeImg from './images/challengeImg.png'
 import moimImg from './images/moimImg.png'
 import classImg from './images/classImg.png'
 import { NavLink } from 'react-router-dom'
+import { NoEncryption } from '@material-ui/icons'
 const Demo = () => {
     return (
         <div className='demo' id='demo'>
@@ -12,7 +13,7 @@ const Demo = () => {
 	<ul>
 		<li>
         <NavLink  to="/challenge/list">
-			<a>
+		<a style={{textDecoration:'none'}}>
             
 				<div class="screen">
 					<div class="top1">CHALLENGE</div>
@@ -27,21 +28,21 @@ const Demo = () => {
 		</li>
 		<li>
             <NavLink to="/moim/list">
-			<a>
+			<a style={{textDecoration:'none'}}>
 				<div class="screen">
 					<div class="top2">METTING</div>
 					<div class="bottom2">모임</div>
 					<img src={moimImg}/>
 				</div>
 				<div>
-					<h3>Group with your buddy</h3>
+					<h3>Meet with your buddy</h3>
 				</div>
 			</a>
             </NavLink>
 		</li>
 		<li>
             <NavLink to="/class/list">
-			<a>
+			<a style={{textDecoration:'none'}}>
 				<div class="screen">
 					<div class="top3">CLASS</div>
 					<div class="bottom3">클래스</div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import './MoimList.css';
-import { GiFruitBowl, GiNotebook,GiRunningShoe } from "react-icons/gi";
+import { GiMicrophone,GiThreeFriends,GiFruitBowl, GiNotebook,GiRunningShoe } from "react-icons/gi";
 import {FaHandHoldingHeart, FaPalette} from 'react-icons/fa';
 import { IoCalendarNumberOutline } from "react-icons/io5";
 import { Navbar, Navbar2 } from '../main';
@@ -18,7 +18,7 @@ const MoimList = () => {
                 <div className="row">
                     <select className="select_cate" >
                         <option value="class">클래스</option>
-                        <option value="moim">챌린지</option>
+                        <option value="challenge">챌린지</option>
                         <option value="meeting">모임</option>
                     </select>
                 </div>
@@ -27,16 +27,16 @@ const MoimList = () => {
                 </div>
                 <div className="moim_cate">
                     <div className="cate">
-                        <IoCalendarNumberOutline style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
-                        <div className="catetext">규칙적인 생활</div>
+                        <GiMicrophone style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
+                        <div className="catetext">문화공연</div>
                     </div>
                     <div className="cate">
                         <GiRunningShoe style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
                         <div className="catetext">운동</div>
                     </div>
                     <div className="cate">
-                        <GiFruitBowl style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
-                        <div className="catetext">식습관</div>
+                        <GiThreeFriends style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
+                        <div className="catetext">사교인맥</div>
                     </div>
                     <div className="cate">
                         <FaHandHoldingHeart style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
@@ -48,7 +48,7 @@ const MoimList = () => {
                     </div>
                     <div className="cate">
                         <GiNotebook style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
-                        <div className="catetext">셀프케어</div>
+                        <div className="catetext">공부</div>
                     </div>
                 </div>
                 {/* moim_cate 닫힘*/}

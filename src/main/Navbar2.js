@@ -1,33 +1,24 @@
 import React, { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
-import './Navbar.css'
+import './Navbar2.css'
 
 const Navbar = () => {
         //setting mobile nav
     const [click, setClick] = useState(false)
     const handleClick = () => setClick(!click)
+    const navi=useNavigate();
 
     //change nav color when scrolling
-    const [color, setColor] = useState(false)
-    const changeColor = () => { 
-        if (window.scrollY >= 150) {
-            setColor(true)
-        } 
-        else {
-            setColor(false)
-         }    
-        
-         }
-
-    window.addEventListener('scroll', changeColor)
+  
     const closeMenu = () => setClick(false)
 
     return (
         
-        <div className={color ? 'header header-bg' : 'header'}>
+        <div className='header' style={{backgroundColor: 'rgba(75, 106, 153, 0.9)'}}>
             <nav className='navbar'>
                     <NavLink className='logo' to="/">
                 {/* <a href='/' className='logo'> */}
@@ -48,7 +39,7 @@ const Navbar = () => {
                         <span>   </span>
                     </label>
              <div className='sidebar'>
-             <button type="button" id='side_btn'class="btn btn-outline-secondary">로그인</button>
+                <button type="button" id='side_btn'class="btn btn-outline-secondary">로그인</button>
                 <button type="button" id='side_btn' class="btn btn-outline-secondary">마이페이지</button>
                 <ul>
                     <li>Class</li>

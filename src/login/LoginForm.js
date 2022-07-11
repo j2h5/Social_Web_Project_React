@@ -1,41 +1,63 @@
 import React, { useState } from "react";
-import '../App.css';
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import AuthService from "../service/auth-service";
+
+
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 
 const LoginForm=()=>{
     const navi = useNavigate();
-    const [id,setId] = useState('');
-    const [pass, setPass] = useState('');
+    const [username,setUsername] = useState('');
+    const [password,setPassword] = useState('');
 
-    const onSubmit=(e)=>{
+    const handleLogin = (e) => {
         e.preventDefault();
 
-        const url=process.env.REACT_APP_SPRING_URL+"member/login";
-        axios.post(url, {id,pass})
-        .then(res=>{
-            if(res.data===0){
-                alert("아이디 또는 비밀번호가 맞지 않습니다.")
+          AuthService.login(username, password).then(
+            (res) => {
+                console.log(res);
             }
-            else{
-                localStorage.loginok="yes";
-                localStorage.myid=id;
-                window.location.reload(); //새로고침
-                //navi("/login"); 
-            }
-        })
-    }
+          );
+
+      };
+
+ function Copyright(props) {
+   return (
+     <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+       <Link color="inherit" href="https://mui.com/">
+         Your Website
+      </Link>{' '}
+       {new Date().getFullYear()}
+      {'.'}
+     </Typography>
+   );
+ }
 
     return (
         <div>
-            <form onSubmit={onSubmit}>
+            {/* <form onSubmit={handleLogin}>
             <table style={{width:'300px',marginLeft:'120px'}}>
                 <caption><h3>회원 로그인~~</h3></caption>
                 <tbody>
                     <tr>
                         <td width={200}>
                             <input type='text' placeholder="아이디" style={{width:'180px'}} required
-                            onChange={(e)=>{  setId(e.target.value);  }}/>
+                            onChange={(e)=>{  setUsername(e.target.value);console.log("username:"+username);  }}/>
                         </td>
                         <td rowSpan={2}>
                             <button type="submit" style={{width:'100%',height:'80px'}}>로그인</button>
@@ -44,12 +66,81 @@ const LoginForm=()=>{
                     <tr>
                         <td width={200}>
                         <input type='password' placeholder="비밀번호" style={{width:'180px'}} required
-                        onChange={(e)=>{  setPass(e.target.value);  }}/>
+                        onChange={(e)=>{  setPassword(e.target.value);console.log("password:"+password);  }}/>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            </form>
+            </form> */}
+
+<ThemeProvider >
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <Box component="form" noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="#" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 8, mb: 4 }} />
+      </Container>
+    </ThemeProvider>
+
         </div>
     )
 }
