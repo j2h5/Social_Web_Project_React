@@ -1,9 +1,8 @@
 .challenge_example{
     position: absolute;
-    top: 10px;
-    left: 700px;
-    width: 750px;
-    height: 1200px;
+    top: 5px;
+    left: 600px;
+    width: 800px;
     border: 1px solid gray;
 }
 
