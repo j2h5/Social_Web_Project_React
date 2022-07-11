@@ -8,9 +8,6 @@
     transition: .3s ease-in;
     overflow: hidden;
 }
-.logo h1 :hover{
-  text-decoration: none;
-}
 .header-bg {
  background-color: rgba(75, 106, 153, 0.9); 
 

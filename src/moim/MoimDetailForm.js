@@ -6,7 +6,7 @@ import img2 from './images/img2.jpg';
 import img3 from './images/img3.jpg';
 import kyungdae from './images/kyungdae.png';
 import bori from './images/bori.png';
-import {Navbar2 } from '../main';
+import { Footer, Navbar2 } from '../main';
 
 const MoimDetailForm = () => {
     return (
@@ -102,7 +102,7 @@ const MoimDetailForm = () => {
             </div>{/* mid */}
      
         </div> {/* content */}
-
+<Footer/>
         </div> 
 
     );
