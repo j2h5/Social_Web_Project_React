@@ -100,7 +100,8 @@ const ChallengeForm = () => {
                         카테고리 &nbsp;
                             <select value={ch_category} 
                             onChange={(e)=>{
-                                setCh_category(e.target.value)
+                                setCh_category(e.target.value);
+                                console.log(ch_category);
                             }}>
                                     <option disabled selected>카테고리 선택</option>
                                     <option>규칙적인 생활</option>
@@ -109,7 +110,7 @@ const ChallengeForm = () => {
                                     <option>마음챙김</option>
                                     <option>취미</option>
                                     <option>셀프케어</option>
-                                    </select>
+                            </select>
                     </div>
                         
                         
