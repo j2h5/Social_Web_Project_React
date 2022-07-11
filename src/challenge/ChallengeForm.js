@@ -23,7 +23,7 @@ import Navbar2 from '../main/Navbar2';
 const ChallengeForm = () => {
     
     const[ch_category, setCh_category] = useState('규칙적인 생활');
-    const[ch_title, setCh_title] = useState('');
+    //const[ch_title, setCh_title] = useState('');
     const[ch_title_photo, setCh_title_photo] = useState('');
     const[ch_content, setCh_content] = useState('');
     const[ch_add_photos, setCh_add_photos] = useState('');
@@ -34,6 +34,36 @@ const ChallengeForm = () => {
     const[ch_period, setCh_period] = useState('');
     const[ch_status, setCh_status] = useState('');
     const[ch_deposit, setCh_deposit] = useState('1');
+
+    //data로 묶어서 백단으로 전송
+    const[data,setData] = useState({
+        ch_category:'', ch_title:'', ch_title_photo:'', ch_content:'', ch_add_photos:'', ch_certifi_exphoto:'',
+        ch_certifi_exphoto2:'', ch_startday:'', ch_endday:'', ch_status:'', ch_deposit:''
+    });
+
+    //submit시 호출
+    const onSave = (e) => {
+        e.preventDefault();//기본이벤트무효화
+        //console.dir(data);
+
+        const url=process.env.REACT_APP_SPRING_URL+"challenge/insert";
+            axios.post(url,data)
+            .then(res=>{
+            alert("끝 집에가!")
+        })
+    }
+
+    // data 입력 시 호출
+    const onDataChange = (e) => {
+        const {name,value} = e.target;
+        setData({
+            ...data,
+            [name]:value
+        })
+        console.log(data)
+    }
+
+
 
 
     // 미리보기/수정 버튼 관련
@@ -77,7 +107,7 @@ const ChallengeForm = () => {
 
         //추가하는 함수 이벤트
         const onInsert = () =>{
-            axios.post(insertUrl, {ch_category, ch_title, ch_content,
+            axios.post(insertUrl, {
             }) //key:value (spring 변수와 같아야함)
             .then(res=>{
                 //insert 성공 후 처리할 코드들
@@ -94,15 +124,13 @@ const ChallengeForm = () => {
             <Navbar2/>
         {/* 전체div */}
                 {/* 챌린지 등록폼 */}
+                <form onSubmit={onSave}>
                 <div className="challenge_form" style={{width:'600px'}}>
                 <h1>챌린지 등록</h1>
                     <div className='row'>
                         카테고리 &nbsp;
-                            <select value={ch_category} 
-                            onChange={(e)=>{
-                                setCh_category(e.target.value);
-                                console.log(ch_category);
-                            }}>
+                            <select value={ch_category} name="ch_category"
+                            onChange={onDataChange}>
                                     <option disabled selected>카테고리 선택</option>
                                     <option>규칙적인 생활</option>
                                     <option>운동</option>
@@ -115,18 +143,16 @@ const ChallengeForm = () => {
                         
                         
                     <div className='row'>챌린지명
-                            <input type="text" className="form-control"
-                            value={ch_title}
-                            onChange={(e)=>{
-                                setCh_title(e.target.value)
-                            }} 
+                            <input type="text" className="form-control" name="ch_title"
+                            //value={ch_title}
+                            onChange={onDataChange} 
                             style={{width:'300px'}} required placeholder='ex) 매일 7:00am 기상하기'/>
                     </div>    
                         
                         
                     <div className='row'>대표사진
-                            <input type="file" className="form-control" 
-                            value={ch_title_photo}
+                            <input type="file" className="form-control" name="ch_title_photo"
+                            //value={ch_title_photo}
                             onChange={imageUpload}
                             style={{width:'250px'}}/>
                     </div>
@@ -148,9 +174,7 @@ const ChallengeForm = () => {
                             locale = { ko }
                             placeholderText="챌린지 시작일과 종료일을 선택해주세요"
                             dateFormat="yyyy년 MM월 dd일"
-                            onChange={(update) => {
-                            setDateRange(update);
-                            }}
+                            onChange={onDataChange}
                             withPortal/>
                     </div>
                         
@@ -159,9 +183,7 @@ const ChallengeForm = () => {
                                 <div className='chalDeposit'>
                                 <input type="text" className="form-control"
                                 value={ch_deposit}
-                                onChange={(e)=>{
-                                    setCh_title(e.target.value)
-                                }}
+                                onChange={onDataChange}
                                 style={{width:'50px', display:'inline-block'}} required
                                 />&nbsp;만원
                                 &nbsp;
@@ -224,16 +246,17 @@ const ChallengeForm = () => {
 
                             <div className='row'>
                                 <button type="submit" className="btn btn-info"
-                                onClick={()=>{setShow(!show);
-                                }}>
-                                    {show ? "수정하기" : "다음"}
+                                // onClick={()=>{setShow(!show);
+                                // }}
+                                >
+                                    {/* {show ? "수정하기" : "다음"} */}
                                 </button>
 
                                 {show && <ChallengeExample/>}
                             </div>
                             {/* 다음 버튼 누르면 미리보기 */}
                 </div>
-
+                </form>                    
         </div>
     );
 };    
