@@ -28,6 +28,7 @@ min-height: 18em;
 /* ====================== Class detail ======================*/
 .content_container {
     width: 1290px;
+    border: 1px solid white ;
     padding: 41px 0 0;
     /* flex: 1;
     display: flex;

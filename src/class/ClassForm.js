@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import '../App.css';
 import './ClassForm.css';
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
@@ -16,10 +15,7 @@ const ClassForm = () =>{
     let photoUrl = "http://localhost:9001/save/";
     let insertUrl = "http://localhost:9001/class/insert";
 
-    const [photo, setPhoto] = useState('');
-    const [sangpum, setSangpum] = useState('');
-    const [su, setSu] = useState('');
-    const [dan, setDan] = useState('');
+    
 
     //class table < optionnum
     const [class_category, setClass_category] = useState('스냅사진');
@@ -39,7 +35,7 @@ const ClassForm = () =>{
     const [class_anoun, setClass_anoun] = useState('');
     const [class_confirm, setClass_confirm] = useState('');
 
-    //classoption table <classnum
+    //classoption table <classnum 배열로 저장해야할듯?
     const [classoption_day, setClassoption_day] = useState('');
     //const [classoption_starttime, setClassoption_starttime] = useState(0); 밑에서 사용
     //const [classoption_endtime, setClassoption_endtime] = useState(0); 밑에서 사용
@@ -63,15 +59,34 @@ const ClassForm = () =>{
         });
     }
 
-    //추가하는 
+    //추가하는 #############################33
     const onInsert = (e) => {
         //axios.post(insertUrl, {sangpum:sangpum, su:su, dan:dan}) // a : b - a는 spring dto의 필드 명, b는 여기서 보내주는 필드명 같을 때는 생략 가능
-        axios.post(insertUrl, {sangpum, su, dan })
+        axios.post(insertUrl, {class_category, class_location, class_name,class_photo1,class_photo2,class_photo3,class_photo4,class_photo5,class_target,class_price,class_hour,class_intro,class_summ,class_curri,class_anoun,class_confirm,classoption_day,classoption_starttime,classoption_endtime,classoption_totalperson })
         .then(res => {
             //insert 성공 후처리 코드
-            setSangpum('');
-            setSu('');
-            setDan('');
+            setClass_category('');
+            setClass_location('');
+            setClass_name('');
+            setClass_photo1('');
+            setClass_photo2('');
+            setClass_photo3('');
+            setClass_photo4('');
+            setClass_photo5('');
+            setClass_target('');
+            setClass_price('');
+            setClass_hour('');
+            setClass_intro('');
+            setClass_summ('');
+            setClass_curri('');
+            setClass_anoun('');
+            setClass_confirm('');
+
+            setClassoption_day('');
+            setClassoption_starttime('');
+            setClassoption_endtime('');
+            setClassoption_totalperson('');
+            
             //목록으로 이동
             navi("/class/list")
         })
@@ -153,7 +168,10 @@ const ClassForm = () =>{
                     <span style={{fontSize:'32px', color:'#fea948',width:'55px',float:'left',height:'32px', marginLeft:'5px'}}>
                         👉
                     </span>  
-                    <button className="btn1">클래스 가이드 &gt; </button>
+                    <button className="btn1"
+                    onClick={()=>{
+                        navi("/class/guide")
+                    }}>클래스 가이드 &gt; </button>
                 </div> 
                 
                 <br/>
@@ -260,7 +278,8 @@ const ClassForm = () =>{
                     value={class_hour}/>
                     <span style={{fontSize:'20px', marginLeft:'20px'}}>시간 (시간당 1000원)</span>
                 </div>
-
+                
+                {/* 얘가 추가 */}
                 <div className="row">
                     <div className="label1" >일정 및 정원</div>
                     <input type='date'className="label2" 
@@ -299,7 +318,10 @@ const ClassForm = () =>{
                     <span style={{fontSize:'32px', color:'#fea948',width:'55px',float:'left',height:'32px', marginLeft:'5px'}}>
                         👉
                     </span>  
-                    <button className="btn1">클래스 소개 가이드 &gt; </button>
+                    <button className="btn1"
+                    onClick={()=>{
+                        navi("/class/introguide")
+                    }}>클래스 소개 가이드 &gt; </button>
                 </div> 
                 
                 <br/>
