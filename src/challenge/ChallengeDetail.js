@@ -4,6 +4,8 @@ import '../cssFolder/ChallengeDetail.css';
 import ProgressBar from "@ramonak/react-progress-bar";
 import {useNavigate,useParams} from "react-router-dom";
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
+import Navbar2 from '../main/Navbar2';
+import Navbar from '../main/Navbar2';
 
 
 const ChallengeDetail = () => {
@@ -45,6 +47,7 @@ const ChallengeDetail = () => {
 
     return (
         <div className='challenge_detail'>
+            <Navbar2/>
             <div className='detail_container'><h1>챌린지 상세페이지</h1>
             {/* 큰 div */}
                 <div className='row'>
