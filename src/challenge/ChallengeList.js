@@ -1,5 +1,5 @@
-import React, {useState, useParams, useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {useNavigate, useParams, Link} from 'react-router-dom';
 import axios from 'axios';
 
 import '../cssFolder/ChallengeList.css';
@@ -20,11 +20,11 @@ const ChallengeList = () => {
     const [chal_data, setChal_data]=useState('');
 
         // 현재 페이지번호 읽어오기
-        const {currentPage}=useParams();
+        const {currentPage} = useParams();
 
         // url 선언
         let chal_pagelistUrl=process.env.REACT_APP_SPRING_URL+"challenge/pagelist?currentPage="+currentPage;
-        let chal_photoUrl=process.env.REACT_APP_SPRING_URL+"save/";
+        //let chal_photoUrl=process.env.REACT_APP_SPRING_URL+"save/";
 
         // 시작시 호출되는 함수
     const pageList=()=>{
@@ -140,6 +140,37 @@ const ChallengeList = () => {
                         </div>
                     </div>
                 </div>
+                {/* 페이징 */}
+            <div style={{width:'700px',textAlign:'center'}}>
+                <ul className='pagination'>
+                    {
+                        (chal_data.startPage>1?
+                        <li>
+                            <Link to={`/board/list/${chal_data.startPage-1}`}>이전</Link>
+                        </li>:'')
+                        
+                    }
+                    {
+                        chal_data.parr && chal_data.parr.map(n=>{
+                            const url="/board/list/"+n;
+                            return(
+                                <li>
+                                    <Link to={url}>
+                                        <b style={{color:n==currentPage?'red':'black'}}>{n}</b></Link>
+                                </li>
+
+                            )
+                        })
+                    }
+                    {
+                        (chal_data.endPage<chal_data.totalPage?
+                        <li>
+                            <Link to={`/board/list/${chal_data.endPage+1}`}>다음</Link>
+                        </li>:'')
+                        
+                    }
+                </ul>
+            </div>
             </div>
             {/* content_container 닫힘 */}
         </div>
