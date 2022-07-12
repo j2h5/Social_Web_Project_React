@@ -16,7 +16,7 @@ const MoimForm = () => {
     //submit 시 호출될 함수
     const onSave = (e) =>{
         e.preventDefault(); //기본 이벤트를 무효화
-            const url = "http://localhost:9009/moim/insert";
+            const url = process.env.REACT_APP_SPRING_URL+"moim/insert";
             axios.post(url, data)
             .then(res=>{
                 alert("insert 성공")
@@ -74,7 +74,6 @@ const MoimForm = () => {
                         </div>
              </div>
             <br></br><br></br>
-            
                 <div style={{ width:"880px"}}>
                     <h3>모집글 작성</h3>
                 <Editor placeholder={'Write something...'} />

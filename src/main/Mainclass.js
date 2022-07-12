@@ -4,12 +4,13 @@ import boardclass from './images/boardclass.jpg'
 import classimg from './images/classImg.png'
 import dancecalss from './images/danceclass.jpg'
 import { NavLink } from 'react-router-dom'
+import tango from './images/tango.jpg'
 const Mainclass = () => {
     return (
           <div className='mainclass'>
             <div className='mainclass_container'>
             <div className='most_mainclass'>
-            <h1>가장 인기있는 클래스</h1>
+            <h1>🔥가장 인기있는 클래스</h1>
             </div>
         <ul class="imglist_ul">
 		<li>
@@ -26,10 +27,10 @@ const Mainclass = () => {
 			<div className='a'>
 				<div class="screen3">
 					<span></span><span></span><span></span><span></span>
-					<img src={classimg} alt=''/>
+					<img src={tango} alt=''/>
 				</div>
-				<h3>수학교실</h3>
-				<p>010010001001010001</p>
+				<h3>한별의 탱고교실</h3>
+				<p>팅팅탱탱</p>
 			</div>
 		</li>
 		<li>

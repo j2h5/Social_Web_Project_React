@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
-import { NavLink } from 'react-router-dom'
-
-
+import { useNavigate, NavLink } from 'react-router-dom'
 import './Navbar.css'
 
 const Navbar = () => {
@@ -25,11 +23,15 @@ const Navbar = () => {
     window.addEventListener('scroll', changeColor)
     const closeMenu = () => setClick(false)
 
+    const navigate = useNavigate();
+    const navigateToLogin = () =>{
+        navigate('/login/a');
+    };
     return (
         
         <div className={color ? 'header header-bg' : 'header'}>
             <nav className='navbar'>
-                    <NavLink className='logo' to="/">
+                    <NavLink style={{textdecoration:'none'}} className='logo' to="/">
                 {/* <a href='/' className='logo'> */}
                     {/* <img src={logo} alt='logo' /> */}<h1>오늘, 한강</h1>
                 {/* </a> */}
@@ -48,7 +50,7 @@ const Navbar = () => {
                         <span>   </span>
                     </label>
              <div className='sidebar'>
-             <button type="button" id='side_btn'class="btn btn-outline-secondary">로그인</button>
+             <button type="button" onClick={navigateToLogin} id='side_btn'class="btn btn-outline-secondary">로그인</button>
                 <button type="button" id='side_btn' class="btn btn-outline-secondary">마이페이지</button>
                 <ul>
                     <li><NavLink className='side_nav' style={{color:'white'}} to="/class/list">Class</NavLink></li>
@@ -68,7 +70,7 @@ const Navbar = () => {
                         <a href='#about' onClick={closeMenu}>ABOUT</a>
                     </li>
                     <li className='nav-item'>
-                        <a href='/' onClick={closeMenu}>LOGIN</a>
+                        <a href='/login/a' onClick={closeMenu}>LOGIN</a>
                     </li>
                     <li className='nav-item'>
                         <a href='/' onClick={closeMenu}>MYPAGE</a>

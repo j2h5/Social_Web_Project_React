@@ -76,8 +76,9 @@ export default function Checkout() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-        <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+      <Container component="main" maxWidth="sm" sx={{ mb: 6 }}>
+        <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 }
+      , width: '100vh', height: '90vh' }}>
           
           <Typography component="h1" variant="h4" align="center">
           <div className='title1'>회원 가입</div>

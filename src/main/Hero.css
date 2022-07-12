@@ -1,7 +1,7 @@
 .hero {
     /* background-color: var(--overlay); */
     color: #fff;
-    height: 920px;
+    height: 940px;
     width: 100%;
     position: relative;
 }
@@ -9,7 +9,7 @@
 .hero:before {
     content: '';
     /* background: url('./images/han ya2.jpg') no-repeat center center/cover;   */
-    height: 920px;
+    height: 940px;
     width: 100%;
     position: absolute;
     top: 0;
@@ -60,7 +60,7 @@
     /* min-width:100%;
     min-height:100%; */
     width: 1920;
-    height:921px;
+    height:941px;
     z-index:-100;
     /* background:url('./images/han ya2.jpg')no-repeat; */
     background-size:fill;

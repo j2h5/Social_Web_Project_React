@@ -11,6 +11,30 @@ const ShopForm = () =>{
 
     const navi = useNavigate();
 
+    //class table < optionnum
+    const [class_category, setClass_category] = useState('스냅사진');
+    const [class_location, setClass_location] = useState('반포');
+    const [class_name, setClass_name] = useState('');
+    const [class_photo1, setClass_photo1] = useState('');
+    const [class_photo2, setClass_photo2] = useState('');
+    const [class_photo3, setClass_photo3] = useState('');
+    const [class_photo4, setClass_photo4] = useState('');
+    const [class_photo5, setClass_photo5] = useState('');
+    const [class_target, setClass_target] = useState('입문');
+    // const [class_price, setClass_price] = useState(0); 밑에서 사용
+    // const [class_hour, setClass_hour] = useState(0); 밑에서 사용
+    const [class_intro, setClass_intro] = useState('');
+    const [class_summ, setClass_summ] = useState('');
+    const [class_curri, setClass_curri] = useState('');
+    const [class_anoun, setClass_anoun] = useState('');
+    const [class_confirm, setClass_confirm] = useState('');
+
+    //classoption table <classnum
+    const [classoption_day, setClassoption_day] = useState('');
+    //const [classoption_starttime, setClassoption_starttime] = useState(0); 밑에서 사용
+    //const [classoption_endtime, setClassoption_endtime] = useState(0); 밑에서 사용
+    //const [classoption_totalperson, setClassoption_totalperson] = useState(1); 밑에서 사용
+    
     //url 등록
     let uploadUrl = "http://localhost:9001/shop/upload";
     let photoUrl = "http://localhost:9001/save/";
