@@ -3,7 +3,6 @@ import '../cssFolder/Challenge.css';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom'
 import Editor from '../class/EditorWithUseQuill';
-
 import 'react-quill/dist/quill.snow.css';
 import "react-datepicker/dist/react-datepicker.css";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
@@ -15,77 +14,38 @@ import { ko } from 'date-fns/esm/locale';
 import Navbar2 from '../main/Navbar2';
 
 //url 등록
-    let insertUrl = "http://localhost:9001/challenge/insert";
-    let uploadUrl = "http://localhost:9001/challenge/upload";
-    let photoUrl = "http://localhost:9001/save/";
+    let insertUrl = process.env.REACT_APP_SPRING_URL+"challenge/insert";
+    let uploadUrl = process.env.REACT_APP_SPRING_URL+"challenge/upload";
+    let photoUrl = process.env.REACT_APP_SPRING_URL+"save/";
 
 
 const ChallengeForm = () => {
-    
+
+    const navi = useNavigate();
+
     const[ch_category, setCh_category] = useState('규칙적인 생활');
-    //const[ch_title, setCh_title] = useState('');
+    const[ch_title, setCh_title] = useState('');
     const[ch_title_photo, setCh_title_photo] = useState('');
     const[ch_content, setCh_content] = useState('');
-    const[ch_add_photos, setCh_add_photos] = useState('');
-    const[ch_certifi_exphoto, setCh_certifi_exphoto] = useState('');
-    const[ch_certifi_exphoto2, setCh_certifi_exphoto2] = useState('');
+    //const[ch_deposit, setCh_deposit] = useState('');
+    const[ch_exphoto1, setCh_exphoto1] = useState('');
+    const[ch_exphoto2, setCh_exphoto2] = useState('');
     const[ch_startday, setCh_startday] = useState('');
     const[ch_endday, setCh_endday] = useState('');
     const[ch_period, setCh_period] = useState('');
     const[ch_status, setCh_status] = useState('');
-    const[ch_deposit, setCh_deposit] = useState('1');
 
-    //data로 묶어서 백단으로 전송
-    const[data,setData] = useState({
-        ch_category:'', ch_title:'', ch_title_photo:'', ch_content:'', ch_add_photos:'', ch_certifi_exphoto:'',
-        ch_certifi_exphoto2:'', ch_startday:'', ch_endday:'', ch_status:'', ch_deposit:''
-    });
-
-    //submit시 호출
-    const onSave = (e) => {
-        e.preventDefault();//기본이벤트무효화
-        //console.dir(data);
-
-        const url=process.env.REACT_APP_SPRING_URL+"challenge/insert";
-            axios.post(url,data)
-            .then(res=>{
-            alert("끝 집에가!")
+    //추가하는 함수 이벤트
+    const onInsert = () =>{
+        axios.post(insertUrl, { ch_category, ch_title, ch_title_photo, ch_content, ch_deposit, ch_exphoto1, ch_exphoto2} )
+        .then(res=>{
+            //insert 성공 후 처리할 코드들
+            alert("집에가!!")
+            
+            //목록으로 이동
+            //navi("/challenge/list");
         })
     }
-
-    // data 입력 시 호출
-    const onDataChange = (e) => {
-        const {name,value} = e.target;
-        setData({
-            ...data,
-            [name]:value
-        })
-        console.log(data)
-    }
-
-
-
-
-    // 미리보기/수정 버튼 관련
-    const [show, setShow] = useState(false);
-
-    //챌린지 기간 선택 (date picker)
-    const [dateRange, setDateRange] = useState([null, null]);
-    const [startDate, endDate] = dateRange;
-
-    const ChalDatePicker = styled(DatePicker)`
-        width: 300px;
-        height: 33.99px;
-    `;
-
-    const navi = useNavigate();
-
-    //사진 누르면 인증샷 업로드 file
-    const photoInput = useRef();
-    const handleClick = () =>{
-        photoInput.current.click();
-    };
-
 
     //이미지 업로드 
     const imageUpload = (e) => {
@@ -105,18 +65,67 @@ const ChallengeForm = () => {
         });
     }
 
-        //추가하는 함수 이벤트
-        const onInsert = () =>{
-            axios.post(insertUrl, {
-            }) //key:value (spring 변수와 같아야함)
-            .then(res=>{
-                //insert 성공 후 처리할 코드들
-                
-                
-                //목록으로 이동
-                navi("/challenge/list");
-            })
+        //이미지 업로드 2
+        const imageUpload2 = (e) => {
+            const uploadFile = e.target.files[0];
+            const imageFile = new FormData();
+            imageFile.append("uploadFile", uploadFile);
+    
+            axios({
+                method:'post',
+                url: uploadUrl,
+                data: imageFile,
+                headers:{'content-Type':'multipart/form-data'}
+            }).then(res=>{
+                setCh_exphoto1(res.data);
+            }).catch(err=>{
+                alert(err);
+            });
         }
+        //이미지 업로드 3
+        const imageUpload3 = (e) => {
+            const uploadFile = e.target.files[0];
+            const imageFile = new FormData();
+            imageFile.append("uploadFile", uploadFile);
+
+            axios({
+                method:'post',
+                url: uploadUrl,
+                data: imageFile,
+                headers:{'content-Type':'multipart/form-data'}
+            }).then(res=>{
+                setCh_exphoto2(res.data); 
+            }).catch(err=>{
+                alert(err);
+            });
+    }
+
+    //가격제한
+    const moneymin = 0;
+    const moneymax = 10000000;
+    const [ch_deposit, setCh_deposit] = useState('');
+    const moneyChange = event => {
+        const value = Math.max(moneymin, Math.min(moneymax, Number(event.target.value)));
+        setCh_deposit(value);
+    };
+
+    // 미리보기/수정 버튼 관련
+    const [show, setShow] = useState(false);
+
+    //챌린지 기간 선택 (date picker)
+    const [dateRange, setDateRange] = useState([null, null]);
+    const [startDate, endDate] = dateRange;
+
+    const ChalDatePicker = styled(DatePicker)`
+        width: 300px;
+        height: 33.99px;
+    `;
+
+    //사진 누르면 인증샷 업로드 file
+    const photoInput = useRef();
+    const handleClick = () =>{
+        photoInput.current.click();
+    };
 
 
     return (
@@ -124,35 +133,29 @@ const ChallengeForm = () => {
             <Navbar2/>
         {/* 전체div */}
                 {/* 챌린지 등록폼 */}
-                <form onSubmit={onSave}>
+                <form onSubmit={onInsert}>
                 <div className="challenge_form" style={{width:'600px'}}>
                 <h1>챌린지 등록</h1>
-                    <div className='row'>
-                        카테고리 &nbsp;
-                            <select value={ch_category} name="ch_category"
-                            onChange={onDataChange}>
+                    <div className='row'>카테고리 &nbsp;
+                            <select name="ch_category" onChange={(e)=>{  setCh_category(e.target.value); }}>
                                     <option disabled selected>카테고리 선택</option>
                                     <option>규칙적인 생활</option>
                                     <option>운동</option>
                                     <option>식습관</option>
                                     <option>마음챙김</option>
                                     <option>취미</option>
-                                    <option>셀프케어</option>
-                            </select>
+                                    <option>셀프케어</option> </select>
                     </div>
-                        
                         
                     <div className='row'>챌린지명
                             <input type="text" className="form-control" name="ch_title"
-                            //value={ch_title}
-                            onChange={onDataChange} 
+                            value={ch_title}  onChange={(e)=>{  setCh_title(e.target.value); }}
                             style={{width:'300px'}} required placeholder='ex) 매일 7:00am 기상하기'/>
                     </div>    
                         
-                        
+                    <img alt="" src={photoUrl+ch_title_photo} className="imgphoto"/>
                     <div className='row'>대표사진
                             <input type="file" className="form-control" name="ch_title_photo"
-                            //value={ch_title_photo}
                             onChange={imageUpload}
                             style={{width:'250px'}}/>
                     </div>
@@ -165,7 +168,6 @@ const ChallengeForm = () => {
                             
                         
                     <div className='row'>챌린지 기간
-
                             {/* 달력에서 기간 선택 가능 */}
                             <ChalDatePicker
                             selectsRange={true}
@@ -174,17 +176,16 @@ const ChallengeForm = () => {
                             locale = { ko }
                             placeholderText="챌린지 시작일과 종료일을 선택해주세요"
                             dateFormat="yyyy년 MM월 dd일"
-                            onChange={onDataChange}
+                            //onChange={onDataChange}
                             withPortal/>
                     </div>
-                        
+                    
                     <div className='row'>최소 예치금
-                            
                                 <div className='chalDeposit'>
-                                <input type="text" className="form-control"
-                                value={ch_deposit}
-                                onChange={onDataChange}
-                                style={{width:'50px', display:'inline-block'}} required
+                                <input type="number" className="form-control"  step='1000' value={ch_deposit}
+                                onChange={(e)=>{  setCh_deposit(e.target.value); }}
+                                onKeyDown={moneyChange} defaultValue='10000'
+                                style={{width:'200px', display:'inline-block'}} required
                                 />&nbsp;만원
                                 &nbsp;
 
@@ -200,11 +201,24 @@ const ChallengeForm = () => {
                     </div>
 
                     {/* 인증샷예시 */}
+                    <img alt="" src={photoUrl+ch_exphoto1} className="imgphoto"/>
+                    <div className='row'>올바른 인증샷 예시
+                            <input type="file" className="form-control" name="ch_title_photo"
+                            onChange={imageUpload2}
+                            style={{width:'250px'}}/>
+                    </div>
+                    <img alt="" src={photoUrl+ch_exphoto2} className="imgphoto"/>
+                    <div className='row'>나쁜 인증샷 예시
+                            <input type="file" className="form-control" name="ch_title_photo"
+                            onChange={imageUpload3}
+                            style={{width:'250px'}}/>
+                    </div>
+                    
                     <div className='row'>올바른 인증샷 예시<br/>
                                 <div style={{width:'150px', height:'150px',
                                 border: '1px solid gray', display:'inline-block', float:'left'}}>
 
-                                <AddPhotoAlternateIcon sx={{fontSize: '60px'}} onClick={handleClick}/>
+                                <AddPhotoAlternateIcon sx={{fontSize: '60px'}} onClick={handleClick} onChange={imageUpload2}/>
 
                                 <input 
                                     type="file"
@@ -212,7 +226,6 @@ const ChallengeForm = () => {
                                     multiple
                                     ref={photoInput}
                                     style={{display:'none'}}
-                                    value={ch_certifi_exphoto}
                                 />
                                 </div>
 
@@ -220,14 +233,15 @@ const ChallengeForm = () => {
                                 border:'1px solid gray', marginLeft:'30px',display:'inline-block'}}
                                 ></div>
                     </div>
-
+                    
                     <br/>
 
+                    
                     <div className='row'>나쁜 인증샷 예시<br/>
                                 <div style={{width:'150px', height:'150px',
                                 border: '1px solid gray', display:'inline-block', float:'left'}}>
                                 
-                                <AddPhotoAlternateIcon sx={{fontSize: '60px'}} onClick={handleClick}/>
+                                <AddPhotoAlternateIcon sx={{fontSize: '60px'}} onClick={handleClick} onChange={imageUpload3}/>
 
                                 <input 
                                     type="file"
@@ -235,7 +249,6 @@ const ChallengeForm = () => {
                                     multiple
                                     ref={photoInput}
                                     style={{display:'none'}}
-                                    value={ch_certifi_exphoto2}
                                 />
                                 </div>
                                 <div style={{width:'200px', height:'200px',
@@ -248,7 +261,7 @@ const ChallengeForm = () => {
                                 <button type="submit" className="btn btn-info"
                                 // onClick={()=>{setShow(!show);
                                 // }}
-                                >
+                                > 다음(임시)
                                     {/* {show ? "수정하기" : "다음"} */}
                                 </button>
 
@@ -259,6 +272,8 @@ const ChallengeForm = () => {
                 </form>                    
         </div>
     );
+
+
 };    
 
 export default ChallengeForm;
