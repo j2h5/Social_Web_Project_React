@@ -3,7 +3,7 @@
 }
 
 
-.logo{
+ .classlogo{
     position: relative;
     left: 150px;
     top: 200px;
@@ -15,7 +15,7 @@
     line-height: 37px;
     font-size: 30px;
     padding-top: 33px;
-}
+} 
 
 .guidecontent{
     position: relative;

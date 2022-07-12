@@ -11,7 +11,7 @@ const MainMoim = () => {
             <div className='mainmoim'>
             <div className='mainmoim_container'>
             <div className='most_mainmoim'>
-            <h1>가장 인기있는 모임</h1>
+            <h1>🔥가장 인기있는 모임</h1>
             </div>
         <ul class="imglist_ul">
 		<li>
@@ -20,8 +20,8 @@ const MainMoim = () => {
 					<span></span><span></span><span></span><span></span>
 					<img src={moim1} alt=''/>
 				</div>
-				<h3>이게모임</h3>
-				<p>이게뭐냐구요</p>
+				<h3>이게 모임</h3>
+				<p>이게 모예요</p>
 			</div>
 		</li>
 		<li>
@@ -30,7 +30,7 @@ const MainMoim = () => {
 					<span></span><span></span><span></span><span></span>
 					<img src={moim2} alt=''/>
 				</div>
-				<h3>저게모임</h3>
+				<h3>저게 모임</h3>
 				<p>저건뭐예요</p>
 			</div>
 		</li>

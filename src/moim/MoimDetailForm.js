@@ -1,14 +1,35 @@
-import React from 'react';
-import './MoimDetailForm.css'
-import { NavLink } from 'react-router-dom';
+import React, {useState,useEffect} from 'react';
+import axios from 'axios';
+import './MoimDetailForm.css';
+import { useNavigate} from 'react-router-dom';
 import img1 from './images/img1.jpg';
 import img2 from './images/img2.jpg';
 import img3 from './images/img3.jpg';
 import kyungdae from './images/kyungdae.png';
 import bori from './images/bori.png';
-import { Footer, Navbar2 } from '../main';
+import {Navbar2 } from '../main';
+
 
 const MoimDetailForm = () => {
+    const [dto,setDto]=useState('');
+    const navigate = useNavigate();
+    const navigateToMoimLIst = () =>{
+        navigate('/moim/list')
+    };
+
+    let detailUrl=process.env.REACT_APP_SPRING_URL+"moim/detailform/:num";
+    let photoUrl=process.env.REACT_APP_SPRING_URL+"save/";
+
+    const getData=()=>{
+        axios.get(detailUrl)
+        .then(res=>{
+            setDto(res.data);
+        })
+    }
+
+    useEffect(()=>{
+        getData();
+    },[])
     return (
 
         <div>
@@ -27,33 +48,44 @@ const MoimDetailForm = () => {
                 <div className='moimdetail_place'>장소</div>
             */}
                 
-                <div className='buttons'>
-                <button type="button" class="btn btn-light" id="join">참여하기</button>
-                <button type="button" class="btn btn-light" id="list">목록</button>
-                </div>
+            
                 <div className='con_box'>
                     <ul className='con_box_list'>
-                        <li>
+                    <li style={{borderBottom:'1px solid silver'}}>
                             <b class='con_box_list_compo'>
-                                제목:   
+                                카테고리:   {dto.moim_cate}
                             </b>
                         </li>
-                        <li>
+                        <li style={{borderBottom:'1px solid silver'}}>
                             <b class='con_box_list_compo'>
-                                인원/정원:
+                                제목:   {dto.moim_name}
                             </b>
                         </li>
-                        <li>
+                        <li style={{borderBottom:'1px solid silver'}}>
                             <b class='con_box_list_compo'>
-                                장소:
+                                인원/정원: {dto.moim_count}
                             </b>
                         </li>
-                        <li>
+                        <li style={{borderBottom:'1px solid silver'}}>
                             <b class='con_box_list_compo'>
-                                날짜:
+                                장소:   {dto.moim_place}
+                            </b>
+                        </li>
+                        <li style={{borderBottom:'1px solid silver'}}>
+                            <b class='con_box_list_compo'>
+                                날짜:   {dto.moim_writeday}
+                            </b>
+                        </li>
+                        <li style={{borderBottom:'1px solid silver'}}>
+                            <b class='con_box_list_compo'>
+                                방장:   {dto.moim_leader}
                             </b>
                         </li>
                     </ul>
+                </div>
+                <div className='buttons'>
+                <button type="button" class="btn btn-light" id="join">참여하기</button>
+                <button type="button"  onClick={navigateToMoimLIst} class="btn btn-light" id="list">목록</button>
                 </div>
                 </div>  {/* top */}
             
@@ -102,7 +134,7 @@ const MoimDetailForm = () => {
             </div>{/* mid */}
      
         </div> {/* content */}
-<Footer/>
+
         </div> 
 
     );

@@ -8,7 +8,7 @@ const ClassGuide = () => {
         <div>
             <img alt='' src={river} className='classguideimg'
             style={{width:'1920px', height:'280px', fontFamily:'Jua'}}/>
-            <div className='logo' style={{width:'150px', height:'150px'}}>
+            <div className='classlogo' style={{width:'150px', height:'150px'}}>
                 <span style={{fontFamily:'Jua', fontWeight:'600'}}>오늘,<br/>한강</span>
             </div>
 

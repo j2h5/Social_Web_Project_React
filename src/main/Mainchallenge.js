@@ -10,7 +10,7 @@ const MainChallenge = () => {
             <div className='mainchallenge'>
             <div className='mainchallenge_container'>
             <div className='most_mainchallenge'>
-            <h1>가장 인기있는 챌린지</h1>
+            <h1>🔥가장 인기있는 챌린지</h1>
             </div>
         <ul class="imglist_ul">
 		<li>

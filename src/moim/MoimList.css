@@ -10,7 +10,7 @@
 }
 
 .select_cate{
-    margin-left: 10px;
+    margin-left: 15px;
     width: 120px;
     height: 40px;
     border: solid 1px #000;
@@ -24,7 +24,7 @@
 }
 
 .moim_name{
-    width: 1294px;
+    width: 1290px;
     height: 150px;
     border: solid 1px #000;
     /* div겹침 */
