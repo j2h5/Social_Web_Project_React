@@ -21,6 +21,8 @@ import MoimForm from "./moim/MoimForm";
 import MoimDetailForm from "./moim/MoimDetailForm";
 import MoimList from "./moim/MoimList";
 import LoginFormTest from "./login/LoginFormTest";
+import MypageMain from "./mypage/MypageMain";
+
 const RouteMain=()=>{
     return (
         <div>
@@ -31,9 +33,12 @@ const RouteMain=()=>{
 
                 {/* 회원가입 */}
                 <Route path="/user/register" element={<Register/>}/>
-
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/login/a" element={<LoginFormTest/>}/>
+
+                {/* 마이페이지 */}
+                <Route path="/mypage" element={<MypageMain/>}/>
+
 
                 {/* Shop */}
                 <Route path="/shop/list" element={<Shop/>}/>
