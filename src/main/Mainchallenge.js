@@ -10,11 +10,11 @@ const MainChallenge = () => {
             <div className='mainchallenge'>
             <div className='mainchallenge_container'>
             <div className='most_mainchallenge'>
-            <h1>가장 인기있는 챌린지</h1>
+            <h1>🔥가장 인기있는 챌린지</h1>
             </div>
         <ul class="imglist_ul">
 		<li>
-		<NavLink to="/challenge/list">
+		<NavLink style={{textDecoration:'none'}} to="/challenge/list">
 			<div className='a'>
 				<div class="screen1">
 					<span></span><span></span><span></span><span></span>
@@ -26,7 +26,7 @@ const MainChallenge = () => {
 			</NavLink>
 		</li>
 		<li>
-		<NavLink to="/challenge/list">
+		<NavLink style={{textDecoration:'none'}} to="/challenge/list">
 			<div className='a'>
 				<div class="screen1">
 					<span></span><span></span><span></span><span></span>
@@ -38,7 +38,7 @@ const MainChallenge = () => {
 			</NavLink>
 		</li>
 		<li>
-			<NavLink to="/challenge/list">
+		<NavLink style={{textDecoration:'none'}} to="/challenge/list">
 			<div className='a'>
 				<div class="screen1">
 					<span></span><span></span><span></span><span></span>
@@ -50,7 +50,7 @@ const MainChallenge = () => {
 			</NavLink>
 		</li>
         <li>
-		<NavLink to="/challenge/list">
+		<NavLink style={{textDecoration:'none'}} to="/challenge/list">
 			<div className='a'>
 				<div class="screen1">
 					<span></span><span></span><span></span><span></span>

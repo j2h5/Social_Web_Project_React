@@ -13,6 +13,16 @@ div.menu{
   width: 800px;
   height: 100px;
 }
+div.App{
+  position: absolute;
+  top: 5px;
+  right:60px;
+}
+div.App h2{
+  color: white;
+  display: inline-block;
+  font-size: 18px;
+}
 
 div.main{
   position: absolute;

@@ -1,0 +1,56 @@
+.board_content{
+    position: absolute;
+    left:50%;
+    top:70px;
+    transform: translateX(-50%);
+    width:1290px;   
+    height:100%;
+
+}
+.board_boards{
+    position: absolute;
+    top:150px;
+    left:50%;
+    transform: translateX(-50%);
+    width:625px;
+    height: 140px;
+    border: 1px solid black;
+    border-radius: 25px;
+    box-shadow: 3px 3px darkgray;
+    background-color: rgb(214, 231, 237);
+}
+.boards_profile{
+    position: absolute;
+    left:50px;
+    top:20px;
+}
+.boards_title{
+    position: absolute;
+    left:170px;
+    top: 20px;
+}
+.boards_content{
+    position:absolute;
+    left:170px;
+    top:50px;
+}
+.boards_like{
+    position: absolute;
+    left:370px;
+    top:100px;
+}
+.boards_comment{
+    position: absolute;
+    left:420px;
+    top:100px;
+}
+.boards_writeday{
+    position: absolute;
+    left:270px;
+    top:100px;
+}
+.boards_photo{
+    position: absolute;
+    right:40px;
+    top:20px;
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 import './Navbar2.css'
@@ -9,16 +10,22 @@ const Navbar = () => {
         //setting mobile nav
     const [click, setClick] = useState(false)
     const handleClick = () => setClick(!click)
+ 
 
     //change nav color when scrolling
   
     const closeMenu = () => setClick(false)
 
+    
+    const navigate = useNavigate();
+    const navigateToLogin = () =>{
+        navigate('/login/a');
+    }
     return (
         
         <div className='header' style={{backgroundColor: 'rgba(75, 106, 153, 0.9)'}}>
             <nav className='navbar'>
-                    <NavLink className='logo' to="/">
+                    <NavLink style={{textDecoration:'none'}} className='logo' to="/">
                 {/* <a href='/' className='logo'> */}
                     {/* <img src={logo} alt='logo' /> */}<h1>오늘, 한강</h1>
                 {/* </a> */}
@@ -37,12 +44,12 @@ const Navbar = () => {
                         <span>   </span>
                     </label>
              <div className='sidebar'>
-             <button type="button" id='side_btn'class="btn btn-outline-secondary">로그인</button>
+                <button type="button" onClick={navigateToLogin} id='side_btn'class="btn btn-outline-secondary">로그인</button>
                 <button type="button" id='side_btn' class="btn btn-outline-secondary">마이페이지</button>
                 <ul>
-                    <li>Class</li>
-                    <li>Metting</li>
-                    <li>Challenge</li>
+                <li><NavLink className='side_nav' style={{color:'white'}} to="/class/list">Class</NavLink></li>
+                    <li><NavLink className='side_nav' style={{color:'white'}} to="/moim/list">Meeting</NavLink></li>
+                    <li><NavLink className='side_nav' style={{color:'white'}} to="/challenge/list">Challenge</NavLink></li>
                 </ul>
 
                 <ul>

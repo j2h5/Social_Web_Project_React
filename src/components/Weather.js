@@ -51,8 +51,9 @@ class Weather extends Component {
             return (
                 <div className="App">
                     <img src={imgSrc}/>
-                    <p>{this.state.temp}C</p>
-                    <p>{this.state.desc}</p>
+                    {/* <h1>오늘 한강의 날씨</h1> */}
+                    <h2>{this.state.temp}C</h2>
+                    {/* <h2>{this.state.desc}</h2> */}
                 </div>
             );
         }

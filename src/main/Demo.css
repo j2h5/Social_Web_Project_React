@@ -18,7 +18,7 @@ right:0px;}
 .gallerylist > ul {font-size:0; width: 1290px; left:0px;}
 .gallerylist > ul > li {display:inline-block;vertical-align:top;width:33.3%;}
 .gallerylist > ul > li > a {display:block;width:auto;text-decoration: none;margin:5px;}
-.gallerylist > ul > li > a .screen {position:relative;overflow:hidden;}
+.gallerylist > ul > li > a .screen {position:relative;overflow:hidden; }
 .gallerylist > ul > li > a .screen .top1 {position:absolute;bottom:150%;left:130px;z-index:2;color:#fff;font-size:26px;font-weight:900;transition:all .35s;}
  .gallerylist > ul > li > a .screen .top2 {position:absolute;bottom:150%;left:152px;z-index:2;color:#fff;font-size:26px;font-weight:900;transition:all .35s;}
 .gallerylist > ul > li > a .screen .top3 {position:absolute;bottom:150%;left:170px;z-index:2;color:#fff;font-size:26px;font-weight:900;transition:all .35s;} 

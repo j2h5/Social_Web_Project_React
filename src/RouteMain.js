@@ -19,6 +19,7 @@ import {ClassList, ClassForm, ClassDetail,ClassUpdateForm,ClassGuide,ClassIntroG
 import MoimForm from "./moim/MoimForm";
 import MoimDetailForm from "./moim/MoimDetailForm";
 import MoimList from "./moim/MoimList";
+import MoimBoard from "./moim/MoimBoard";
 const RouteMain=()=>{
     return (
         <div>
@@ -56,6 +57,7 @@ const RouteMain=()=>{
                 <Route path="/moim/form" element={<MoimForm/>}/>
                 <Route path="/moim/detailform/:num" element={<MoimDetailForm/>}/>
                 <Route path="/moim/list" element={<MoimList/>}/>
+                <Route path="/moim/board/:num" element={<MoimBoard/>}/>
                 <Route path="*" element={
                     <div>
                         <img src={errimg} alt=""/>
