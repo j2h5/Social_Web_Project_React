@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import '../cssFolder/Challenge.css';
+import '../cssFolder/ChallengeForm.css';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom'
 import Editor from '../class/EditorWithUseQuill';
@@ -9,9 +9,15 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import DatePicker from 'react-datepicker';
 import ChallengeExample from './ChallengeExample';
-import styled from "styled-components";
+//import styled from "styled-components";
 import { ko } from 'date-fns/esm/locale';
 import Navbar2 from '../main/Navbar2';
+import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import Stack from '@mui/material/Stack';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
 //url 등록
     let insertUrl = process.env.REACT_APP_SPRING_URL+"challenge/insert";
@@ -34,6 +40,11 @@ const ChallengeForm = () => {
     const[ch_endday, setCh_endday] = useState('');
     const[ch_period, setCh_period] = useState('');
     const[ch_status, setCh_status] = useState('');
+
+
+    const Input = styled('input')({
+        display: 'none',
+    });
 
     //추가하는 함수 이벤트
     const onInsert = () =>{
@@ -99,7 +110,7 @@ const ChallengeForm = () => {
                 alert(err);
             });
     }
-
+    
     //가격제한
     const moneymin = 0;
     const moneymax = 10000000;
@@ -127,14 +138,12 @@ const ChallengeForm = () => {
         photoInput.current.click();
     };
 
-
     return (
-        <div> 
+        <div className='container'> {/* 전체div */}
             <Navbar2/>
-        {/* 전체div */}
                 {/* 챌린지 등록폼 */}
                 <form onSubmit={onInsert}>
-                <div className="challenge_form" style={{width:'600px'}}>
+                <div className="challenge_form">
                 <h1>챌린지 등록</h1>
                     <div className='row'>카테고리 &nbsp;
                             <select name="ch_category" onChange={(e)=>{  setCh_category(e.target.value); }}>
@@ -148,24 +157,30 @@ const ChallengeForm = () => {
                     </div>
                         
                     <div className='row'>챌린지명
+                        <span  className="tulp">
+                            <HelpOutlineIcon style={{fontSize:'20px', marginLeft:'10px'}}/>
+                            <span className="tulc">
+                                튜티들이 가장 먼저 확인하는 부분입니다! 클래스를 선택해야 하는 이유, 차별점을 중심으로 소개해주세요~
+                            </span>
+                            </span>
                             <input type="text" className="form-control" name="ch_title"
                             value={ch_title}  onChange={(e)=>{  setCh_title(e.target.value); }}
                             style={{width:'300px'}} required placeholder='ex) 매일 7:00am 기상하기'/>
                     </div>    
-                        
-                    <img alt="" src={photoUrl+ch_title_photo} className="imgphoto"/>
-                    <div className='row'>대표사진
-                            <input type="file" className="form-control" name="ch_title_photo"
-                            onChange={imageUpload}
-                            style={{width:'250px'}}/>
+                    
+                    <div className='row'>대표사진 <br/><br/>
+                        {/* <input type="file" className="form-control" name="ch_title_photo" onChange={imageUpload} style={{width:'250px'}}/> */}
+                        <label htmlFor="contained-button-file">
+                            <Input accept="image/*" id="contained-button-file" multiple type="file" style={{display:'none'}} onChange={imageUpload}/>
+                            <Button variant="contained" component="span" style={{fontSize:'13px', fontWeight:'bold', backgroundColor:'#3751fa'}}>파일 업로드</Button>
+                        </label>
+                        <div className='img1'><img alt="" src={photoUrl+ch_title_photo}/></div>
                     </div>
-
-                        
+                                        
                     <div className='row'>인증빈도
                             <input type="text" className="form-control" placeholder='매일 하루 한 번' disabled
                             style={{width:'300px'}} required />
                     </div>
-                            
                         
                     <div className='row'>챌린지 기간
                             {/* 달력에서 기간 선택 가능 */}
@@ -196,65 +211,37 @@ const ChallengeForm = () => {
                     </div>
                     <div className='row' style={{width:'400px'}}>
                             {/* 에디터 사용 */}
-                            <b>챌린지를 소개해주세요</b>
-                                <Editor/>
+                            
+                    <div className="editor" style={{marginLeft:'50px'}}>
+                        <b>챌린지를 소개해주세요</b>
+                        <textarea className="textarea1"
+                            placeholder="클래스 전 숙지해야할 사항을 적어주세요.
+                            대여비, 준비물 등 추가 비용이 있는 경우 반드시 적어주세요
+                            (ex.시간당 1,000원~1,500원 정도의 장소대여비는 별도입니다.)"
+                            onChange={(e)=>{
+                                setCh_content(e.target.value);
+                            }}></textarea>
+                </div>
                     </div>
 
                     {/* 인증샷예시 */}
                     <img alt="" src={photoUrl+ch_exphoto1} className="imgphoto"/>
                     <div className='row'>올바른 인증샷 예시
-                            <input type="file" className="form-control" name="ch_title_photo"
-                            onChange={imageUpload2}
-                            style={{width:'250px'}}/>
+                    <label htmlFor="icon-button-file">
+                        <Input accept="image/*" id="icon-button-file" type="file" onChange={imageUpload2} style={{display:'none'}}/>
+                        <IconButton color="primary" aria-label="upload picture" component="span">
+                        <AddPhotoAlternateIcon sx={{fontSize: '50px', color:'black'}}/>
+                        </IconButton>
+                    </label>
                     </div>
                     <img alt="" src={photoUrl+ch_exphoto2} className="imgphoto"/>
                     <div className='row'>나쁜 인증샷 예시
-                            <input type="file" className="form-control" name="ch_title_photo"
-                            onChange={imageUpload3}
-                            style={{width:'250px'}}/>
-                    </div>
-                    
-                    <div className='row'>올바른 인증샷 예시<br/>
-                                <div style={{width:'150px', height:'150px',
-                                border: '1px solid gray', display:'inline-block', float:'left'}}>
-
-                                <AddPhotoAlternateIcon sx={{fontSize: '60px'}} onClick={handleClick} onChange={imageUpload2}/>
-
-                                <input 
-                                    type="file"
-                                    accept="image/jpg, image/jpeg, image/png"
-                                    multiple
-                                    ref={photoInput}
-                                    style={{display:'none'}}
-                                />
-                                </div>
-
-                                <div style={{width:'200px', height:'200px',
-                                border:'1px solid gray', marginLeft:'30px',display:'inline-block'}}
-                                ></div>
-                    </div>
-                    
-                    <br/>
-
-                    
-                    <div className='row'>나쁜 인증샷 예시<br/>
-                                <div style={{width:'150px', height:'150px',
-                                border: '1px solid gray', display:'inline-block', float:'left'}}>
-                                
-                                <AddPhotoAlternateIcon sx={{fontSize: '60px'}} onClick={handleClick} onChange={imageUpload3}/>
-
-                                <input 
-                                    type="file"
-                                    accept="image/jpg, image/jpeg, image/png"
-                                    multiple
-                                    ref={photoInput}
-                                    style={{display:'none'}}
-                                />
-                                </div>
-                                <div style={{width:'200px', height:'200px',
-                                border:'1px solid gray', marginLeft:'30px', display:'inline-block'}}
-                                // value={certifiBad}
-                                ></div>
+                    <label htmlFor="icon-button-file">
+                        <Input accept="image/*" id="icon-button-file" type="file" onChange={imageUpload3} style={{display:'none'}}/>
+                        <IconButton color="primary" aria-label="upload picture" component="span">
+                        <AddPhotoAlternateIcon sx={{fontSize: '50px', color:'black'}}/>
+                        </IconButton>
+                    </label>
                     </div>
 
                             <div className='row'>
