@@ -8339,6 +8339,11 @@ react-calendar@^3.7.0:
     merge-class-names "^1.1.1"
     prop-types "^15.6.0"
 
+react-date-object@^2.1.5:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/react-date-object/-/react-date-object-2.1.5.tgz#9f139cf0fbd9b8033cc18699be2ea14a772dbd73"
+  integrity sha512-iAtF2nz+jZjy3w36qKx2MsxXqbiL7UgGljz9jPjLWxWCl4rDTZUMS/i7hKKiVbL1lJlmubz1Xu6W3i6CW06kTg==
+
 react-datepicker@^4.8.0:
   version "4.8.0"
   resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-4.8.0.tgz#11b8918d085a1ce4781eee4c8e4641b3cd592010"
@@ -8394,6 +8399,11 @@ react-dom@^18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
+react-element-popper@^2.1.6:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/react-element-popper/-/react-element-popper-2.1.6.tgz#4afb912287d57de5d442fb85e76f4d7b94fde879"
+  integrity sha512-8va7mUmrKIkUnaM2t5Dyctd8cjgVgVcrv5vVD0FRay0sN6EPBCKa0bDi1/KmVDAjfgSIn7zQnjtc4VojcGrkgQ==
+
 react-error-overlay@^6.0.11:
   version "6.0.11"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.11.tgz#92835de5841c5cf08ba00ddd2d677b6d17ff9adb"
@@ -8423,6 +8433,14 @@ react-is@^18.0.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
+
+react-multi-date-picker@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/react-multi-date-picker/-/react-multi-date-picker-3.3.0.tgz#89036a1bf013fc65bc12dda640d5a979a640b453"
+  integrity sha512-xAounECAkPUSnwmGCXlLevRLS9lt6IrGzD1VUJKZPbuzauwxaJLZ0mW6vnGUjui60qBY/uQeEmJftq+pEq5HgQ==
+  dependencies:
+    react-date-object "^2.1.5"
+    react-element-popper "^2.1.6"
 
 react-onclickoutside@^6.12.0:
   version "6.12.2"
@@ -8538,6 +8556,11 @@ react-transition-group@^4.4.0, react-transition-group@^4.4.2:
     dom-helpers "^5.0.1"
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
+
+react-ts-utils@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-ts-utils/-/react-ts-utils-2.1.0.tgz#07d6737d582eb550c01d1c6dd099519c9c6959fb"
+  integrity sha512-ntaSKG/kBT/4aOPcdev7SMEQXVxqto9ymsTEAx4SmUFfg7q4AvjdMp+8hNGgJIRI6q32pZDOiqkSfaLUcAnpWg==
 
 react@^18.2.0:
   version "18.2.0"

@@ -125,15 +125,6 @@ const ChallengeForm = () => {
     // 미리보기/수정 버튼 관련
     const [show, setShow] = useState(false);
 
-    //챌린지 기간 선택 (date picker)
-    const [dateRange, setDateRange] = useState([null, null]);
-    const [startDate, endDate] = dateRange;
-
-    const ChalDatePicker = styled(DatePicker)`
-        width: 300px;
-        height: 33.99px;
-    `;
-
     //사진 누르면 인증샷 업로드 file
     const photoInput = useRef();
     const handleClick = () =>{
@@ -227,26 +218,26 @@ const ChallengeForm = () => {
                             {/* 달력에서 기간 선택 가능 */}
                         <div style={{display:'inline-block'}}>
                             <b>시작일</b>
-                            <ChalDatePicker
-                            selectsRange={true}
-                            startDate={startDate}
-                            endDate={endDate}
+                            <DatePicker
+                            ch_startday={ch_startday}
+                            selected = {ch_startday}
+                            setCh_startday={setCh_startday}
                             locale = { ko }
                             placeholderText="챌린지 시작일을 선택해주세요"
                             dateFormat="yyyy년 MM월 dd일"
-                            //onChange={onDataChange}
+                            onChange={date => setCh_startday(date)}
                             />
                         </div>
                         <div style={{display:'inline-block'}}>
                             <b>종료일</b>
-                            <ChalDatePicker
-                            selectsRange={true}
-                            startDate={startDate}
-                            endDate={endDate}
+                            <DatePicker
+                            ch_endday={ch_endday}
+                            selected = {ch_endday}
+                            setCh_endday={setCh_endday}
                             locale = { ko }
                             placeholderText="챌린지 종료일을 선택해주세요"
                             dateFormat="yyyy년 MM월 dd일"
-                            //onChange={onDataChange}
+                            onChange={date => setCh_endday(date)}
                             />
                         </div>
 
