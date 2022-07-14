@@ -130,7 +130,7 @@ const ChallengeDetail = () => {
                     <div className='accomplish_bar'>
                         <h4>달성률</h4>
                         <ProgressBar 
-                        completed={80}
+                        completed={50}
                         bgColor="#abfdb8"
                         height="23px"
                         width="50%"

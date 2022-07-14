@@ -95,6 +95,7 @@ const ChallengeForm = () => {
                 alert(err);
             });
         }
+
         //이미지 업로드 3
         const imageUpload3 = (e) => {
             const uploadFile = e.target.files[0];
@@ -271,24 +272,32 @@ const ChallengeForm = () => {
                     </div>
 
                     {/* 인증샷예시 */}
-                    <img alt="" src={photoUrl+ch_exphoto1} className="imgphoto"/>
                     <div className='ch_certi_photo_row'>
+                        <div style={{display:'inline-block'}}>
                     <span className='title_span'>올바른 인증샷 예시</span>
+                        <div>
+                        <img alt="" src={photoUrl+ch_exphoto1} className="imgphoto1"/>
+                        </div>
                         <label htmlFor="icon-button-file">
                             <Input accept="image/*" id="icon-button-file" type="file" onChange={imageUpload2} style={{display:'none'}}/>
                             <IconButton color="primary" aria-label="upload picture" component="span">
                             <AddPhotoAlternateIcon sx={{fontSize: '50px', color:'black'}}/>
                             </IconButton>
                         </label>
-
-                        <img alt="" src={photoUrl+ch_exphoto2} className="imgphoto"/>
+                        </div>
+                        <div style={{display:'inline-block'}}>
                         <span className='title_span'>나쁜 인증샷 예시</span>
-                            <label htmlFor="icon-button-file">
-                            <Input accept="image/*" id="icon-button-file" type="file" onChange={imageUpload3} style={{display:'none'}}/>
+                        <div>
+                        <img alt="" src={photoUrl+ch_exphoto2} className="imgphoto2"/>
+                        </div>
+                            <label htmlFor="icon-button-file2">
+                            <Input accept="image/*" id="icon-button-file2" type="file" onChange={imageUpload3} style={{display:'none'}}/>
                             <IconButton color="primary" aria-label="upload picture" component="span">
                             <AddPhotoAlternateIcon sx={{fontSize: '50px', color:'black'}}/>
                             </IconButton>
+
                     </label>
+                        </div>
                     </div>
                             <div className='ch_button_row'>
                                 <button type="submit" className="submit_btn"

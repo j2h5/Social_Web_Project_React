@@ -22,16 +22,16 @@ const ChallengeList = () => {
         // 현재 페이지번호 읽어오기
         const {currentPage} = useParams();
 
-        // url 선언
-        //let chal_pagelistUrl = process.env.REACT_APP_SPRING_URL+"challenge/pagelist?currentPage="+currentPage;
-        //let chal_listUrl = process.env.REACT_APP_SPRING_URL+"challenge/list";
-        //let alllistUrl = process.env.REACT_APP_SPRING_URL+"board/alllist"
-        //let chal_photoUrl=process.env.REACT_APP_SPRING_URL+"save/";
+        //url 선언
+        let chal_pagelistUrl = process.env.REACT_APP_SPRING_URL+"challenge/pagelist?currentPage="+currentPage;
+        let chal_listUrl = process.env.REACT_APP_SPRING_URL+"challenge/list";
+        let alllistUrl = process.env.REACT_APP_SPRING_URL+"challenge/alllist";
+        let chal_photoUrl=process.env.REACT_APP_SPRING_URL+"save/";
 
         // 시작시 호출되는 함수
         const pageList=()=>{
         axios.get()
-        .then(res=>{                // res == response
+        .then(res=>{               // res == response
             setChal_data(res.chal_data);
             console.log(res.chal_data);
         })
@@ -84,7 +84,7 @@ const ChallengeList = () => {
                 {/* challenge_cate 닫힘*/}
                 <div className="search_div">
                     <input type='text' className="search"/>
-                    <button className="searchbtn">검색</button>
+                    <button className="ch_searchbtn">검색</button>
                 </div>
                 {/* 최신순 인기순 평점순 */}
                 <div className="array_search">
@@ -95,10 +95,6 @@ const ChallengeList = () => {
                     <label style={{marginLeft:'15px'}}>
                         <input type='radio' className="radio1"name="theme"/>
                         인기순
-                    </label>
-                    <label style={{marginLeft:'15px'}}>
-                        <input type='radio' className="radio1"name="theme"/>
-                        평점순
                     </label>
                 </div>
                 <br/><br/>
@@ -145,19 +141,19 @@ const ChallengeList = () => {
                     </div>
                 </div>
 
-                {/* 페이징 처리
+                {/* 페이징 처리 */}
             <div className='ch_list_pagination' style={{width:'700px',textAlign:'center'}}>
                 <ul className='pagination'>
                     {
                         (chal_data.startPage>1?
                         <li>
-                            <Link to={`/board/list/${chal_data.startPage-1}`}>이전</Link>
+                            <Link to={`/challenge/list/${chal_data.startPage-1}`}>이전</Link>
                         </li>:'')
                         
                     }
                     {
                         chal_data.parr && chal_data.parr.map(n=>{
-                            const url="/board/list/"+n;
+                            const url="/challenge/list/"+n;
                             return(
                                 <li>
                                     <Link to={url}>
@@ -170,12 +166,12 @@ const ChallengeList = () => {
                     {
                         (chal_data.endPage<chal_data.totalPage?
                         <li>
-                            <Link to={`/board/list/${chal_data.endPage+1}`}>다음</Link>
+                            <Link to={`/challenge/list/${chal_data.endPage+1}`}>다음</Link>
                         </li>:'')
                         
                     }
                 </ul>
-            </div> */}
+            </div>
             </div>
             {/* content_container 닫힘 */}
         </div>

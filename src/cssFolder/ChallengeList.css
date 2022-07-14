@@ -67,18 +67,18 @@
 
 }
 
-.searchbtn{
+.ch_searchbtn{
     width: 75px;
     height: 51px;
     margin-left: 15px;
     box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.25);
-    background-color: #000099;
+    background-color: #D2F6C5;
     font-size: 20px;
     border-radius: 5px;
     line-height: 51px;
     /* div겹침 */
     clear:both;
-    color: #fff;
+    color: black;
 }
 
 .radio1{
