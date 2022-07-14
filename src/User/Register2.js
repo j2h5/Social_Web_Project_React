@@ -20,7 +20,6 @@ export default function PaymentForm() {
   const [img,setImg]=React.useState(img1);
 
 
-
       //사진 누르면 인증샷 업로드 file
       const photoInput = useRef();
       const imgChange = () =>{
@@ -49,19 +48,6 @@ export default function PaymentForm() {
             required
             id="cardName"
             label="닉네임"
-            fullWidth
-            autoComplete="cc-name"
-            variant="standard"
-          />
-        </Grid>
-      </Grid>
-
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <TextField
-            required
-            id="cardName"
-            label="생년월일"
             fullWidth
             autoComplete="cc-name"
             variant="standard"
