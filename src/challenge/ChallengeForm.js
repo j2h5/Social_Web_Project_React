@@ -9,15 +9,17 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import DatePicker from 'react-datepicker';
 import ChallengeExample from './ChallengeExample';
-//import styled from "styled-components";
+import styled from "styled-components";
 import { ko } from 'date-fns/esm/locale';
 import Navbar2 from '../main/Navbar2';
 import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
+//import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Stack from '@mui/material/Stack';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import form1 from './images/px.jpg'
+import { useScrollClipPath } from '../hooks';
 
 //url 등록
     let insertUrl = process.env.REACT_APP_SPRING_URL+"challenge/insert";
@@ -123,26 +125,31 @@ const ChallengeForm = () => {
     // 미리보기/수정 버튼 관련
     const [show, setShow] = useState(false);
 
-    //챌린지 기간 선택 (date picker)
-    const [dateRange, setDateRange] = useState([null, null]);
-    const [startDate, endDate] = dateRange;
-
-    const ChalDatePicker = styled(DatePicker)`
-        width: 300px;
-        height: 33.99px;
-    `;
-
     //사진 누르면 인증샷 업로드 file
     const photoInput = useRef();
     const handleClick = () =>{
         photoInput.current.click();
     };
 
+    const S={
+        Image: styled.div`
+        width: 1300px;
+        height: 600px;
+        top:300px;
+        background: no-repeat center/cover url(${form1});
+        `
+    }
+
+    const animatedImage = useScrollClipPath();
+
     return (
         <div className='container'> {/* 전체div */}
             <Navbar2/>
                 {/* 챌린지 등록폼 */}
                 <form onSubmit={onInsert}>
+                <div>
+                <S.Image {...animatedImage} />
+                </div>
                 <div className="challenge_form">
                 <h1>✨챌린지 등록</h1>
                     <div className='category_row'
@@ -211,26 +218,26 @@ const ChallengeForm = () => {
                             {/* 달력에서 기간 선택 가능 */}
                         <div style={{display:'inline-block'}}>
                             <b>시작일</b>
-                            <ChalDatePicker
-                            selectsRange={true}
-                            startDate={startDate}
-                            endDate={endDate}
+                            <DatePicker
+                            ch_startday={ch_startday}
+                            selected = {ch_startday}
+                            setCh_startday={setCh_startday}
                             locale = { ko }
                             placeholderText="챌린지 시작일을 선택해주세요"
                             dateFormat="yyyy년 MM월 dd일"
-                            //onChange={onDataChange}
+                            onChange={date => setCh_startday(date)}
                             />
                         </div>
                         <div style={{display:'inline-block'}}>
                             <b>종료일</b>
-                            <ChalDatePicker
-                            selectsRange={true}
-                            startDate={startDate}
-                            endDate={endDate}
+                            <DatePicker
+                            ch_endday={ch_endday}
+                            selected = {ch_endday}
+                            setCh_endday={setCh_endday}
                             locale = { ko }
                             placeholderText="챌린지 종료일을 선택해주세요"
                             dateFormat="yyyy년 MM월 dd일"
-                            //onChange={onDataChange}
+                            onChange={date => setCh_endday(date)}
                             />
                         </div>
 
