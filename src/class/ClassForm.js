@@ -371,10 +371,10 @@ const ClassForm = (passData) =>{
                 </div>
                 <div className="row">
                     <div className="label1" >총 가격</div>
-                    <input type='number'className="label2" defaultValue='0'
+                    <input type='number'className="label2"
                     style={{width:'490px'}} step='10'
                     onChange={moneyChange}
-                    value={class_price}/>
+                    defaultValue={Number(class_price)}/>
                     <span style={{fontSize:'20px', marginLeft:'20px'}}>원</span>
                 </div>
 
@@ -383,8 +383,8 @@ const ClassForm = (passData) =>{
                     <input type='number'className="label2"
                     style={{width:'330px'}} 
                     onChange={classtimeChange}
-                    value={class_hour}/>
-                    <span style={{fontSize:'20px', marginLeft:'20px'}}>시간 ({`시간당 ${Math.floor(class_price/class_hour)}원`})</span>
+                    defaultValue={Number(class_hour)}/>
+                    <span style={{fontSize:'20px', marginLeft:'20px'}}>시간 ({`시간당 ${isNaN(class_price/class_hour)?'0원':class_price/class_hour===Infinity?'0원':Math.floor(class_price/class_hour)+'원'}`})</span>
                 </div>
                 
                 {/* 일정 추가 */}
