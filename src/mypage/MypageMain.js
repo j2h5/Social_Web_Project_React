@@ -3,14 +3,14 @@ import '../cssFolder/MypageMain.css';
 import Navbar2 from '../main/Navbar2';
 import profile_img from '../image/4.PNG';
 
+import MypagePayment from './MypagePayment';
+import MypageLikes from './MypageLikes';
 import MypageChallenge from './MypageChallenge';
 import MypageClass from './MypageClass';
 import MypageMoim from './MypageMoim';
-import MypagePayment from './MypagePayment';
 import MypageTutor from './MypageTutor';
-import MypageReview from './MypageReview';
+
 import { useNavigate } from 'react-router-dom';
-import MypageLikes from './MypageLikes';
 
 const MypageMain = () => {
 
@@ -25,18 +25,24 @@ const MypageMain = () => {
                 </div>
                 
                 <div className="mypage_sidebar">
-                    <div className='mypage'><h1>My Page</h1></div>
-                    <ul>
-                        <li>결제 내역</li>
-                        <li>나의 찜</li>
-                        <li>나의 리뷰</li>
-                        <li>모임</li>
-                        <li>챌린지</li>
-                        <li>클래스</li>
-                    </ul>
+                    <div className='mypage'>
+                        <h1
+                        >My Page</h1>
+                    </div>
+                        <li
+                        >결제 내역</li>
+                        <li
+                        >나의 찜</li>
+                        <li
+                        >모임</li>
+                        <li
+                        >챌린지</li>
+                        <li
+                        >클래스</li>
+
 
                     {/* {show===1?<MypageMain/>:show===2?<MypagePayment/>:show===3?<MypageLikes/>
-                    :show===4?<MypageReview/>:show===5?<MypageMoim/>:show===6?<MypageChallenge/>
+                    :show===4?<MypageMoim/>:show===5?<MypageChallenge/>
                     :<MypageClass/>} */}
 
                 </div>
