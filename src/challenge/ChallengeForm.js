@@ -9,15 +9,17 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import DatePicker from 'react-datepicker';
 import ChallengeExample from './ChallengeExample';
-//import styled from "styled-components";
+import styled from "styled-components";
 import { ko } from 'date-fns/esm/locale';
 import Navbar2 from '../main/Navbar2';
 import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
+//import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Stack from '@mui/material/Stack';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import form1 from './images/px.jpg'
+import { useScrollClipPath } from '../hooks';
 
 //url 등록
     let insertUrl = process.env.REACT_APP_SPRING_URL+"challenge/insert";
@@ -138,11 +140,25 @@ const ChallengeForm = () => {
         photoInput.current.click();
     };
 
+    const S={
+        Image: styled.div`
+        width: 1300px;
+        height: 600px;
+        top:300px;
+        background: no-repeat center/cover url(${form1});
+        `
+    }
+
+    const animatedImage = useScrollClipPath();
+
     return (
         <div className='container'> {/* 전체div */}
             <Navbar2/>
                 {/* 챌린지 등록폼 */}
                 <form onSubmit={onInsert}>
+                <div>
+                <S.Image {...animatedImage} />
+                </div>
                 <div className="challenge_form">
                 <h1>✨챌린지 등록</h1>
                     <div className='category_row'
