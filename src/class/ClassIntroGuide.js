@@ -10,7 +10,7 @@ const ClassIntroGuide = () => {
         <div>
             <img alt='' src={river} className='classguideimg'
             style={{width:'1920px', height:'280px'}}/>
-            <div className='logo' style={{width:'150px', height:'150px'}}>
+            <div className='logoguide' style={{width:'150px', height:'150px'}}>
                 <span style={{fontFamily:'Jua'}}>오늘,<br/>한강</span>
             </div>
 

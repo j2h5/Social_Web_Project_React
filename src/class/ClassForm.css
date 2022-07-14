@@ -83,8 +83,8 @@ hr {
 }
 
 .label3{
-    margin-left: 10px;
-    width: 102px;
+    margin-left: 20px;
+    width: 5500px;
     height: 68px;
     border: solid 1px #000;
     font-style: normal;
@@ -92,7 +92,6 @@ hr {
     font-size: 12px;
     font-weight: bold;
     text-align: center;
-    float: left;
 }
 
 .que{
@@ -125,8 +124,15 @@ hr {
     float: left;
 }
 
-.smphoto{
+.smphotod{
     margin-left: 15px;
+    margin-top: 7px;
+    width: 140px;
+    height: 100px;
+    float: left;
+}
+
+.smphoto{
     margin-top: 7px;
     width: 140px;
     height: 100px;
@@ -135,6 +141,11 @@ hr {
     float: left;
 }
 
+.xbtn{
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+}
 .btn2{
     width: 150px;
     height: 38px;

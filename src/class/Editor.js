@@ -1,16 +1,16 @@
 import { Component } from 'react';
 import ReactQuill, { Quill } from 'react-quill';
+
 import 'react-quill/dist/quill.snow.css';
 import ImageResize from 'quill-image-resize-module-react';
-
-import './styles.css';
+import './ClassDetail.css';
 
 Quill.register('modules/imageResize', ImageResize);
 
     /*
     * Simple editor component that takes placeholder text as a prop
     */
-    class Editor extends Component {
+    class Editor2 extends Component {
     constructor(props) {
         super(props);
         this.state = { editorHtml: '' };
@@ -28,8 +28,8 @@ Quill.register('modules/imageResize', ImageResize);
             theme={this.state.theme}
             onChange={this.handleChange}
             value={this.state.editorHtml}
-            modules={Editor.modules}
-            formats={Editor.formats}
+            modules={Editor2.modules}
+            formats={Editor2.formats}
             bounds={'#root'}
             placeholder={this.props.placeholder}
         />
@@ -41,7 +41,7 @@ Quill.register('modules/imageResize', ImageResize);
     * Quill modules to attach to editor
     * See https://quilljs.com/docs/modules/ for complete options
     */
-    Editor.modules = {
+    Editor2.modules = {
     toolbar: [
         [{ header: '1' }, { header: '2' }, { font: [] }],
         [{ size: [] }],
@@ -69,7 +69,7 @@ Quill.register('modules/imageResize', ImageResize);
     * Quill editor formats
     * See https://quilljs.com/docs/formats/
     */
-    Editor.formats = [
+    Editor2.formats = [
     'header',
     'font',
     'size',
@@ -86,4 +86,4 @@ Quill.register('modules/imageResize', ImageResize);
     'video'
     ];
 
-    export default Editor;
+    export default Editor2;

@@ -1,5 +1,8 @@
-import React from "react"
+import React, {useState} from "react";
+
 import styled from "styled-components"
+import Editor2 from "./Editor"
+import Editor from "./EditorWithUseQuill"
 
 const DetailDiv = styled.div`
     div {
@@ -7,7 +10,7 @@ const DetailDiv = styled.div`
         width: 700px;
     }
     `
-
+    
 
     const DetailList = (props) => {
 
@@ -44,6 +47,8 @@ const DetailDiv = styled.div`
                 </div>
             </div>
         ))}
+        <Editor/>
+        <Editor2/>
         </DetailDiv>
     )
 }

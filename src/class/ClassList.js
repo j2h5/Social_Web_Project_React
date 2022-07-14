@@ -58,6 +58,14 @@ const ClassList=()=>{
                         <option key="orange" value="orange">난지 한강공원</option>
                         <option key="orange" value="orange">뚝섬 한강공원</option>
                     </select>
+                    <select className="select1"  style={{width: '150px'}}>-
+                        <option key="orange" value="orange">전체</option>
+                        <option key="apple" value="apple">스냅사진</option>
+                        <option key="orange" value="orange">스포츠</option>
+                        <option key="orange" value="orange">댄스/뮤직</option>
+                        <option key="orange" value="orange">드로잉</option>
+                        <option key="orange" value="orange">펫</option>
+                    </select>
                 </div>
                 <div className="category1">
                     클래스
@@ -143,7 +151,7 @@ const ClassList=()=>{
                         </div>
                         <div className="listrow5">
                             <span><FavoriteBorderIcon style={{fontSize:'20px', color:'red',height:'20px'}}/></span>
-                            <span className="qweqwe">162</span>
+                            <span className="qweqwe">162</span><FavoriteIcon/>
                         </div>
                     </div><div className="classlist">
                     

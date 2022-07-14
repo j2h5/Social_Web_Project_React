@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,useRef} from "react";
 import './ClassForm.css';
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
@@ -6,32 +6,34 @@ import LoupeIcon from '@mui/icons-material/Loupe';
 import Editor from './EditorWithUseQuill';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import Weather from "../components/Weather";
-
-const ClassForm = () =>{
+import ClassGuide from './ClassGuide'
+import GuideModal from './GuideModal';
+const ClassForm = (passData) =>{
     const navi = useNavigate();
 
     //url 등록
-    let uploadUrl = "http://localhost:9001/class/upload";
-    let photoUrl = "http://localhost:9001/save/";
-    let insertUrl = "http://localhost:9001/class/insert";
-
-    
+    let uploadUrl = "http://localhost:9009/class/upload";
+    let photoUrl = "http://localhost:9009/save/";
+    let insertUrl = "http://localhost:9009/class/insert";
 
     //class table < optionnum
     const [class_category, setClass_category] = useState('스냅사진');
     const [class_location, setClass_location] = useState('반포');
     const [class_name, setClass_name] = useState('');
-    const [class_photo1, setClass_photo1] = useState('');
-    const [class_photo2, setClass_photo2] = useState('');
-    const [class_photo3, setClass_photo3] = useState('');
-    const [class_photo4, setClass_photo4] = useState('');
-    const [class_photo5, setClass_photo5] = useState('');
+
+    const class_photo1 = useRef('');
+    const class_photo2 = useRef('');
+    const class_photo3 = useRef('');
+    const class_photo4 = useRef('');
+    const class_photo5 = useRef('');
+
     const [class_target, setClass_target] = useState('입문');
     // const [class_price, setClass_price] = useState(0); 밑에서 사용
     // const [class_hour, setClass_hour] = useState(0); 밑에서 사용
-    const [class_intro, setClass_intro] = useState('');
-    const [class_summ, setClass_summ] = useState('');
-    const [class_curri, setClass_curri] = useState('');
+    
+
+    //const class_intro = useRef(''); 밑에서 사용
+    const [class_curri, setClass_curri] = useState('');//Ref_Editor
     const [class_anoun, setClass_anoun] = useState('');
     const [class_confirm, setClass_confirm] = useState('');
 
@@ -53,32 +55,107 @@ const ClassForm = () =>{
             data: imageFile,
             headers:{'Content-Type':'multipart/form-data'}
         }).then(res=>{
-            setClass_photo1(res.data); //백엔드에서 보낸 변경된 이미지명을 photo 변수에 넣는다
+            //setClass_photo1(res.data); //백엔드에서 보낸 변경된 이미지명을 photo 변수에 넣는다
         }).catch(err=>{
             alert(err);
         });
     }
 
+    function upload(){
+    const url = "http://localhost:9009/class/insert3";
+        axios.post(url,showImages)
+        .then(res=>{
+            alert("insert 성공")
+            //navi("/login")
+        });
+    }
+
+
+    //0712#################################################3
+    
+    const [showImages, setShowImages] = useState([]);
+    
+    // 이미지 추가
+    // 이미지 상대경로 저장
+    const handleAddImages = (event) => {
+        const imageLists = event.target.files;
+        let imageUrlLists = [...showImages];
+
+        for (let i = 0; i < imageLists.length; i++) {
+        const currentImageUrl = URL.createObjectURL(imageLists[i]);
+        imageUrlLists.push(currentImageUrl);
+        
+        console.log(imageUrlLists[i]);//찍히고 
+        //`setClass_photo${i+1}`(imageUrlLists[i]);
+        }
+
+        if (imageUrlLists.length > 5) {
+            imageUrlLists = imageUrlLists.slice(0, 5);
+            alert('이미지는 최대 5장입니다!')
+            return false;
+            
+        }
+        setShowImages(imageUrlLists);//안담겨
+
+        //우겨넣기_한박자 늦음
+        const asd1 = imageUrlLists[0]
+        class_photo1.current=asd1;
+        const asd2 = imageUrlLists[1]
+        class_photo2.current=asd2;
+        const asd3 = imageUrlLists[2]
+        class_photo3.current=asd3;
+        const asd4 = imageUrlLists[3]
+        class_photo4.current=asd4;
+        const asd5 = imageUrlLists[4]
+        class_photo5.current=asd5;
+
+        console.log('값1은 :' +class_photo1.current);
+        console.log('값2은 :' +class_photo2.current);
+        console.log('값3은 :' +class_photo3.current);
+        console.log('값4은 :' +class_photo4.current);
+        console.log('값5은 :' +class_photo5.current);
+
+
+        console.log(`값은 : ${imageUrlLists[0]}`);
+
+    };
+
+
+
+    // X버튼 클릭 시 이미지 삭제
+    const handleDeleteImage = (id) => {
+        setShowImages(showImages.filter((_, index) => index !== id));
+        console.log('삭제 후');
+        for (let i = 0; i < showImages.length; i++) {
+            console.log(showImages[i]);
+            
+        }
+    };
+    
+    
+
     //추가하는 #############################33
     const onInsert = (e) => {
         //axios.post(insertUrl, {sangpum:sangpum, su:su, dan:dan}) // a : b - a는 spring dto의 필드 명, b는 여기서 보내주는 필드명 같을 때는 생략 가능
-        axios.post(insertUrl, {class_category, class_location, class_name,class_photo1,class_photo2,class_photo3,class_photo4,class_photo5,class_target,class_price,class_hour,class_intro,class_summ,class_curri,class_anoun,class_confirm,classoption_day,classoption_starttime,classoption_endtime,classoption_totalperson })
+        axios.post(insertUrl, {class_category, class_location, class_name,class_photo1,class_photo2,class_photo3,class_photo4,class_photo5,class_target,class_price,class_hour,class_intro,class_curri,class_anoun,class_confirm,classoption_day,classoption_starttime,classoption_endtime,classoption_totalperson })
         .then(res => {
             //insert 성공 후처리 코드
             setClass_category('');
             setClass_location('');
             setClass_name('');
-            setClass_photo1('');
-            setClass_photo2('');
-            setClass_photo3('');
-            setClass_photo4('');
-            setClass_photo5('');
+
+            // setClass_photo1('');
+            // setClass_photo2('');
+            // setClass_photo3('');
+            // setClass_photo4('');
+            // setClass_photo5('');
+
             setClass_target('');
-            setClass_price('');
-            setClass_hour('');
-            setClass_intro('');
-            setClass_summ('');
-            setClass_curri('');
+            setClass_price(0);
+            setClass_hour(0);
+
+            //setClass_intro('');//ref
+            setClass_curri('');//ref
             setClass_anoun('');
             setClass_confirm('');
 
@@ -94,6 +171,24 @@ const ClassForm = () =>{
             alert(err);
         });
     }
+
+    //popup modal (ClassGuide, ClassIntroGuide)
+    // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
+    const [modalOpen1, setModalOpen1] = useState(false);
+    const openModal1 = () => {
+        setModalOpen1(true);
+    };
+    const closeModal1 = () => {
+        setModalOpen1(false);
+    };
+
+    const [modalOpen2, setModalOpen2] = useState(false);
+    const openModal2 = () => {
+        setModalOpen2(true);
+    };
+    const closeModal2 = () => {
+        setModalOpen2(false);
+    };
 
     //가격제한
     const moneymin = 0;
@@ -156,10 +251,19 @@ const ClassForm = () =>{
         }
     };
 
+    //Editor 자식 data
+    const class_intro = useRef('');
+    //1-(1)
+    const changeMessage=(msg)=>{
+        class_intro.current=msg;
+        console.log('찐'+class_intro.current);
+    }
+
     return(
         <div>
             <Weather/>
-            <div className="content_container" style={{marginLeft:'310px'}} >
+            
+            <div className="content_container" style={{marginLeft:'310px',borderColor:'white'}} >
                 <div className="class_subtitle">홍대한님의 클래스에 대한 기본정보를 입력해주세요!</div>
                 <div className="class_subtitle2">
                     <div style={{width:'455px', float:'left', marginTop:'15px'}}>
@@ -168,10 +272,10 @@ const ClassForm = () =>{
                     <span style={{fontSize:'32px', color:'#fea948',width:'55px',float:'left',height:'32px', marginLeft:'5px'}}>
                         👉
                     </span>  
-                    <button className="btn1"
-                    onClick={()=>{
-                        navi("/class/guide")
-                    }}>클래스 가이드 &gt; </button>
+
+                        <a href='/class/guide' target='_blank' rel='noreferrer' style={{float:'right', alignItems:'center', textAlign:'center', marginRight:'540px'}}>
+                            <div className="btn1">클래스 가이드 &gt;</div></a>
+
                 </div> 
                 
                 <br/>
@@ -187,9 +291,9 @@ const ClassForm = () =>{
                     }}>
                         <option key="apple" value="스냅사진">스냅사진</option>
                         <option key="orange" value="스포츠">스포츠</option>
-                        <option key="orange" value="댄스">댄스</option>
-                        <option key="orange" value="뮤직">뮤직</option>
-                        <option key="orange" value="드로잉">드로잉</option>
+                        <option key="orange1" value="댄스">댄스</option>
+                        <option key="orange2" value="뮤직">뮤직</option>
+                        <option key="orange3" value="드로잉">드로잉</option>
                     </select>
                 </div>
 
@@ -200,12 +304,12 @@ const ClassForm = () =>{
                     onChange={(e)=>{
                         setClass_location(e.target.value)    
                     }}>
-                        <option key="apple" value="반포">반포 한강공원</option>
-                        <option key="orange" value="잠실">잠실 한강공원</option>
-                        <option key="orange" value="이촌">이촌 한강공원</option>
-                        <option key="orange" value="여의도">여의도 한강공원</option>
-                        <option key="orange" value="난지">난지 한강공원</option>
-                        <option key="orange" value="뚝섬">뚝섬 한강공원</option>
+                        <option key="apple4" value="반포">반포 한강공원</option>
+                        <option key="orange4" value="잠실">잠실 한강공원</option>
+                        <option key="orange5" value="이촌">이촌 한강공원</option>
+                        <option key="orange6" value="여의도">여의도 한강공원</option>
+                        <option key="orange7" value="난지">난지 한강공원</option>
+                        <option key="orange8" value="뚝섬">뚝섬 한강공원</option>
                     </select>
                 </div>
 
@@ -213,14 +317,14 @@ const ClassForm = () =>{
                     
                     <div className="label1" style={{float:'left'}} >클래스명</div>
                     <input type='text'className="label2" placeholder="클래스명을 입력해주세요"
-                    style={{width:'490px', marginLeft:'10px'}}
+                    style={{width:'490px', marginLeft:'20px'}}
                     onChange={(e)=>{
                         setClass_name(e.target.value);
                     }}/>
-                    <span style={{fontSize:'35px', color:'gray',width:'55px',height:'68px', marginLeft:'15px', float:'left'}}>
+                    <span style={{fontSize:'35px', color:'gray',width:'55px',height:'68px', marginRight:'470px',marginTop:'15px', float:'right'}}>
                         <div className="sdf" style={{width:'90px'}}>
                             <LoupeIcon className="que" style={{fontSize:'35px',float:'left'}}/>
-                            <span className="asd">
+                            <span className="asd" style={{top:'533px'}}>
                                 Tip! 
                                 <br/>클래스의 주제를 연상시키는 제목을 작성해주세요.
                                 <br/>튜터님의 전문성을 드러내면 좋습니다.
@@ -233,20 +337,24 @@ const ClassForm = () =>{
 
                 <div className="row">
                     <div className="label1">대표사진</div>
-                        <input type='file'className="label3" style={{marginLeft:'20px'}} onChange={uploadImage}/>
-                        <input type='file'className="label3" />
-                        <input type='file'className="label3" />
-                        <input type='file'className="label3" />
-                        <input type='file'className="label3" />
-                        {/* 사진미리보기 */}
-                    <div className="classphoto" style={{marginTop:'15px'}}>
-                        <div style={{textAlign:'left',width: '760px', marginTop:'5px',marginLeft:'27px', fontSize:'15px'}}>미리보기</div>
-                        <div className="smphoto" style={{marginLeft:'27px'}}>{class_photo1}</div>
-                        <div className="smphoto"></div>
-                        <div className="smphoto"></div>
-                        <div className="smphoto"></div>
-                        <div className="smphoto"></div>
-                    </div>
+                    
+                    <label htmlFor="input-file"  onChange={handleAddImages}>
+                        <input type="file" id="input-file" multiple className='label2' />
+                    </label>
+
+                    
+                    <div style={{marginLeft:'22px'}}>
+                    {/* // 저장해둔 이미지들을 순회하면서 화면에 이미지 출력 */}
+                    {showImages.map((image, id) => (
+                        <div className='smphotod' key={id}>
+                            <img src={image} alt={`${image}-${id}`}  className='smphoto'/>
+                            <div  className='xbtn' style={{marginLeft:'130px'}}
+                            onClick={() => handleDeleteImage(id)}>
+                                &nbsp;x&nbsp;
+                            </div>
+                        </div>
+                    ))}
+                    </div><br/>
                 </div>
 
                 <div className="row">
@@ -255,10 +363,10 @@ const ClassForm = () =>{
                     onChange={(e)=>{
                         setClass_target(e.target.value)    
                     }} value={class_target}>
-                        <option key="apple" value="apple">입문</option>
-                        <option key="orange" value="orange">초급</option>
-                        <option key="orange" value="orange">중급</option>
-                        <option key="orange" value="orange">고급</option>
+                        <option key="apple5" value="apple">입문</option>
+                        <option key="orangea" value="orange">초급</option>
+                        <option key="oranges" value="orange">중급</option>
+                        <option key="oranged" value="orange">고급</option>
                     </select>
                 </div>
                 <div className="row">
@@ -276,10 +384,10 @@ const ClassForm = () =>{
                     style={{width:'330px'}} 
                     onChange={classtimeChange}
                     value={class_hour}/>
-                    <span style={{fontSize:'20px', marginLeft:'20px'}}>시간 (시간당 1000원)</span>
+                    <span style={{fontSize:'20px', marginLeft:'20px'}}>시간 ({`시간당 ${Math.floor(class_price/class_hour)}원`})</span>
                 </div>
                 
-                {/* 얘가 추가 */}
+                {/* 일정 추가 */}
                 <div className="row">
                     <div className="label1" >일정 및 정원</div>
                     <input type='date'className="label2" 
@@ -318,10 +426,18 @@ const ClassForm = () =>{
                     <span style={{fontSize:'32px', color:'#fea948',width:'55px',float:'left',height:'32px', marginLeft:'5px'}}>
                         👉
                     </span>  
-                    <button className="btn1"
+                    <React.Fragment>
+                        <button onClick={openModal2} className="btn1">클래스 소개 가이드 &gt;</button>
+                        {/* //header 부분에 텍스트를 입력한다. */}
+                        <GuideModal open={modalOpen2} close={closeModal2} header="클래스가이드">
+                            {/* // Modal.js <main> {props.children} </main>에 내용이 입력된다. 리액트 함수형 모달
+                            팝업창입니다. 쉽게 만들 수 있어요. 같이 만들어봐요! */}
+                        </GuideModal>
+                    </React.Fragment>
+                    {/* <button className="btn1"
                     onClick={()=>{
                         navi("/class/introguide")
-                    }}>클래스 소개 가이드 &gt; </button>
+                    }}>클래스 소개 가이드 &gt; </button> */}
                 </div> 
                 
                 <br/>
@@ -337,25 +453,8 @@ const ClassForm = () =>{
                             </span>
                         </span>
                         <Editor 
-                        onChange={(e)=>{
-                            setClass_intro(e.target.value);
-                        }} />
-                    </div>
-                </div>
-
-                <div className="row">
-                    <div className="editor" style={{marginLeft:'50px'}}>
-                        <span className="class_minititle">클래스 요약</span>
-                        <span  className="tulp">
-                            <HelpOutlineIcon style={{fontSize:'20px', marginLeft:'10px'}}/>
-                            <span className="tulc">
-                                클래스의 내용을 간단하게 요약해주세요~
-                            </span>
-                        </span>
-                        <Editor 
-                        onChange={(e)=>{
-                            setClass_summ(e.target.value);
-                        }} />
+                            onMessage={changeMessage}
+                        />
                     </div>
                 </div>
 
@@ -370,7 +469,7 @@ const ClassForm = () =>{
                         </span>                        
                         <Editor 
                         onChange={(e)=>{
-                            setClass_curri(e.target.value);
+                            class_intro(e.target.value);
                         }} />
                     </div>
                 </div>
@@ -409,7 +508,7 @@ const ClassForm = () =>{
 
                 <br/><br/><br/>
                 <button class="w-btn w-btn-gra3 w-btn-gra-anim" type="button"
-                onClick={onInsert}>
+                onClick={upload}>
                     클래스 등록
                 </button>
                 <br/><br/><br/><br/><br/>
