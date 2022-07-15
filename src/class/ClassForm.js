@@ -446,17 +446,20 @@ const ClassForm = (passData) =>{
                     <span style={{fontSize:'20px', marginLeft:'2px'}}
                     >명</span>
                     <br/>
-                    <div style={{width:'760px', marginLeft:'50px'}}><button className="btn2" onClick={optionsave}>+ 일정추가</button></div>
-                </div>
-                {
+                    <div>
+                    {
                     options.map((row,idx)=>(
 
-                        <div>
-                        {row.classoption_day},{row.classoption_starttime},{row.classoption_endtime},{row.classoption_totalperson}
-                        <button type="button"onClick={()=>onDelete(idx)}>delete</button>
+                        <div className="class_planrow">
+                        {row.classoption_day} &nbsp;&nbsp;{row.classoption_starttime}시 ~ {row.classoption_endtime}시 &nbsp;&nbsp;{row.classoption_totalperson}명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button"onClick={()=>onDelete(idx)} className='xbtn' > X </button>
                         </div>
                     ))
-                }
+                    }
+                    </div>
+                    <div style={{width:'760px', marginLeft:'50px'}}><button className="btn2" onClick={optionsave}>+ 일정추가</button></div>
+                </div>
+                
                 <br/><br/><br/><br/><br/><br/>
 
                 <div className="class_subtitle">수강생들에게 클래스에 대해 상세하게 소개해주세요!</div>

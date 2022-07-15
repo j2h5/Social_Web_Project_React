@@ -353,3 +353,10 @@ hr {
     opacity: 1;
     visibility: visible;     /*hover시 발생하는 이벤트*/
 }
+
+.class_planrow{
+    width: 400px;
+    font-size: 20px;
+    margin-left: 480px;
+    margin-top: 20px;
+}
