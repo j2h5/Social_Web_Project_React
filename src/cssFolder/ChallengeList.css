@@ -141,7 +141,7 @@
     width: 1290px;
     height: 155px;
     margin: 20px 0 40px;
-    padding: 0px 0px 26px 200px;
+    padding: 0px 0px 0px 130px;
 
     /* div겹침 */
     clear:both
@@ -151,6 +151,7 @@
     width: 166px;
     height: 172px;
     margin: 1px 15px 0px 0;
+    cursor: pointer;
     /* padding: 14px 34px 24px 36px; */
 }
 
