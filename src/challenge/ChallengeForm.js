@@ -35,7 +35,7 @@ const ChallengeForm = () => {
     const[ch_title, setCh_title] = useState('');
     const[ch_title_photo, setCh_title_photo] = useState('');
     const[ch_content, setCh_content] = useState('');
-    //const[ch_deposit, setCh_deposit] = useState('');
+    const[ch_deposit, setCh_deposit] = useState('1');
     const[ch_exphoto1, setCh_exphoto1] = useState('');
     const[ch_exphoto2, setCh_exphoto2] = useState('');
     const[ch_startday, setCh_startday] = useState('');
@@ -95,7 +95,6 @@ const ChallengeForm = () => {
                 alert(err);
             });
         }
-
         //이미지 업로드 3
         const imageUpload3 = (e) => {
             const uploadFile = e.target.files[0];
@@ -115,9 +114,9 @@ const ChallengeForm = () => {
     }
     
     //가격제한
-    const moneymin = 0;
-    const moneymax = 10000000;
-    const [ch_deposit, setCh_deposit] = useState('');
+    const moneymin = 1;
+    const moneymax = 10;
+    //const [ch_deposit, setCh_deposit] = useState('');
     const moneyChange = event => {
         const value = Math.max(moneymin, Math.min(moneymax, Number(event.target.value)));
         setCh_deposit(value);
@@ -247,7 +246,7 @@ const ChallengeForm = () => {
                     <div className='ch_deposit_row'>
                         <span className='title_span'>최소 예치금</span>
                                 <div className='chalDeposit'>
-                                <input type="number" className="form-control"  step='1000' value={ch_deposit}
+                                <input type="number" className="form-control"  step='1' value={ch_deposit}
                                 onChange={(e)=>{  setCh_deposit(e.target.value); }}
                                 onKeyDown={moneyChange} defaultValue='10000'
                                 style={{width:'200px', display:'inline-block'}} required
@@ -272,32 +271,24 @@ const ChallengeForm = () => {
                     </div>
 
                     {/* 인증샷예시 */}
+                    <img alt="" src={photoUrl+ch_exphoto1} className="imgphoto"/>
                     <div className='ch_certi_photo_row'>
-                        <div style={{display:'inline-block'}}>
                     <span className='title_span'>올바른 인증샷 예시</span>
-                        <div>
-                        <img alt="" src={photoUrl+ch_exphoto1} className="imgphoto1"/>
-                        </div>
                         <label htmlFor="icon-button-file">
                             <Input accept="image/*" id="icon-button-file" type="file" onChange={imageUpload2} style={{display:'none'}}/>
                             <IconButton color="primary" aria-label="upload picture" component="span">
                             <AddPhotoAlternateIcon sx={{fontSize: '50px', color:'black'}}/>
                             </IconButton>
                         </label>
-                        </div>
-                        <div style={{display:'inline-block'}}>
+
+                        <img alt="" src={photoUrl+ch_exphoto2} className="imgphoto"/>
                         <span className='title_span'>나쁜 인증샷 예시</span>
-                        <div>
-                        <img alt="" src={photoUrl+ch_exphoto2} className="imgphoto2"/>
-                        </div>
-                            <label htmlFor="icon-button-file2">
-                            <Input accept="image/*" id="icon-button-file2" type="file" onChange={imageUpload3} style={{display:'none'}}/>
+                            <label htmlFor="icon-button-file">
+                            <Input accept="image/*" id="icon-button-file" type="file" onChange={imageUpload3} style={{display:'none'}}/>
                             <IconButton color="primary" aria-label="upload picture" component="span">
                             <AddPhotoAlternateIcon sx={{fontSize: '50px', color:'black'}}/>
                             </IconButton>
-
                     </label>
-                        </div>
                     </div>
                             <div className='ch_button_row'>
                                 <button type="submit" className="submit_btn"

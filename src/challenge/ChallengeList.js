@@ -5,6 +5,10 @@ import Navbar2 from '../main/Navbar2';
 import '../cssFolder/ChallengeList.css';
 import { GiFruitBowl, GiNotebook, GiRunningShoe } from "react-icons/gi";
 
+import ClassList from '../class/ClassList';
+import MoimList from '../moim/MoimList';
+//import ChallengeList from '../challenge/ChallengeList';
+
 import {FaHandHoldingHeart, FaPalette} from 'react-icons/fa';
 import { IoCalendarNumberOutline } from "react-icons/io5";
 
@@ -14,41 +18,53 @@ import TextsmsIcon from '@mui/icons-material/Textsms';//댓
 import img1 from '../image/2.PNG';
 
 
+function app(){
+
+
+}
+
+
 const ChallengeList = () => {
 
     const [data, setData] = useState('');
     const navi = useNavigate();
-
-        // 현재 페이지번호 읽어오기
-        const {currentPage} = useParams();
-
-        //url 선언
-        let chal_pagelistUrl = process.env.REACT_APP_SPRING_URL+"challenge/pagelist?currentPage="+currentPage;
+    
+    
+    // 현재 페이지번호 읽어오기
+    const {currentPage} = useParams();
+    
+    //url 선언
+    let chal_pagelistUrl = process.env.REACT_APP_SPRING_URL+"challenge/pagelist?currentPage="+currentPage;
         let chal_photoUrl=process.env.REACT_APP_SPRING_URL+"save/";
-
+        
         // 시작시 호출되는 함수
         const pageList=()=>{
-        axios.get(chal_pagelistUrl)
-        .then(res=>{               // res == response
-            setData(res.data);
-            console.log(res.data);
-        })
-    }
-
-    useEffect(()=>{
-        pageList();
-    },[currentPage]);
-
+            axios.get(chal_pagelistUrl)
+            .then(res=>{               // res == response
+                setData(res.data);
+                console.log(res.data);
+            })
+        }
+        
+        useEffect(()=>{
+            pageList();
+        },[currentPage]);
+        
+        //클 챌 모 간 이동
+        const [index, setIndex] = useState(2);
+        
     return (
         <div className='challenge_list'>
             <Navbar2/>
             <div className="content_container" style={{marginLeft:'315px'}} >
                 <div className="row">
-                    <select className="select_cate">
-                        <option value="class" defaultValue="1">클래스</option>
-                        <option value="challenge" defaultValue="2">챌린지</option>
-                        <option value="meeting" defaultValue="3">모임</option>
+                    <select className="select_cate"
+                    onChange = {(e) => setIndex(Number(e.target.value))}>
+                        <option value="1">클래스</option>
+                        <option value="2">챌린지</option>
+                        <option value="3">모임</option>
                     </select>
+
                 </div>
                 <div className="challenge_name">
                     챌린지
@@ -97,26 +113,7 @@ const ChallengeList = () => {
                 </div>
                 <br/><br/>
                 <div className="list_row">
-                    <div className='each_challenge'>
-                        <img alt="" src={img1} className="listimg"/>
-                        
-                        <div className='chal_title'>
-                            <span className="qweqwe">매주 0.5kg 감량하기</span>
-                        </div>
-
-                        <div className="chal_period" style={{marginTop:'0px'}}>
-                            <span className="qweqwe">n일동안 하루 한번</span>
-                        </div>
-
-                        <div className="chal_like">
-                            <span><FavoriteBorderIcon style={{fontSize:'20px', color:'red',height:'20px'}}/></span>
-                            <span className="qweqwe">162</span>
-                        </div>
-                        <div className='chal_cates'>
-                            <span className='chal_cate_1'>#건강</span>
-                            <span className='chal_cate_1'>#바른습관</span>
-                        </div>
-                    </div>
+                    
                     {/* 하나의 카드 반복문 */}
                     {data.list && data.list.map((div,idx)=>(
                     <div className='each_challenge'>
