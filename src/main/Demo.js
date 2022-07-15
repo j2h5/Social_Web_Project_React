@@ -1,11 +1,12 @@
 import React from 'react'
 import './Demo.css'
-// import challengeImg from './images/challengeImg.png'
-// import moimImg from './images/moimImg.png'
-// import classImg from './images/classImg.png'
-import challengeImg from './images/challenge_a.jpg'
-import moimImg from './images/moim_a.jpg'
-import classImg from './images/class_a.jpg'
+ import challengeImg from './images/challengeImg.png'
+ import moimImg from './images/moimImg.png'
+ import classImg from './images/classImg.png'
+// import challengeImg from './images/challenge_a.jpg'
+// import moimImg from './images/moim_a.jpg'
+// import classImg from './images/class_a.jpg'
+// import daehan from './images/daehan.png'
 import { NavLink } from 'react-router-dom'
 import { NoEncryption } from '@material-ui/icons'
 const Demo = () => {
@@ -24,7 +25,7 @@ const Demo = () => {
 					<img src={challengeImg}/>
 				</div>
 				<div>
-					<h3>Challenge with your mate</h3>
+					<h3>CHALLENGE</h3>
 				</div>
 			</a>
         </NavLink>
@@ -38,7 +39,7 @@ const Demo = () => {
 					<img src={moimImg}/>
 				</div>
 				<div>
-					<h3>Meet with your buddy</h3>
+					<h3>METTING</h3>
 				</div>
 			</a>
             </NavLink>
@@ -53,7 +54,7 @@ const Demo = () => {
 					<img src={classImg}/>
 				</div>
 				<div>
-					<h3>Study with other people</h3>
+					<h3>CLASS</h3>
 				</div>
 			</a>
             </NavLink>

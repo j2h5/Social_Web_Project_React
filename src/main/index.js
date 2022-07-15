@@ -8,4 +8,5 @@ export {default as Mainchallenge} from './Mainchallenge';
 export {default as Mainmoim} from './Mainmoim';
 export {default as Mainclass} from './Mainclass';
 export {default as Navbar2} from './Navbar2';
+export {default as Footer2} from './Footer2';
 

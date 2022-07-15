@@ -15,12 +15,13 @@ div.menu{
 }
 div.App{
   position: absolute;
-  top: 5px;
+  top: 2px;
   right:60px;
 }
 div.App h2{
   color: white;
   display: inline-block;
+  font-family: 'Noto Sans Kr';
   font-size: 18px;
 }
 

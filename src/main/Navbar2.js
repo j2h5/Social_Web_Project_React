@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-
+import Weather from "../components/Weather";
 
 import './Navbar2.css'
 
@@ -24,6 +24,7 @@ const Navbar = () => {
     return (
         
         <div className='header' style={{backgroundColor: 'rgba(75, 106, 153, 0.9)'}}>
+                <Weather/>
             <nav className='navbar'>
                     <NavLink style={{textDecoration:'none'}} className='logo' to="/">
                 {/* <a href='/' className='logo'> */}

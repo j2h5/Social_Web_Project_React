@@ -1,14 +1,32 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import './MoimDetailForm.css'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import img1 from './images/img1.jpg';
 import img2 from './images/img2.jpg';
 import img3 from './images/img3.jpg';
 import kyungdae from './images/kyungdae.png';
 import bori from './images/bori.png';
-import { Footer, Navbar2 } from '../main';
-
+import {Navbar2 } from '../main';
+import axios from 'axios';
+import { DoNotDisturb } from '@mui/icons-material';
 const MoimDetailForm = () => {
+    const {num,currentPage}=useParams();
+    const [dto,setDto]=useState('');
+
+    let detailUrl=process.env.REACT_APP_SPRING_URL+"moim/detail?num="+num;
+    let photoUrl=process.env.REACT_APP_SPRING_URL+"save/";
+
+    const getData=()=>{
+        axios.get(detailUrl)
+        .then(res=>{
+            setDto(res.data);
+        })
+    }
+
+    useEffect(()=>{
+        getData();
+    },[])
+ 
     return (
 
         <div>
@@ -35,22 +53,22 @@ const MoimDetailForm = () => {
                     <ul className='con_box_list'>
                         <li>
                             <b class='con_box_list_compo'>
-                                제목:   
+                                제목:    {dto.moim_name}
                             </b>
                         </li>
                         <li>
                             <b class='con_box_list_compo'>
-                                인원/정원:
+                                인원/정원: {dto.moim_count}
                             </b>
                         </li>
                         <li>
                             <b class='con_box_list_compo'>
-                                장소:
+                                장소: {dto.moim_place}
                             </b>
                         </li>
                         <li>
                             <b class='con_box_list_compo'>
-                                날짜:
+                                날짜: {dto.writeday}
                             </b>
                         </li>
                     </ul>
@@ -102,8 +120,9 @@ const MoimDetailForm = () => {
             </div>{/* mid */}
      
         </div> {/* content */}
-<Footer/>
+          
         </div> 
+       
 
     );
 };

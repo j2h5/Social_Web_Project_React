@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { useNavigate, NavLink } from 'react-router-dom'
 import './Navbar.css'
-
+import Weather from "../components/Weather";
 const Navbar = () => {
         //setting mobile nav
     const [click, setClick] = useState(false)
@@ -30,6 +30,7 @@ const Navbar = () => {
     return (
         
         <div className={color ? 'header header-bg' : 'header'}>
+            <Weather/>
             <nav className='navbar'>
                     <NavLink style={{textDecoration:'none'}} className='logo' to="/">
                 {/* <a href='/' className='logo'> */}

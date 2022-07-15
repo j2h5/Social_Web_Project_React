@@ -33,7 +33,7 @@ class Weather extends Component {
                 console.log(responseData);
                 const data = responseData.data;
                 this.setState({
-                    temp: data.main.temp,
+                    temp: Math.round(data.main.temp),
                     desc: data.weather[0].description,
                     icon: data.weather[0].icon,
                     loading: false
@@ -52,7 +52,7 @@ class Weather extends Component {
                 <div className="App">
                     <img src={imgSrc}/>
                     {/* <h1>오늘 한강의 날씨</h1> */}
-                    <h2>{this.state.temp}C</h2>
+                    <h2>{this.state.temp} º</h2>
                     {/* <h2>{this.state.desc}</h2> */}
                 </div>
             );

@@ -46,8 +46,8 @@ const MainMoim = () => {
 					<span></span><span></span><span></span><span></span>
                     <img src={moim3} alt=''/>
 				</div>
-				<h3>배고픈 사람들을 위한 모임</h3>
-				<p>너무 배고파요</p>
+				<h3>이름이 뭐예요</h3>
+				<p>전화번호 뭐예요</p>
 			</div>
 				</NavLink>
 		</li>
