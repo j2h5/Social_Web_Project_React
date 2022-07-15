@@ -153,7 +153,9 @@ const ChallengeForm = () => {
                 <div className="challenge_form">
                 <h1>✨챌린지 등록</h1>
                     <div className='category_row'
-                    onChange={(e)=>{setCh_category(e.target.value);}}>
+                    onClick={(e)=>{setCh_category(e.target.value);
+                    }}
+                    >
                     <span className='title_span'
                     >카테고리</span>
                         <button type="button" name="규칙적인 생활" value="규칙적인 생활"
@@ -174,6 +176,7 @@ const ChallengeForm = () => {
                         <button type="button" name="셀프케어" value="셀프케어"
                         className='category_btn'>셀프케어</button>
                     </div>
+                    
                         
                     <div className='ch_title_row' style={{display:'inline-block'}}>
                         <span className='title_span'
@@ -271,24 +274,32 @@ const ChallengeForm = () => {
                     </div>
 
                     {/* 인증샷예시 */}
-                    <img alt="" src={photoUrl+ch_exphoto1} className="imgphoto"/>
                     <div className='ch_certi_photo_row'>
+                        <div style={{display:'inline-block'}}>
                     <span className='title_span'>올바른 인증샷 예시</span>
+                        <div>
+                        <img alt="" src={photoUrl+ch_exphoto1} className="imgphoto1"/>
+                        </div>
                         <label htmlFor="icon-button-file">
                             <Input accept="image/*" id="icon-button-file" type="file" onChange={imageUpload2} style={{display:'none'}}/>
                             <IconButton color="primary" aria-label="upload picture" component="span">
                             <AddPhotoAlternateIcon sx={{fontSize: '50px', color:'black'}}/>
                             </IconButton>
                         </label>
-
-                        <img alt="" src={photoUrl+ch_exphoto2} className="imgphoto"/>
+                        </div>
+                        <div style={{display:'inline-block'}}>
                         <span className='title_span'>나쁜 인증샷 예시</span>
-                            <label htmlFor="icon-button-file">
-                            <Input accept="image/*" id="icon-button-file" type="file" onChange={imageUpload3} style={{display:'none'}}/>
+                        <div>
+                        <img alt="" src={photoUrl+ch_exphoto2} className="imgphoto2"/>
+                        </div>
+                            <label htmlFor="icon-button-file2">
+                            <Input accept="image/*" id="icon-button-file2" type="file" onChange={imageUpload3} style={{display:'none'}}/>
                             <IconButton color="primary" aria-label="upload picture" component="span">
                             <AddPhotoAlternateIcon sx={{fontSize: '50px', color:'black'}}/>
                             </IconButton>
+
                     </label>
+                        </div>
                     </div>
                             <div className='ch_button_row'>
                                 <button type="submit" className="submit_btn"

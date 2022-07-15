@@ -18,17 +18,15 @@ import TextsmsIcon from '@mui/icons-material/Textsms';//댓
 import img1 from '../image/2.PNG';
 
 
-function app(){
-
-
-}
-
-
 const ChallengeList = () => {
 
     const [data, setData] = useState('');
     const navi = useNavigate();
     
+    //이동하는거
+    const changePage = () =>{
+        return <useNavigate to = "<ClassList/>"/>;
+    }
     
     // 현재 페이지번호 읽어오기
     const {currentPage} = useParams();
@@ -49,20 +47,17 @@ const ChallengeList = () => {
         useEffect(()=>{
             pageList();
         },[currentPage]);
-        
-        //클 챌 모 간 이동
-        const [index, setIndex] = useState(2);
+    
         
     return (
         <div className='challenge_list'>
             <Navbar2/>
             <div className="content_container" style={{marginLeft:'315px'}} >
                 <div className="row">
-                    <select className="select_cate"
-                    onChange = {(e) => setIndex(Number(e.target.value))}>
-                        <option value="1">클래스</option>
-                        <option value="2">챌린지</option>
-                        <option value="3">모임</option>
+                    <select className="select_cate">
+                        <option defaultValue="1">클래스</option>
+                        <option selected defaultValue="2">챌린지</option>
+                        <option defaultValue="3">모임</option>
                     </select>
 
                 </div>
