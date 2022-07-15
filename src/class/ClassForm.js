@@ -1,4 +1,4 @@
-import React, {useState,useRef} from "react";
+import React, {useState,useRef,useEffect} from "react";
 import './ClassForm.css';
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
@@ -8,6 +8,9 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import Weather from "../components/Weather";
 import ClassGuide from './ClassGuide'
 import GuideModal from './GuideModal';
+// import moment from 'moment';
+// import 'moment/local/ko';//korea
+
 const ClassForm = (passData) =>{
     const navi = useNavigate();
 
@@ -144,18 +147,18 @@ const ClassForm = (passData) =>{
             setClass_location('');
             setClass_name('');
 
-            // setClass_photo1('');
-            // setClass_photo2('');
-            // setClass_photo3('');
-            // setClass_photo4('');
-            // setClass_photo5('');
+            // setClass_photo1('');//ref
+            // setClass_photo2('');//ref
+            // setClass_photo3('');//ref
+            // setClass_photo4('');//ref
+            // setClass_photo5('');//ref
 
             setClass_target('');
             setClass_price(0);
             setClass_hour(0);
 
-            //setClass_intro('');//ref
-            setClass_curri('');//ref
+            //setClass_intro('');//ref(Editor1)
+            setClass_curri('');//ref(Editor2)
             setClass_anoun('');
             setClass_confirm('');
 
@@ -171,6 +174,23 @@ const ClassForm = (passData) =>{
             alert(err);
         });
     }
+
+    //클래스옵션 저장할 배열객체
+    const [options,setOptions]=useState([]);
+
+    //클래스 옵션 저장
+    const optionsave=()=>{
+        setOptions(options.concat({classoption_day,classoption_starttime,classoption_endtime,classoption_totalperson}));
+    }
+
+    const onDelete = (id) => {
+        setOptions(options.filter((_,index) =>index!== id));
+        console.log(options)
+    };
+    
+    useEffect(()=>{
+        console.log(options);
+    },[options])
 
     //popup modal (ClassGuide, ClassIntroGuide)
     // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
@@ -198,6 +218,16 @@ const ClassForm = (passData) =>{
         const value = Math.max(moneymin, Math.min(moneymax, Number(event.target.value)));
         setClass_price(value);
     };
+
+    //클래스 날짜
+    //Today
+    //1)
+    const current = new Date();
+    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+    console.log('date'+date);
+    //2)
+    //const nowTime = moment().format('YYYY-MM-DD');
+    //console.log('nowTime'+nowTime);
 
     //클래스시간제한
     const classtimemin = 0;
@@ -371,10 +401,10 @@ const ClassForm = (passData) =>{
                 </div>
                 <div className="row">
                     <div className="label1" >총 가격</div>
-                    <input type='number'className="label2"
+                    <input type='number'className="label2" defaultValue='0'
                     style={{width:'490px'}} step='10'
                     onChange={moneyChange}
-                    defaultValue={Number(class_price)}/>
+                    value={class_price}/>
                     <span style={{fontSize:'20px', marginLeft:'20px'}}>원</span>
                 </div>
 
@@ -383,39 +413,50 @@ const ClassForm = (passData) =>{
                     <input type='number'className="label2"
                     style={{width:'330px'}} 
                     onChange={classtimeChange}
-                    defaultValue={Number(class_hour)}/>
+                    value={class_hour}/>
                     <span style={{fontSize:'20px', marginLeft:'20px'}}>시간 ({`시간당 ${isNaN(class_price/class_hour)?'0원':class_price/class_hour===Infinity?'0원':Math.floor(class_price/class_hour)+'원'}`})</span>
                 </div>
                 
-                {/* 일정 추가 */}
+                {/* 일정 ROW추가*/}
                 <div className="row">
                     <div className="label1" >일정 및 정원</div>
                     <input type='date'className="label2" 
+                    name="classoption_day"
+                    defaultValue={date}
                     style={{width:'200px'}}
                     onChange={(e)=>{
                         setClassoption_day(e.target.value)    
                     }}/>
-                    <input type='number'className="label2"
+                    <input type='number'className="label2" defaultValue='0'
                     style={{width:'60px'}}
-                    onChange={time1Change}
-                    value={classoption_starttime}/>
+                    name="classoption_starttime"
+                    onChange={time1Change}/>
                     <span style={{fontSize:'20px', marginLeft:'2px'}}>시</span>
                     <span style={{fontSize:'20px', marginLeft:'20px'}}>~</span>
-                    <input type='number'className="label2"
+                    <input type='number'className="label2" defaultValue='24'
                     style={{width:'60px'}}
                     onChange={time2Change}
-                    value={classoption_endtime}/>
+                    name="classoption_endtime"/>
                     <span style={{fontSize:'20px', marginLeft:'2px'}}>시</span>
                     <input type='number'className="label2" defaultValue='1'
                     style={{width:'60px'}}
+                    name="classoption_totalperson"
                     onChange={perChange}
-                    value={classoption_totalperson}
                     />
                     <span style={{fontSize:'20px', marginLeft:'2px'}}
                     >명</span>
                     <br/>
-                    <div style={{width:'760px', marginLeft:'50px'}}><button className="btn2">+ 일정추가</button></div>
+                    <div style={{width:'760px', marginLeft:'50px'}}><button className="btn2" onClick={optionsave}>+ 일정추가</button></div>
                 </div>
+                {
+                    options.map((row,idx)=>(
+
+                        <div>
+                        {row.classoption_day},{row.classoption_starttime},{row.classoption_endtime},{row.classoption_totalperson}
+                        <button type="button"onClick={()=>onDelete(idx)}>delete</button>
+                        </div>
+                    ))
+                }
                 <br/><br/><br/><br/><br/><br/>
 
                 <div className="class_subtitle">수강생들에게 클래스에 대해 상세하게 소개해주세요!</div>
