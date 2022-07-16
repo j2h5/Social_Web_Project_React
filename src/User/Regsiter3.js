@@ -4,19 +4,17 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
-import img from './profile.jpg';
-import '../User/Register.css';
+import img from './UserIMG/profile.jpg';
+import './UserCss/Register.css';
 import TextField from '@mui/material/TextField';
 
 export default function Review(props) {
   return (
-    <React.Fragment>
-      <Typography variant="h4" gutterBottom>
-        회원 정보 확인
-      </Typography>
+    <div className='container_regis'>
+      <div className='box_title'>회원 정보 확인</div><br/>
       <div style={{width:'100px',height:'100px',borderRadius:'100%',overflow:'hidden',margin:'auto',cursor:'pointer'}}>
-      <img src={img} alt='' style={{display:'block',margin:'auto',width:'100px'}}/>
-      </div>
+      <img src={img} alt='' style={{display:'block',margin:'auto',width:'100px'}}/></div>
+      
 
       <div style={{margin:'auto',width:'200px',height:'70px', marginTop:'10px', fontSize:'15px'}}>
         닉네임 : {props.nickname} <br/>
@@ -36,6 +34,6 @@ export default function Review(props) {
       <Grid item xs={12} sm={8} style={{marginTop:'15px', color:'gray'}}>{props.phone}</Grid>
       </Grid>
       </div>
-    </React.Fragment>
+    </div>
   );
 }
