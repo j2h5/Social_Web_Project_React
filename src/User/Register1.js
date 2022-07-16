@@ -6,7 +6,6 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import './UserCss/Register.css';
 import { useScrollFadeIn } from '../hooks';
-// HOOK FORM VALIDATION
 import { useForm } from "react-hook-form";
 
 

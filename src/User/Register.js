@@ -13,7 +13,6 @@ import Register1 from './Register1';
 import Register2 from './Register2';
 import Regsiter3 from './Regsiter3';
 import './UserCss/Register.css';
-// HOOK FORM VALIDATION
 import { useForm } from "react-hook-form";
 
 

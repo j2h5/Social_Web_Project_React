@@ -23,7 +23,6 @@ const ChallengeList = () => {
 
     const [data, setData] = useState([]); //기존 데이터를 저장하고 있는 상태
     const [filterData, setFilterData] = useState([]);
-    // const [selectedCategory, setSelectedCategory] = useState(); 
     const[category, setCategory] = useState();
 
     const navi = useNavigate();
