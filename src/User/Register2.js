@@ -15,7 +15,7 @@ import './Register2.css';
 
 
 
-export default function PaymentForm() {
+export default function PaymentForm({changeNickname, changeProfile, changeCategory}) {
 
   const [img,setImg]=React.useState(img1);
 
@@ -51,6 +51,7 @@ export default function PaymentForm() {
             fullWidth
             autoComplete="cc-name"
             variant="standard"
+            onChange={changeNickname}
           />
         </Grid>
       </Grid>

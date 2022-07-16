@@ -42,9 +42,9 @@ export default function Checkout() {
       case 0:
         return <Register1 changeEmail={changeEmail} changePassword={changePassword} changeUserame={changeUserame} changeAddr1={changeAddr1} changeAddr2={changeAddr2} changePhone={changePhone} changePost={changePost} />;
       case 1:
-        return <Register2 />;
+        return <Register2 changeNickname={changeNickname} changeProfile={changeProfile} changeCategory={changeCategory}/>;
       case 2:
-        return <Regsiter3 />;
+        return <Regsiter3 email={email} password={password} username={username} addr1={addr1} addr2={addr2} post={post} phone={phone} nickname={nickname} profile={profile} category={category}/>;
       default:
         throw new Error('Unknown step');
     }
@@ -55,12 +55,24 @@ export default function Checkout() {
   const handleNext = () => {
     setActiveStep(activeStep + 1);
 
+    if(activeStep === steps.length - 1){
+
+      let insertUrl = process.env.REACT_APP_SPRING_URL+"api/signup";
+
+      axios.post(insertUrl, { email, password, username, addr1, addr2, post, phone, nickname } )
+      .then(res=>{
+          //insert 성공 후 처리할 코드들
+          alert("집에가!!")
+          
+          //목록으로 이동
+          //navi("/challenge/list");
+        })
+    }
   };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
-
 
 //Register 데이터를 서버로 전송하기 관련 코드
   const [email, setEmail] = React.useState('');
@@ -70,7 +82,10 @@ export default function Checkout() {
   const [addr2, setAddr2] = React.useState('');
   const [post, setPost] = React.useState('');
   const [phone, setPhone] = React.useState('');
-
+  const [nickname, setNickname] = React.useState('');
+  const [profile, setProfile] = React.useState('');
+  const [category, setCategory] = React.useState('');
+  
   const changeEmail = (e) => { setEmail(e.target.value); }
   const changePassword = (e) => { setPassword(e.target.value); }
   const changeUserame = (e) => { setUserame(e.target.value); }
@@ -78,19 +93,10 @@ export default function Checkout() {
   const changeAddr2 = (e) => { setAddr2(e.target.value); }
   const changePost = (e) => { setPost(e.target.value); }
   const changePhone = (e) => { setPhone(e.target.value); }
+  const changeNickname = (e) => { setNickname(e.target.value); }
+  const changeProfile = (e) => { setProfile(e.target.value); }
+  const changeCategory = (e) => { setCategory(e.target.value); }
 
-  let insertUrl = process.env.REACT_APP_SPRING_URL+"user/signup";
-
-  const onInsert = () =>{
-    axios.post(insertUrl, { email, password, username, addr1, addr2, post, phone } )
-    .then(res=>{
-        //insert 성공 후 처리할 코드들
-        alert("집에가!!")
-        
-        //목록으로 이동
-        //navi("/challenge/list");
-    })
-}
 
   return (
     <ThemeProvider theme={theme}>
@@ -135,6 +141,9 @@ export default function Checkout() {
                 <Typography variant="subtitle1">
                   왜 가입하셨쬬? 이 프로젝트는 망해가고 있습니다.
                 </Typography>
+                {/* <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+                      Back
+                    </Button> */}
               </React.Fragment>
             ) : (
               <React.Fragment>
