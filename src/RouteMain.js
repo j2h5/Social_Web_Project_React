@@ -4,8 +4,9 @@ import { Route, Routes } from "react-router-dom";
 import {Main} from './main';
 import {Shop, ShopForm, ShopDetail, ShopUpdate } from './shop';
 
-// 회원가입
+// -----회원가입----
 import Register from "./User/Register";
+import RegisterTest from "./User/test";
 
 import Board from "./board/Board";
 import BoardForm from "./board/BoardForm";
@@ -36,6 +37,7 @@ const RouteMain=()=>{
                 <Route path="/user/register" element={<Register/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/login/a" element={<LoginFormTest/>}/>
+                <Route path="/user/test" element={<RegisterTest/>}/>{/* 테스트 */}
 
                 {/* 마이페이지 */}
                 <Route path="/mypage" element={<MypageMain/>}/>
