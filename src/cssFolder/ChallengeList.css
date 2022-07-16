@@ -150,9 +150,16 @@
     float: left;
     width: 166px;
     height: 172px;
-    margin: 1px 15px 0px 0;
+    /* margin: 1px 15px 0px 0; */
     cursor: pointer;
+    border: 1px solid white;
+    background-color: white;
     /* padding: 14px 34px 24px 36px; */
+}
+
+.cate:focus{
+    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.5);
+
 }
 
 .catetext{
