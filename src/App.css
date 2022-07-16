@@ -16,10 +16,10 @@ div.menu{
 
 div.main{
   position: absolute;
-  top:300px;
-  left: 155px;
-  width: 800px;
-  height: 500px;
+  top:0px;
+  left:0px;
+  width:1920px;
+  height:5000px;
 }
 
 ul.menu li{

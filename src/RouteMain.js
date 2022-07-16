@@ -28,7 +28,7 @@ const RouteMain=()=>{
     return (
         <div>
 
-            <div className="main">
+            <div>
                 <Routes>
                 <Route path="/" element={<Main/>}/>
 
