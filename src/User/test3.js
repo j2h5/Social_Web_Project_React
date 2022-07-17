@@ -1,15 +1,9 @@
 import React, {useState, useEffect, useRef} from 'react';
 import './UserCss/test3.css';
+import img from './UserIMG/profile.jpg';
+
 
 const test3 = () => {
-
-    // const [id, setId] = useState;
-
-    // const btnClick =() =>{
-    //     if (id.val()==="") {
-    //         id.next('label').addClass('warning');
-    //     }
-    // }
 
     return (
         <div className='login-form'>
