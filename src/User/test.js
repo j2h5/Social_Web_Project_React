@@ -22,7 +22,7 @@ export default function App() {
               }
             })}
           />
-          <input type="submit" />
+          <input type="submit" value="회원가입" />
         </form>
         {errors && <h1>{error?.username?.message}</h1>}
       </div>

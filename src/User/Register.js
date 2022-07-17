@@ -57,6 +57,11 @@ export default function Checkout() {
     setActiveStep(activeStep - 1);
   };
 
+  const { register, handleSubmit } = useForm();
+    const onSubmit = (data) => {
+      console.log(data);
+    };
+
 //Register 데이터를 서버로 전송하기 관련 코드
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -86,6 +91,7 @@ export default function Checkout() {
       <br/><br/><br/><br/><br/><br/>
 
       <Container component="main" maxWidth="sm" sx={{ mb: 6 }} >
+      <form onSubmit={handleSubmit(onSubmit)}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } , width: '100vh', height: '90vh' }}>
           
           <Typography component="h1" variant="h4" align="center">
@@ -136,6 +142,7 @@ export default function Checkout() {
             )}
           </React.Fragment>
         </Paper>
+        </form>
       </Container>
     </div>
   );

@@ -16,8 +16,6 @@ export default function Register1({changeEmail, changePassword, changeUserame, c
     3: useScrollFadeIn('up', 1, 0.4), 4: useScrollFadeIn('up', 1, 0.5), 5: useScrollFadeIn('up', 1, 0.6),
     6: useScrollFadeIn('up', 1, 0.7), 7: useScrollFadeIn('up', 1, 0.7), 8: useScrollFadeIn('up', 1, 0.8)
   };
-  const { register, watch } = useForm();
-  console.log(watch());
   return (
     <div className='container_regis'>
         <div className='box_title'>회원 정보 입력</div><br/>
