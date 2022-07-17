@@ -1,12 +1,15 @@
 import React, {useState, useEffect, useRef} from 'react';
+import Navbar2 from '../main/Navbar2';
 import './UserCss/test3.css';
-import img from './UserIMG/profile.jpg';
 
 
 const test3 = () => {
 
     return (
-        <div className='login-form'>
+        <div className='container'>
+            <Navbar2/>
+        <div className='wrapper'>
+            <div className='login-form'>
             <h1>LOGO DESIGN</h1>
             <form action="">
                 <div className='int-area'>
@@ -24,7 +27,10 @@ const test3 = () => {
                     <a href='/'>Forgot Password?</a>
                 </div>
             </form>
+        </div>{/* login-form */}
+        </div>{/* wrapper */}
         </div>
+        
     );
 };
 
