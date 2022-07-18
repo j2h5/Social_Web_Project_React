@@ -7,10 +7,12 @@ import {Shop, ShopForm, ShopDetail, ShopUpdate } from './shop';
 import Register from "./User/Register";
 import RegisterTest from "./User/test3";
 
+import Login from "./login/Login";
+import LoginFormTest from "./login/LoginFormTest";
+
 import Board from "./board/Board";
 import BoardForm from "./board/BoardForm";
 import BoardDetail from "./board/BoardDetail";
-import Login from "./login/Login";
 import errimg from "./image/er.png"
 import ChallengeForm from "./challenge/ChallengeForm";
 import ChallengeList from "./challenge/ChallengeList";
@@ -20,7 +22,6 @@ import {ClassList, ClassForm, ClassDetail,ClassUpdateForm,ClassGuide,ClassIntroG
 import MoimForm from "./moim/MoimForm";
 import MoimDetailForm from "./moim/MoimDetailForm";
 import MoimList from "./moim/MoimList";
-import LoginFormTest from "./login/LoginFormTest";
 import MypageMain from "./mypage/MypageMain";
 import CreateList from "./class/CreateList";
 import ChatRoom from "./chatting/ChatRoom";
@@ -36,9 +37,11 @@ const RouteMain=()=>{
 
                 {/* 회원가입 */}
                 <Route path="/user/register" element={<Register/>}/>
+                <Route path="/user/test" element={<RegisterTest/>}/>{/* 테스트 */}
+
+                {/* 로그인 */}
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/login/a" element={<LoginFormTest/>}/>
-                <Route path="/user/test" element={<RegisterTest/>}/>{/* 테스트 */}
 
                 {/* 마이페이지 */}
                 <Route path="/mypage" element={<MypageMain/>}/>
