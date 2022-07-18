@@ -4,20 +4,22 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import '../User/Register.css';
+import './UserCss/Register.css';
+import { useScrollFadeIn } from '../hooks';
+import { useForm } from "react-hook-form";
+
 
 export default function Register1({changeEmail, changePassword, changeUserame, changeAddr1, changeAddr2, changePost, changePhone}) {
 
-
-
+  const animatedItem = {
+    0: useScrollFadeIn('up', 1, 0), 1: useScrollFadeIn('up', 1, 0.2), 2: useScrollFadeIn('up', 1, 0.3),
+    3: useScrollFadeIn('up', 1, 0.4), 4: useScrollFadeIn('up', 1, 0.5), 5: useScrollFadeIn('up', 1, 0.6),
+    6: useScrollFadeIn('up', 1, 0.7), 7: useScrollFadeIn('up', 1, 0.7), 8: useScrollFadeIn('up', 1, 0.8)
+  };
   return (
-    <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        <div className='title2'>
-        회원 정보 입력
-        </div>
-      </Typography>
-      <Grid container spacing={3} >
+    <div className='container_regis'>
+        <div className='box_title'>회원 정보 입력</div><br/>
+        <Grid container spacing={3} >
         <Grid item xs={12}>
           <TextField
             required
@@ -28,6 +30,7 @@ export default function Register1({changeEmail, changePassword, changeUserame, c
             autoComplete="shipping address-line1"
             variant="standard"
             onChange={changeEmail}
+            {...animatedItem[0]}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -40,6 +43,7 @@ export default function Register1({changeEmail, changePassword, changeUserame, c
             autoComplete="given-name"
             variant="standard"
             onChange={changePassword}
+            {...animatedItem[1]}
             
           />
         </Grid>
@@ -52,6 +56,7 @@ export default function Register1({changeEmail, changePassword, changeUserame, c
             fullWidth
             autoComplete="family-name"
             variant="standard"
+            {...animatedItem[2]}
           />
         </Grid>
         <Grid item xs={12}>
@@ -64,6 +69,7 @@ export default function Register1({changeEmail, changePassword, changeUserame, c
             autoComplete="shipping address-line1"
             variant="standard"
             onChange={changeUserame}
+            {...animatedItem[3]}
           />
         </Grid>
 
@@ -77,6 +83,7 @@ export default function Register1({changeEmail, changePassword, changeUserame, c
             autoComplete="shipping address-level2"
             variant="standard"
             onChange={changeAddr1}
+            {...animatedItem[4]}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -88,6 +95,7 @@ export default function Register1({changeEmail, changePassword, changeUserame, c
             fullWidth
             variant="standard"
             onChange={changePost}
+            {...animatedItem[5]}
           />
         </Grid>
         <Grid item xs={12}>
@@ -99,6 +107,7 @@ export default function Register1({changeEmail, changePassword, changeUserame, c
             autoComplete="shipping address-line2"
             variant="standard"
             onChange={changeAddr2}
+            {...animatedItem[6]}
           />
         </Grid>
 
@@ -112,15 +121,16 @@ export default function Register1({changeEmail, changePassword, changeUserame, c
             autoComplete="shipping address-line1"
             variant="standard"
             onChange={changePhone}
+            {...animatedItem[7]}
           />
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
             control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-            label="(필수) 개인정보 수집ㆍ이용에 동의합니다."
+            label="(필수) 개인정보 수집ㆍ이용에 동의합니다." {...animatedItem[8]}
           />
         </Grid>
       </Grid>
-    </React.Fragment>
+    </div> 
   );
 }

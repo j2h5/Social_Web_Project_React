@@ -4,21 +4,18 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import img1 from './profile.jpg';
+import img1 from './UserIMG/profile.jpg';
 import { useRef } from 'react';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import SportsHandballIcon from '@mui/icons-material/SportsHandball';
 import KitesurfingIcon from '@mui/icons-material/Kitesurfing';
 import BrushIcon from '@mui/icons-material/Brush';
 import PetsIcon from '@mui/icons-material/Pets';
-import './Register2.css';
+import './UserCss/Register.css';
 
-
-
-export default function PaymentForm() {
+export default function PaymentForm({changeNickname, changeProfile, changeCategory}) {
 
   const [img,setImg]=React.useState(img1);
-
 
       //사진 누르면 인증샷 업로드 file
       const photoInput = useRef();
@@ -27,21 +24,12 @@ export default function PaymentForm() {
       };
 
   return (
-    <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        프로필 등록
-      </Typography>
-      <div style={{border:'0px solid black',width:'310px',height:'310px',borderRadius:'160px',overflow:'hidden',marginLeft:'20%',cursor:'pointer'}}
-      onClick={imgChange}>
-      <img src={img} alt='' style={{display:'block',margin:'0px auto',width:'310px'}}/>
-      </div>
+    <div className='container_regis'>
+      <div className='box_title'>프로필 등록</div><br/>
+      <div className='profile' onClick={imgChange}>
+      <img src={img} alt='' style={{display:'block',margin:'auto',width:'150px'}}/></div>
+      <input type="file" multiple ref={photoInput} style={{display:'none'}}/><br/>
 
-      <input 
-        type="file"
-        multiple
-        ref={photoInput}
-        style={{display:'none'}}
-      />
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <TextField
@@ -51,42 +39,20 @@ export default function PaymentForm() {
             fullWidth
             autoComplete="cc-name"
             variant="standard"
+            onChange={changeNickname}
           />
         </Grid>
       </Grid>
-      <br/>
+      <br/><br/><br/>
 
-      <Typography variant="h6" gutterBottom>
-        카테고리
-      </Typography>
-      <br/>
-
-      <Grid container spacing={3}>
-      <div className="box1">
-        <CameraAltIcon style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
-        <div className="boxtext1">스냅사진</div>
-      </div>
-      <div className="box1">
-        <CameraAltIcon style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
-        <div className="boxtext1">스냅사진</div>
-      </div>
-      <div className="box1">
-        <CameraAltIcon style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
-        <div className="boxtext1">스냅사진</div>
-      </div>
-      <div className="box1">
-        <CameraAltIcon style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
-        <div className="boxtext1">스냅사진</div>
-      </div>
-      <div className="box1">
-        <CameraAltIcon style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
-        <div className="boxtext1">스냅사진</div>
-      </div>
-      <div className="box1">
-        <CameraAltIcon style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
-        <div className="boxtext1">스냅사진</div>
-      </div>
-      </Grid>
-    </React.Fragment>
+      <div className='content_title'>카테고리</div><br/>
+      <button type="button" name="운동" value="운동" className='category_bn'>운동</button>
+      <button type="button" name="사교" value="사교" className='category_bn'>사교</button>
+      <button type="button" name="음악" value="음악" className='category_bn'>음악</button>
+      <button type="button" name="독서" value="독서" className='category_bn'>독서</button>
+      <button type="button" name="취미" value="취미" className='category_bn'>취미</button>
+      <button type="button" name="반려동물" value="반려동물" className='category_bn'>반려동물</button>
+      <br/><br/><br/>
+    </div>
   );
 }

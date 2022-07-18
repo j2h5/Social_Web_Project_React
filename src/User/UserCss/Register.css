@@ -1,0 +1,56 @@
+
+/* -------전체 적용---------- */
+
+*{
+  font-family: 'Noto Sans KR';
+}
+
+.title1{
+  font-size: 30px;
+  font-family: 'Noto Sans KR';
+  font-weight: bold;
+}
+
+div.box_title{
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.content_title{
+  font-size: 13px;
+  font-weight: 300;
+}
+
+div.container_regis{
+  height: 480px;
+}
+
+/* -------Register2---------- */
+
+.category_bn{
+  width: 90px;
+  height: 30px;
+  margin-left: 20px;
+  border-radius: 30px;
+  background-color: #3970fa;
+  border: 0px;
+  color:white;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.category_bn:hover{
+  box-shadow: 2px 2px 2px gray;
+}
+
+/* -------Register2---------- */
+
+div.container_regis3{
+  background-color: #3970fa;
+  height: 480px;
+}
+
+div.profile{
+  margin: auto; width: 150px; height: 150px; border-radius: 160px; overflow: hidden; cursor: pointer;
+}

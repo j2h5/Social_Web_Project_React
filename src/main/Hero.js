@@ -6,6 +6,7 @@ import hanch from './images/hanch.mp4';
 const Hero = () => {
     return (
         <div className='hero'>
+        
             <div className='content'>
             <div className='intro'>
                 <div className='maintitle'>

@@ -16,53 +16,55 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import TextsmsIcon from '@mui/icons-material/Textsms';//댓
 
 import img1 from '../image/2.PNG';
-
-
-function app(){
-
-
-}
+import createTypography from '@material-ui/core/styles/createTypography';
 
 
 const ChallengeList = () => {
 
-    const [data, setData] = useState('');
+    const [data, setData] = useState([]); //기존 데이터를 저장하고 있는 상태
+    const [filterData, setFilterData] = useState([]);
+    const[category, setCategory] = useState();
+
     const navi = useNavigate();
-    
-    
+
+    const onChangeCategory = ({ currentTarget }) => {
+        setCategory(currentTarget.value);
+    }
+
     // 현재 페이지번호 읽어오기
     const {currentPage} = useParams();
-    
+
     //url 선언
     let chal_pagelistUrl = process.env.REACT_APP_SPRING_URL+"challenge/pagelist?currentPage="+currentPage;
-        let chal_photoUrl=process.env.REACT_APP_SPRING_URL+"save/";
+    let chal_photoUrl=process.env.REACT_APP_SPRING_URL+"save/";
         
         // 시작시 호출되는 함수
         const pageList=()=>{
             axios.get(chal_pagelistUrl)
             .then(res=>{               // res == response
-                setData(res.data);
-                console.log(res.data);
+                setData(res.data.list);
+                setFilterData(res.data.list);
             })
         }
         
         useEffect(()=>{
             pageList();
         },[currentPage]);
-        
-        //클 챌 모 간 이동
-        const [index, setIndex] = useState(2);
-        
+
+        useEffect(() => {
+            const newData = data.filter((a) => a.ch_category === category);
+            setFilterData(newData);
+        }, [category]);
+    
     return (
         <div className='challenge_list'>
             <Navbar2/>
             <div className="content_container" style={{marginLeft:'315px'}} >
                 <div className="row">
-                    <select className="select_cate"
-                    onChange = {(e) => setIndex(Number(e.target.value))}>
-                        <option value="1">클래스</option>
-                        <option value="2">챌린지</option>
-                        <option value="3">모임</option>
+                    <select className="select_cate">
+                        <option>클래스</option>
+                        <option selected>챌린지</option>
+                        <option>모임</option>
                     </select>
 
                 </div>
@@ -70,30 +72,36 @@ const ChallengeList = () => {
                     챌린지
                 </div>
                 <div className="challenge_cate">
-                    <div className="cate">
-                        <IoCalendarNumberOutline style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
+                    <button type="button" className="cate"
+                    onClick={onChangeCategory} value="규칙적인 생활">
+                        <IoCalendarNumberOutline style={{ fontSize:'80px'}}/>
                         <div className="catetext">규칙적인 생활</div>
-                    </div>
-                    <div className="cate">
-                        <GiRunningShoe style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
+                    </button>
+                    <button type="button" className="cate"
+                    onClick={onChangeCategory} value="운동">
+                        <GiRunningShoe style={{ fontSize:'80px'}}/>
                         <div className="catetext">운동</div>
-                    </div>
-                    <div className="cate">
-                        <GiFruitBowl style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
+                    </button>
+                    <button type="button" className="cate"
+                    onClick={onChangeCategory} value="식습관">
+                        <GiFruitBowl style={{ fontSize:'80px'}}/>
                         <div className="catetext">식습관</div>
-                    </div>
-                    <div className="cate">
-                        <FaHandHoldingHeart style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
+                    </button>
+                    <button type="button" className="cate"
+                    onClick={onChangeCategory} value="마음챙김">
+                        <FaHandHoldingHeart style={{ fontSize:'80px'}}/>
                         <div className="catetext">마음챙김</div>
-                    </div>
-                    <div className="cate">
-                        <FaPalette style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
+                    </button>
+                    <button type="button" className="cate"
+                    onClick={onChangeCategory} value="취미">
+                        <FaPalette style={{ fontSize:'80px'}}/>
                         <div className="catetext">취미</div>
-                    </div>
-                    <div className="cate">
-                        <GiNotebook style={{ fontSize:'80px', marginLeft:'45px', marginTop:'23px'}}/>
+                    </button>
+                    <button type="button" className="cate"
+                    onClick={onChangeCategory} value="셀프케어">
+                        <GiNotebook style={{ fontSize:'80px'}}/>
                         <div className="catetext">셀프케어</div>
-                    </div>
+                    </button>
                 </div>
                 {/* challenge_cate 닫힘*/}
                 <div className="search_div">
@@ -115,8 +123,8 @@ const ChallengeList = () => {
                 <div className="list_row">
                     
                     {/* 하나의 카드 반복문 */}
-                    {data.list && data.list.map((div,idx)=>(
-                    <div className='each_challenge'>
+                    {filterData && filterData.map((div,idx)=>(
+                    <div className='each_challenge' key={idx}>
                         <img alt="" src={chal_photoUrl + div.ch_title_photo} className="listimg"/>
                         
                         <div className='chal_title'>

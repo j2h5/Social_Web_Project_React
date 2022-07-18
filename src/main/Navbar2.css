@@ -12,7 +12,7 @@
 }
 
 .header-bg {
- background-color: rgba(75, 106, 153, 0.9); 
+ background-color: rgba(133, 167, 222, 0.9); 
 
 }
 
@@ -115,7 +115,7 @@ div.menuBar{
   .logo {
     position: fixed;
     left:900px;
-    top:2px;
+    top:0px;
     
     z-index: 999;
     text-decoration: none;
@@ -126,7 +126,9 @@ div.menuBar{
   }
   .logo h1{
     color:white;
-    font-size: 24px;
+    font-size: 36px;
+    font-family: 'Nanum Pen Script';
+
   }
   /*사이드메뉴*/
   div[class="sidebar"] {width: 280px;  height:100%; opacity: 0.8; background:#222; position:fixed; top:0; left:-300px; z-index:1; transition: all .35s;}
@@ -143,7 +145,7 @@ div.menuBar{
   .sidebar li{
     position: relative;
     top:120px;
-    margin: 30px;
+    margin: 70px;
     color:white;
     font-size: 20px;
   }
