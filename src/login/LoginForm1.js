@@ -22,7 +22,7 @@ const LoginForm = () => {
                 window.location.reload(); //새로고침
                 //navi("/login"); 
             }
-          );
+        );
 
         // axios.post(url, {username,password})
         // .then(res=>{
