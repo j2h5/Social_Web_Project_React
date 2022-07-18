@@ -10,6 +10,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import ClassReview from "./ClassReview";
+import ReviewModal from "./ReviewModal";
 
 
 const ClassDetail=()=>{
@@ -33,6 +35,14 @@ const ClassDetail=()=>{
     let detailUrl = SPRING_URL+"class/detail?num="+num;
     let photoUrl= SPRING_URL+"save/";
     let deletelUrl =  SPRING_URL+"class/delete?num="+num;
+
+    const [modalOpen2, setModalOpen2] = useState(false);
+    const openModal2 = () => {
+        setModalOpen2(true);
+    };
+    const closeModal2 = () => {
+        setModalOpen2(false);
+    };
 
 
     //스프링으로부터 num에 해당하는 data받기
@@ -197,56 +207,16 @@ const ClassDetail=()=>{
 
                 <div className="class_reviewtitle">
                     <div className="class_reviewcnt">★★★★★ 4.9 (180개)</div>
-                    <button className="class_reviewbtn">리뷰 작성하기</button>
+
+                    <React.Fragment>
+                        <button className="class_reviewbtn" onClick={openModal2}>리뷰 작성하기</button>
+                        {/* //header 부분에 텍스트를 입력한다. */}
+                        <ReviewModal open={modalOpen2} close={closeModal2} header="리뷰 작성"/>
+                            {/* // Modal.js <main> {props.children} </main>에 내용이 입력된다. 리액트 함수형 모달
+                            팝업창입니다. 쉽게 만들 수 있어요. 같이 만들어봐요! */}
+                    </React.Fragment>
                 </div>
-                <div className="class_reviewrow">
-                    {/* 리뷰info */}
-                    <div className="class_reviewerinfo">
-                        <div class="tutor_image" style={{float:'left'}}>
-
-                        </div>
-                        <span className="class_reviewername" >
-                            김정하
-                        </span><br/>
-                        <span className="class_reviewertime" >
-                            2022-07-04 03:58
-                        </span>
-                        <div className="class_review_star">★★★★★</div>
-                        <div className="class_reviewcontent">
-                            <span style={{fontSize:'15px'}}>
-                                수영을 배워본 적이 없어서 물에 뜨는법도 모르지만 세림쌤과 함께한 
-                                원데이클래스 경험이 너무 신비하고 재미있었어서 4월부터 오픈워터 자격증 코스도 따려고
-                                계획중입니다! 외모도 완벽하시지만 2시간 30분 동안 친절하고 컴팩트하게 수업을 
-                                구성해주신 세림쌤 덕분에 같이 간 친구도 만족하고, 사진도 많이 건져왔어요ㅎㅎ
-                            </span>
-                        </div>
-                        <div className="class_reviewphoto"></div>
-                        <div className="commentlike"> ♥27 ㅁ12</div>
-                        {/* 댓글 */}
-                        <div className="class_reviewcomment">
-                            <div className="re_info">
-                                <div class="tutor_image" style={{float:'left'}}>
-
-                                </div>
-                                <span className="class_reviewername" >
-                                    이경주
-                                </span><br/>
-                                <span className="class_reviewertime" >
-                                    2022-07-04 03:58
-                                </span>
-                            </div>
-                            <div className="class_commentbody" style={{fontSize:'15px'}}>
-                                하하하 저도 배우고싶네용
-                            </div>
-                            <div className="class_commentdell">
-                                <button style={{float:'right', marginTop:'5px'}} className="btn4">삭제</button>
-                            </div>
-                        </div>
-                    </div>{/* class_reviewrow */}
-
-                    
-                    
-                </div>
+                <ClassReview/>
             </div>
             <br/><br/><br/><br/><br/>
             <div className="tyu">
