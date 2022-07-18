@@ -1,6 +1,6 @@
 import React from "react";
 import '../App.css';
-import LoginForm from "./LoginForm";
+import LoginForm1 from "./LoginForm1";
 import Logout from "./Logout";
 
 const Login=()=>{
@@ -9,7 +9,7 @@ const Login=()=>{
     return (
         <div>
             {
-                loginok == null ? <LoginForm/> : <Logout/>
+                loginok == null ? <LoginForm1/> : <Logout/>
             }
         </div>
     )

@@ -23,6 +23,9 @@ const login = (username, password) => {
 };
 const logout = () => {
   localStorage.removeItem("user");
+  localStorage.removeItem("loginok");
+  localStorage.removeItem("username");
+  window.location.reload();
 };
 const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user"));

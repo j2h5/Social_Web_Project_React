@@ -1,0 +1,17 @@
+div.container{
+    background-color: white;
+    width: 1920px; height: 2000px;
+    position: absolute; top: 0px; left: 0px;
+}
+
+div.container2{
+    background-color: rgb(226, 144, 44);
+    width: 1290px; height: 1500px;
+    position: absolute; top: 200px; left: 315px;
+}
+
+div.form1{
+    background-color: white; border: 0.5px solid gray; border-radius: 20px;
+    width:900px; height: 700px; margin: auto;
+
+}
