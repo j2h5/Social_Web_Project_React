@@ -23,6 +23,8 @@ import MoimList from "./moim/MoimList";
 import LoginFormTest from "./login/LoginFormTest";
 import MypageMain from "./mypage/MypageMain";
 import CreateList from "./class/CreateList";
+import ChatRoom from "./chatting/ChatRoom";
+import TTest from "./chatting/TTest";
 
 const RouteMain=()=>{
     return (
@@ -72,6 +74,10 @@ const RouteMain=()=>{
 
                  {/* Test */}
                 <Route path="/test" element={<CreateList/>}/>
+                <Route path="/test2" element={<ChatRoom/>}/>
+                <Route path="/test3" element={<TTest/>}/>
+
+                
 
 
                 <Route path="*" element={
