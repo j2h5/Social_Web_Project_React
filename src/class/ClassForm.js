@@ -14,15 +14,19 @@ import GuideModal from './GuideModal';
 const ClassForm = (passData) =>{
     const navi = useNavigate();
 
+    let url=process.env.REACT_APP_SPRING_URL+"class/reivewsave";
+
     //url 등록
-    let uploadUrl = "http://localhost:9009/class/upload";
+    let uploadUrl = process.env.REACT_APP_SPRING_URL+"class/upload";
     let photoUrl = "http://localhost:9009/save/";
-    let insertUrl = "http://localhost:9009/class/insert";
+    let insertUrl = process.env.REACT_APP_SPRING_URL+"class/insert";
+    let insertUrl2 = process.env.REACT_APP_SPRING_URL+"class/insert2";
 
     //class table < optionnum
     const [class_category, setClass_category] = useState('스냅사진');
     const [class_location, setClass_location] = useState('반포');
     const [class_name, setClass_name] = useState('');
+    const [class_anounok, setClass_anounok] = useState(false);
 
     const class_photo1 = useRef('');
     const class_photo2 = useRef('');
@@ -46,27 +50,18 @@ const ClassForm = (passData) =>{
     //const [classoption_endtime, setClassoption_endtime] = useState(0); 밑에서 사용
     //const [classoption_totalperson, setClassoption_totalperson] = useState(1); 밑에서 사용
 
-    //file change 시 호출 이벤트
-    const uploadImage = (e) =>{
-        const uploadFile = e.target.files[0];
-        const imageFile = new FormData();
-        imageFile.append("uploadFile",uploadFile); //uploadFile = spring에서 MultipartFile에서 받아주는 이름
-
-        axios({
-            method: 'post',
-            url: uploadUrl,
-            data: imageFile,
-            headers:{'Content-Type':'multipart/form-data'}
-        }).then(res=>{
-            //setClass_photo1(res.data); //백엔드에서 보낸 변경된 이미지명을 photo 변수에 넣는다
-        }).catch(err=>{
-            alert(err);
+    function upload(){
+    const url = "http://localhost:9009/class/insert3";
+        axios.post(url,{class_photo1:showImages})
+        .then(res=>{
+            alert("insert 성공")
+            //navi("/login")
         });
     }
 
-    function upload(){
-    const url = "http://localhost:9009/class/insert3";
-        axios.post(url,showImages)
+    //옵션 일정추가후 DB전송
+    function uploadOptions(){
+        axios.post(insertUrl2,options)
         .then(res=>{
             alert("insert 성공")
             //navi("/login")
@@ -77,28 +72,50 @@ const ClassForm = (passData) =>{
     //0712#################################################3
     
     const [showImages, setShowImages] = useState([]);
-    
+    const [photos,setPhotos]=useState([]);
+
     // 이미지 추가
     // 이미지 상대경로 저장
     const handleAddImages = (event) => {
         const imageLists = event.target.files;
-        let imageUrlLists = [...showImages];
+        let imageUrlLists = [];
 
         for (let i = 0; i < imageLists.length; i++) {
         const currentImageUrl = URL.createObjectURL(imageLists[i]);
         imageUrlLists.push(currentImageUrl);
+
         
+        console.log(imageLists[i]);//찍히고 
         console.log(imageUrlLists[i]);//찍히고 
         //`setClass_photo${i+1}`(imageUrlLists[i]);
-        }
 
-        if (imageUrlLists.length > 5) {
-            imageUrlLists = imageUrlLists.slice(0, 5);
-            alert('이미지는 최대 5장입니다!')
-            return false;
-            
-        }
-        setShowImages(imageUrlLists);//안담겨
+        // const uploadFile = imageLists[i];
+        // const imageFile = new FormData();
+        // imageFile.append("uploadFile",uploadFile); //uploadFile = spring에서 MultipartFile에서 받아주는 이름
+
+        // axios({
+        //     method: 'post',
+        //     url: uploadUrl,
+        //     data: imageFile,
+        //     headers:{'Content-Type':'multipart/form-data'}
+        // }).then(res=>{
+        //     //setClass_photo1(res.data); //백엔드에서 보낸 변경된 이미지명을 photo 변수에 넣는다
+        // }).catch(err=>{
+        //     alert(err);
+        // });
+
+        setPhotos(photos.concat(imageUrlLists));
+
+    }
+    
+    if (imageUrlLists.length > 5) {
+        imageUrlLists = imageUrlLists.slice(0, 5);
+        alert('이미지는 최대 5장입니다!')
+        return false;
+        
+    }
+    console.log("setphoto : " +imageUrlLists)
+    setShowImages(imageUrlLists);//안담겨
 
         //우겨넣기_한박자 늦음
         const asd1 = imageUrlLists[0]
@@ -117,58 +134,57 @@ const ClassForm = (passData) =>{
         console.log('값3은 :' +class_photo3.current);
         console.log('값4은 :' +class_photo4.current);
         console.log('값5은 :' +class_photo5.current);
-
-
-        console.log(`값은 : ${imageUrlLists[0]}`);
-
+        console.log('show :' +showImages);
     };
 
 
 
     // X버튼 클릭 시 이미지 삭제
     const handleDeleteImage = (id) => {
-        setShowImages(showImages.filter((_, index) => index !== id));
-        console.log('삭제 후');
-        for (let i = 0; i < showImages.length; i++) {
-            console.log(showImages[i]);
-            
-        }
+        setPhotos(photos.filter((_, index) => index !== id));
     };
+
+
     
     
 
     //추가하는 #############################33
-    const onInsert = (e) => {
+    function onInsert() {
         //axios.post(insertUrl, {sangpum:sangpum, su:su, dan:dan}) // a : b - a는 spring dto의 필드 명, b는 여기서 보내주는 필드명 같을 때는 생략 가능
-        axios.post(insertUrl, {class_category, class_location, class_name,class_photo1,class_photo2,class_photo3,class_photo4,class_photo5,class_target,class_price,class_hour,class_intro,class_curri,class_anoun,class_confirm,classoption_day,classoption_starttime,classoption_endtime,classoption_totalperson })
+        axios.post(insertUrl, {class_category, class_location, class_name,class_photo1:photos[0],class_photo2:photos[1],class_photo3:photos[2],class_photo4:photos[3],class_photo5:photos[4],class_target,class_price,class_hour,class_intro:class_intro.current,class_curri,class_anoun,class_confirm,classoption_day,classoption_starttime,classoption_endtime,classoption_totalperson,class_anounok })
         .then(res => {
-            //insert 성공 후처리 코드
-            setClass_category('');
-            setClass_location('');
-            setClass_name('');
 
-            // setClass_photo1('');//ref
-            // setClass_photo2('');//ref
-            // setClass_photo3('');//ref
-            // setClass_photo4('');//ref
-            // setClass_photo5('');//ref
+            // uploadOptions();
 
-            setClass_target('');
-            setClass_price(0);
-            setClass_hour(0);
+            // //insert 성공 후처리 코드
+            // setClass_category('');
+            // setClass_location('');
+            // setClass_name('');
 
-            //setClass_intro('');//ref(Editor1)
-            setClass_curri('');//ref(Editor2)
-            setClass_anoun('');
-            setClass_confirm('');
+            // // setClass_photo1('');//ref
+            // // setClass_photo2('');//ref
+            // // setClass_photo3('');//ref
+            // // setClass_photo4('');//ref
+            // // setClass_photo5('');//ref
 
-            setClassoption_day('');
-            setClassoption_starttime('');
-            setClassoption_endtime('');
-            setClassoption_totalperson('');
-            
+            // setClass_target('');
+            // setClass_price(0);
+            // setClass_hour(0);
+
+            // //setClass_intro('');//ref(Editor1)
+            // setClass_curri('');//ref(Editor2)
+            // setClass_anoun('');
+            // setClass_confirm('');
+
+            // setClassoption_day('');
+            // setClassoption_starttime('');
+            // setClassoption_endtime('');
+            // setClassoption_totalperson('');
+            uploadOptions();
+            console.log("쩐송")
             //목록으로 이동
-            navi("/class/list")
+            // navi("/class/list")
+
         })
         .catch(err=>{
             alert(err);
@@ -177,6 +193,7 @@ const ClassForm = (passData) =>{
 
     //클래스옵션 저장할 배열객체
     const [options,setOptions]=useState([]);
+
 
     //클래스 옵션 저장
     const optionsave=()=>{
@@ -189,8 +206,8 @@ const ClassForm = (passData) =>{
     };
     
     useEffect(()=>{
-        console.log(options);
-    },[options])
+        console.log(photos);
+    },[options,photos])
 
     //popup modal (ClassGuide, ClassIntroGuide)
     // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
@@ -319,11 +336,11 @@ const ClassForm = (passData) =>{
                     onChange={(e)=>{
                         setClass_category(e.target.value)    
                     }}>
-                        <option key="apple" value="스냅사진">스냅사진</option>
-                        <option key="orange" value="스포츠">스포츠</option>
-                        <option key="orange1" value="댄스">댄스</option>
-                        <option key="orange2" value="뮤직">뮤직</option>
-                        <option key="orange3" value="드로잉">드로잉</option>
+                        <option value="스냅사진">스냅사진</option>
+                        <option value="스포츠">스포츠</option>
+                        <option value="댄스">댄스</option>
+                        <option value="뮤직">뮤직</option>
+                        <option value="드로잉">드로잉</option>
                     </select>
                 </div>
 
@@ -334,12 +351,12 @@ const ClassForm = (passData) =>{
                     onChange={(e)=>{
                         setClass_location(e.target.value)    
                     }}>
-                        <option key="apple4" value="반포">반포 한강공원</option>
-                        <option key="orange4" value="잠실">잠실 한강공원</option>
-                        <option key="orange5" value="이촌">이촌 한강공원</option>
-                        <option key="orange6" value="여의도">여의도 한강공원</option>
-                        <option key="orange7" value="난지">난지 한강공원</option>
-                        <option key="orange8" value="뚝섬">뚝섬 한강공원</option>
+                        <option value="반포">반포 한강공원</option>
+                        <option value="잠실">잠실 한강공원</option>
+                        <option value="이촌">이촌 한강공원</option>
+                        <option value="여의도">여의도 한강공원</option>
+                        <option value="난지">난지 한강공원</option>
+                        <option value="뚝섬">뚝섬 한강공원</option>
                     </select>
                 </div>
 
@@ -375,7 +392,7 @@ const ClassForm = (passData) =>{
                     
                     <div style={{marginLeft:'22px'}}>
                     {/* // 저장해둔 이미지들을 순회하면서 화면에 이미지 출력 */}
-                    {showImages.map((image, id) => (
+                    {photos.map((image, id) => (
                         <div className='smphotod' key={id}>
                             <img src={image} alt={`${image}-${id}`}  className='smphoto'/>
                             <div  className='xbtn' style={{marginLeft:'130px'}}
@@ -532,7 +549,16 @@ const ClassForm = (passData) =>{
                     <div  style={{marginLeft:'610px', marginTop:'1px'}}>
                         <label>
                             <span  className="anou">공지사항을 노출하시겠습니까?</span> &nbsp;
-                            <input type='checkbox'></input>
+                            <input type='checkbox' onChange={(e)=>{
+                                if(class_anounok==true){
+                                    setClass_anounok(false);
+                                    console.log(class_anounok)
+                                }else{
+                                    setClass_anounok(true);
+                                    console.log(class_anounok)
+                                }
+                                
+                            }}></input>
                         </label>
                     </div>
                 </div>
@@ -552,7 +578,7 @@ const ClassForm = (passData) =>{
 
                 <br/><br/><br/>
                 <button class="w-btn w-btn-gra3 w-btn-gra-anim" type="button"
-                onClick={upload}>
+                onClick={onInsert}>
                     클래스 등록
                 </button>
                 <br/><br/><br/><br/><br/>
