@@ -19,6 +19,9 @@ import ChallengeList from "./challenge/ChallengeList";
 import MainChallenge from "./main/Mainchallenge";
 import ChallengeDetail from "./challenge/ChallengeDetail";
 import {ClassList, ClassForm, ClassDetail,ClassUpdateForm,ClassGuide,ClassIntroGuide } from './class';
+import PayMent from "./class/PayMent";
+import ClassPayBefore from "./class/ClassPayBefore";
+import ClassPayAfter from "./class/ClassPayAfter";
 import MoimForm from "./moim/MoimForm";
 import MoimDetailForm from "./moim/MoimDetailForm";
 import MoimList from "./moim/MoimList";
@@ -54,10 +57,14 @@ const RouteMain=()=>{
                 {/* Class */}
                 <Route path="/class/list" element={<ClassList/>}/>
                 <Route path="/class/form" element={<ClassForm/>}/>
-                <Route path="/class/detail/:num" element={<ClassDetail/>}/>
-                <Route path="/class/updateform/:num" element={<ClassUpdateForm/>}/> 
+                <Route path="/class/detail/:class_num" element={<ClassDetail/>}/>
+                <Route path="/class/updateform/:class_num" element={<ClassUpdateForm/>}/> 
                 <Route path="/class/guide" element={<ClassGuide/>}/>
                 <Route path="/class/introguide" element={<ClassIntroGuide/>}/>
+                <Route path="/test2/payment" element={<PayMent/>}/>
+                <Route path="/class/payment/before" element={<ClassPayBefore/>}/>
+                <Route path="/class/payment/after" element={<ClassPayAfter/>}/>
+
                 {/* MOIM */}
                 <Route path="/moim/form" element={<MoimForm/>}/>
                 <Route path="/moim/detailform/:num" element={<MoimDetailForm/>}/>

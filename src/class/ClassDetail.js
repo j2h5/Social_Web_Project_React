@@ -12,11 +12,13 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import ClassReview from "./ClassReview";
 import ReviewModal from "./ReviewModal";
+import ClassPaybefore from "./ClassPayBefore";
 
 
 const ClassDetail=()=>{
-    const {num} = useParams();
+    const {class_num} = useParams();
     const [data, setData] = useState('');
+    const [options, setOptions] = useState([]);
     const navi = useNavigate();
 
     // alert MUI (삭제 다이얼로그 코드 추가)
@@ -32,9 +34,19 @@ const ClassDetail=()=>{
     const SPRING_URL=process.env.REACT_APP_SPRING_URL;
 
     //url등록
-    let detailUrl = SPRING_URL+"class/detail?class_num="+num;
-    let photoUrl= SPRING_URL+"save/";
-    let deletelUrl =  SPRING_URL+"class/delete?num="+num;
+    let detailUrl = SPRING_URL+"class/detail?class_num="+class_num;
+    let detailUrl2 = SPRING_URL+"class/detailoption?class_num="+class_num;
+    let deletelUrl =  SPRING_URL+"class/delete?class_num="+class_num;
+
+    //popup modal (ClassGuide, ClassIntroGuide)
+    // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
+    const [modalOpen, setModalOpen] = useState(false);
+    const openModal = () => {
+        setModalOpen(true);
+    };
+    const closeModal = () => {
+        setModalOpen(false);
+    };
 
     const [modalOpen2, setModalOpen2] = useState(false);
     const openModal2 = () => {
@@ -51,6 +63,15 @@ const ClassDetail=()=>{
         .then(res=>{  //res에 dto가 들어있음
             //console.log(res.data.sangpum); 상품명 출력 확인
             setData(res.data);
+            console.log(res.data)
+        })
+    }
+
+    const onOptionReceive = () =>{
+        axios.get(detailUrl2)
+        .then(option=>{  
+            setOptions(option.data);
+            console.log(option.data)
         })
     }
 
@@ -64,9 +85,11 @@ const ClassDetail=()=>{
         handleClose();//다이얼로그 창 닫기
     }
 
+
     //처음 랜더링시 위의 함수 호출
     useEffect( () => {
         onDataReceive();
+        onOptionReceive();
     },[]);
 
     return (
@@ -75,7 +98,8 @@ const ClassDetail=()=>{
             <div className="class_top">
                 <div className="class_title_div">
                     <span className="class_title">
-                        [원데이] 한강에서 제트스키 체험하기
+                        {data.class_name}
+                        {options.classoption_day}
                     </span>
                 </div>
                 <div className="tutor_info">
@@ -83,7 +107,7 @@ const ClassDetail=()=>{
 
                     </div>
                     <span className="tutor_name" >
-                        홍대한 튜터
+                        한별 튜터
                     </span>
                 </div>
                 {/* 이거 map으로 돌릴 수 있을거같은데 일단 */}
@@ -92,7 +116,7 @@ const ClassDetail=()=>{
                 </div>
                 <div className="imagemap">
                     <div className="class_image">
-                        
+                        <img src={data.class_photo1}/>
                     </div>
                     <div className="class_image">
                         
@@ -112,11 +136,12 @@ const ClassDetail=()=>{
                         </span>
                     </div>
                     <select className="plan" >
-                        <option key="banana" value="banana">
-                        바나나
-                        </option>
-                        <option key="apple" value="apple">사과</option>
-                        <option key="orange" value="orange">오렌지</option>
+                        <option selected disabled>일정을 선택해 주세요</option>
+                        {
+                            options.map((row,idx)=>(
+                                <option value={row.classoption_day}>{row.classoption_day} &nbsp;{row.classoption_starttime}시 ~ {row.classoption_endtime}시 (정원 : {row.classoption_presentperson}/{row.classoption_totalperson}) </option>
+                            ))
+                        }
                     </select>
                     <div className="class_plan_row">
                         <span className="selectplan">
@@ -138,7 +163,13 @@ const ClassDetail=()=>{
                             </div>
                         </div>
                         <div className="classbtn">
-                            <button className="class_signbtn">클래스 신청하기</button>
+                            <React.Fragment>
+                            <button onClick={openModal} className="class_signbtn">클래스 신청하기 &gt;</button>
+                            {/* //header 부분에 텍스트를 입력한다. */}
+                            <ClassPaybefore open={modalOpen} close={closeModal} header="결제 정보">
+                                {/* // Modal.js <main> {props.children} </main>에 내용이 입력 */}
+                            </ClassPaybefore>
+                            </React.Fragment>
                             <button className="class_likebtn">♥</button>
                         </div>
                         
@@ -147,18 +178,18 @@ const ClassDetail=()=>{
 
             <div className="class_summ">
                 <div className="box">
-                    <div className="boxtext">반포공원</div>
+                    <div className="boxtext">{data.class_location}</div>
                 </div>
                 <div className="box">
-                    <div className="boxtext">초~중급자</div>
+                    <div className="boxtext">{data.class_target}</div>
                 </div><div className="box">
                     <div className="boxtext">198개</div>
                 </div><div className="box">
                     <div className="boxtext">시간당
                     <br/>
-                    18000원</div>
+                    {data.class_price/data.class_hour}원</div>
                 </div><div className="box">
-                    <div className="boxtext">정원 3명</div>
+                    <div className="boxtext">정원 {data.class_}명</div>
                 </div>
             </div>
 
@@ -175,27 +206,29 @@ const ClassDetail=()=>{
             </div>
 
             {/* class detail info */}
+            <div>
+            {data.class_anounok===true?
             <div className="class_notice1">
                 <div className="class_subtitle" style={{width:'600px'}}>
                     클래스 전 숙지해주세요!
+                    {data.class_anoun}
                 </div>
                 <div className="class_noticecircle">
                     튜터공지
                 </div>
-            </div>
-            <div className="class_notice2">
-                <div className="class_subtitle">
-                    클래스 요약
-                </div>
-            </div>
+            </div>:""}
+
             <div className="class_notice3">
                 <div className="class_subtitle">
                     클래스 소개
+                    {data.class_intro}
                 </div>
             </div>
+
             <div className="class_notice4">
                 <div className="class_subtitle">
                     클래스 커리큘럼
+                    {data.class_curri}
                 </div>
             </div>
             
@@ -230,7 +263,7 @@ const ClassDetail=()=>{
                 }}>상품추가</button>
                 <button type="button"
                 onClick={()=>{
-                    navi(`/class/updateform/${num}`)
+                    navi(`/class/updateform/`)
                 }}>수정</button>
                 <button type="button" onClick={handleClickOpen}>삭제</button>
                 <Dialog open={open} onClose={handleClose}
@@ -250,6 +283,7 @@ const ClassDetail=()=>{
         </div>
             
         
+    </div>
     </div>
     )
 }
