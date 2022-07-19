@@ -32,7 +32,7 @@ const ClassDetail=()=>{
     const SPRING_URL=process.env.REACT_APP_SPRING_URL;
 
     //url등록
-    let detailUrl = SPRING_URL+"class/detail?num="+num;
+    let detailUrl = SPRING_URL+"class/detail?class_num="+num;
     let photoUrl= SPRING_URL+"save/";
     let deletelUrl =  SPRING_URL+"class/delete?num="+num;
 

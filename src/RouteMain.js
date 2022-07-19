@@ -44,20 +44,7 @@ const RouteMain=()=>{
                 <Route path="/login/a" element={<LoginFormTest/>}/>
 
                 {/* 마이페이지 */}
-                <Route path="/mypage" element={<MypageMain/>}/>
-
-
-                {/* Shop */}
-                <Route path="/shop/list" element={<Shop/>}/>
-                <Route path="/shop/form" element={<ShopForm/>}/>
-                <Route path="/shop/detail/:num" element={<ShopDetail/>}/>
-                <Route path="/shop/updateform/:num" element={<ShopUpdate/>}/>
-
-                {/* Board */}
-                <Route path="/board/list/:currentPage" element={<Board/>}/>
-                <Route path="/board/form" element={<BoardForm/>}/>
-                <Route path="/board/detail/:num/:currentPage" element={<BoardDetail/>}/>
-                
+                <Route path="/mypage" element={<MypageMain/>}/>                
 
                 {/* challenge */}
                 <Route path="/challenge/form" element={<ChallengeForm/>}/>
