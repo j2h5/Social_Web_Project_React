@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import '../App.css';
 import './ClassDetail.css';
 import axios from "axios";
@@ -29,6 +29,9 @@ const ClassDetail=()=>{
     const handleClose = () => {
     setOpen(false);
     };
+
+    const [change,setChange]=useState(false);
+    const changeoptions=useRef('');
 
     //전역변수등록
     const SPRING_URL=process.env.REACT_APP_SPRING_URL;
@@ -85,6 +88,12 @@ const ClassDetail=()=>{
         handleClose();//다이얼로그 창 닫기
     }
 
+    const handleChange=e=>{
+        changeoptions.current=options[e.target.value];
+        console.log(changeoptions)
+        setChange(true)
+    }
+
 
     //처음 랜더링시 위의 함수 호출
     useEffect( () => {
@@ -135,17 +144,20 @@ const ClassDetail=()=>{
                             클래스 일정
                         </span>
                     </div>
-                    <select className="plan" >
+                    <select className="plan" onChange={handleChange}>
                         <option selected disabled>일정을 선택해 주세요</option>
                         {
                             options.map((row,idx)=>(
-                                <option value={row.classoption_day}>{row.classoption_day} &nbsp;{row.classoption_starttime}시 ~ {row.classoption_endtime}시 (정원 : {row.classoption_presentperson}/{row.classoption_totalperson}) </option>
+                                <option value={idx}>{row.classoption_day} &nbsp;{row.classoption_starttime}시 ~ {row.classoption_endtime}시 (정원 : {row.classoption_presentperson}/{row.classoption_totalperson}) </option>
                             ))
                         }
                     </select>
+                    
+                    {change===true?
+                    <div>
                     <div className="class_plan_row">
                         <span className="selectplan">
-                            2022-06-27 15:00~18:00
+                            {changeoptions.current.classoption_day} {changeoptions.current.classoption_starttime}시 ~ {changeoptions.current.classoption_endtime}시
                         </span><br/>
                         <div style={{marginTop:'15px'}}>{/* 인워선택 + / - */}
                             <div className="perselect" style={{marginTop:'5px'}}>
@@ -153,15 +165,19 @@ const ClassDetail=()=>{
                             </div>
                             <input type="number" className="percnt"></input>
                         </div>
-                        </div>{/* class_plan_row */}
+                    </div>{/* class_plan_row */}
+
                         <div className="totcnt"> 
                             <div className="money1">
-                                11,000원 / 시간 (인당)
+                            {data.class_price/data.class_hour}원 / 시간 (인당)
                                 <div className="money2">
-                                    33,000원 / 총 3시간
+                                {data.class_price}원 / 총 {data.class_hour}시간
                                 </div>
                             </div>
                         </div>
+                        </div>
+                        :''}
+
                         <div className="classbtn">
                             <React.Fragment>
                             <button onClick={openModal} className="class_signbtn">클래스 신청하기 &gt;</button>

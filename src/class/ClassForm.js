@@ -384,10 +384,10 @@ const ClassForm = (passData) =>{
                     onChange={(e)=>{
                         setClass_target(e.target.value)    
                     }} value={class_target}>
-                        <option key="apple5" value="apple">입문</option>
-                        <option key="orangea" value="orange">초급</option>
-                        <option key="oranges" value="orange">중급</option>
-                        <option key="oranged" value="orange">고급</option>
+                        <option value="입문">입문</option>
+                        <option value="초급">초급</option>
+                        <option value="중급">중급</option>
+                        <option value="고급">고급</option>
                     </select>
                 </div>
                 <div className="row">
